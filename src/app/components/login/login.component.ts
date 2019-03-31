@@ -10,7 +10,7 @@ export class LoginComponent implements OnInit {
   constructor() { }
 
   test(){
-    var toastHTML = '<span>I am toast content</span><button class="btn-flat toast-action">Undo</button>';
+    var toastHTML = '<span>I am toast content</span>';
     M.toast({html: toastHTML});
   }
 
