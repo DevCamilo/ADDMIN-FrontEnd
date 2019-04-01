@@ -1,3 +1,33 @@
-.parallax-container {
+.paralax1 {
     height: 650px;
+}
+
+.sup {
+    text-align: center;
+    color: #fff;
+    margin-top: 50px;
+    font-size: 23px;
+}
+
+.line {
+    width: 750px;
+}
+
+@media (max-width: 855px) {
+    .sup {
+        margin-top: 50px;
+        font-size: 20px;
+    }
+    .line {
+        width: 550px;
+    }
+}
+
+@media (max-width: 650px) {
+    .paralax2 {
+        height: 800px;
+    }
+    .line {
+        width: 250px;
+    }
 }
