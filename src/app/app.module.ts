@@ -13,6 +13,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 // Rutas
 import { app_routing } from './app.routes';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { app_routing } from './app.routes';
     NavBarComponent,
     HomeComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    SideNavComponent
   ],
   imports: [
     BrowserModule,

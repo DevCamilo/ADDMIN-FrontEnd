@@ -1,0 +1,16 @@
+a {
+    padding-left: 300px;
+}
+
+@media (max-width: 992px) {
+    a {
+        padding-left: 0;
+    }
+}
+
+.drop{
+    display: none;
+    margin-left: 15px;
+}
+
+

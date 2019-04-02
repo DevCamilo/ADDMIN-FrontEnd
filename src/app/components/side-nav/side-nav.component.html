@@ -1,0 +1,23 @@
+<ul id="slide-out" class="sidenav sidenav-fixed">
+    <li>
+      <div class="user-view">
+        <div class="background">
+          <img src="http://en.valencialoft.com/wp-content/uploads/2014/04/Juntas-superficie-de-madera-textura-de-fondo-900x1440.jpg">
+        </div>
+        <a><img class="circle" src="../../../assets/avatar.png"></a>
+        <a><span class="white-text name">{{user.name}} {{user.lastName}}</span></a>
+        <a><span class="white-text email">{{user.email}}</span></a>
+      </div>
+    </li>
+    <li><a routerLink="/dashboard"><i class="small material-icons">home</i>ADDMIN</a></li>
+    <li><a href="#!"><i class="small material-icons">account_circle</i>Mi Perfil</a></li>
+    <li><a (click)="test()" class="select"><i class="small material-icons">playlist_add_check</i>Reservas</a></li>
+        <ul class="drop">
+          <li><a href=""><i class="small material-icons">playlist_add</i>Generar Reserva</a></li>
+          <li><a ><i class="small material-icons">playlist_play</i>Consultar Reserva</a></li>
+        </ul>
+    <li><a href="#!"><i class="small material-icons">attach_money</i>Pagos</a></li>
+    <li><a href="#!"><i class="small material-icons">account_balance</i>Consejo</a></li>
+    <li><a routerLink="/login" (click)="clearLocal()"><i class="small material-icons">power_settings_new</i>Logout</a></li>
+  </ul>
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i style="color: black" class="medium material-icons">add</i></a>
