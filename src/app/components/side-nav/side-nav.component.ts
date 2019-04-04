@@ -8,36 +8,21 @@ declare var $: any;
 })
 export class SideNavComponent implements OnInit {
   user: any = JSON.parse(localStorage.getItem('user'));
-  flag: number = 0;
+  flag: number = 1;
   constructor() { }
 
   ngOnInit() {
     $(document).ready(function () {
       $('.sidenav').sidenav();
     });
+    $(document).ready(function(){
+      $('.collapsible').collapsible();
+    });
   }
 
   clearLocal() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-  }
-
-  test() {
-    if (this.flag == 0) {
-      $(document).ready(function () {
-        $('.select').on('click', function () {
-          $('.drop').show();
-        });
-      });
-      this.flag = 1;
-    } else {
-      $(document).ready(function () {
-        $('.select').on('click', function () {
-          $('.drop').show();
-        });
-      });
-      this.flag = 0;
-    }
   }
 
 }

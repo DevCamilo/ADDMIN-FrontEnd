@@ -8,9 +8,20 @@ a {
     }
 }
 
-.drop{
-    display: none;
-    margin-left: 15px;
+.fixed i{
+    font-size: 29px;
+    color: rgba(0, 0, 0, 0.54);
+    margin: 0px 20px 0px 0px;
+}
+
+.move {
+    padding: 0px 38px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.drop {
+    margin-left: 30px;
 }
 
 
