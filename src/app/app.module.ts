@@ -10,10 +10,11 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 // Rutas
 import { app_routing } from './app.routes';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
     HomeComponent,
     LoginComponent,
     DashboardComponent,
-    SideNavComponent
+    SideNavComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
