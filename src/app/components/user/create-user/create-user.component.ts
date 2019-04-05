@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import swal from 'sweetalert2';
 declare var $:any;
 
 @Component({
@@ -14,6 +15,14 @@ export class CreateUserComponent implements OnInit {
     $(document).ready(function () {
       $('select').formSelect();
     });
+  }
+
+  pushMe(){
+    swal.fire(
+      'Good job!',
+      'You clicked the button!',
+      'success'
+    )
   }
 
 }

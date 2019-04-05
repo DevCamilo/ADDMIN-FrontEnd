@@ -9,13 +9,9 @@
 }
 
 form {
-  border-radius: 2%;
+  border-radius: 1%;
   /*border: 1.5px solid black; */
   margin-bottom: 10px;
-}
-
-a{
-  padding-bottom: 20px;
 }
 
 .space-right{
