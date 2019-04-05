@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { CreateUserComponent } from './components/user/create-user/create-user.component';
 
 // Rutas
 import { app_routing } from './app.routes';
@@ -24,7 +25,8 @@ import { app_routing } from './app.routes';
     LoginComponent,
     DashboardComponent,
     SideNavComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,

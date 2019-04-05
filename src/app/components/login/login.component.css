@@ -1,5 +1,5 @@
 #login-page {
-    margin-top: 180px; 
+    margin-top: 250px; 
     width: 500px;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .backgraund{
-    margin-top: -88px;
+    margin-top: -86px;
     height: 100%;
     width: 100%;
     background-image: url(../../../assets/bg1.jpg);
