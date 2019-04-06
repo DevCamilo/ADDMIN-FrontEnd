@@ -12,9 +12,11 @@
     border-radius: 1%;
 }
 
-.space-left {
+.center-table {
     padding-left: 40px;
+    padding-right: 40px;
 }
+
 
 .my-pagination /deep/ .ngx-pagination {
     font-size: 25px;
@@ -27,7 +29,6 @@
     border-radius: 10%;
     text-align: center;
     width: 40px;
-
 }
 
 .my-pagination /deep/ .ngx-pagination .pagination-previous {
@@ -38,7 +39,6 @@
     text-align: center;
     width: 40px;
     background: none;
-
 }
 
 .my-pagination /deep/ .ngx-pagination .current {

@@ -19,6 +19,9 @@ import { ListUsersComponent } from './components/user/list-users/list-users.comp
 // Rutas
 import { app_routing } from './app.routes';
 
+// Pipes
+import { FilterPipe } from './pipes/filter.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,8 @@ import { app_routing } from './app.routes';
     SideNavComponent,
     NotFoundComponent,
     CreateUserComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

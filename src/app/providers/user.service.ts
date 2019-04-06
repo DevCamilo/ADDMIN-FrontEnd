@@ -22,20 +22,30 @@ export class UserService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer '+ token
+        'Authorization': 'Bearer ' + token
       })
     };
     return this.http.post(this.url + '/create-user', user, httpOptions);
   }
 
-  listUsersFunction(token: String){
+  listUsersFunction(token: String) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer '+ token
+        'Authorization': 'Bearer ' + token
       })
     };
-    return this.http.get(this.url + '/user-all', httpOptions)
+    return this.http.get(this.url + '/user-all', httpOptions);
+  }
+
+  deleteUserFunction(id: String, token: String) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    return this.http.get(this.url + '/delete-user/?id=' + id, httpOptions);
   }
 
 }
