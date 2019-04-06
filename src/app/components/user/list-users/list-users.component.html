@@ -6,7 +6,7 @@
       <h1>Lista de Usuarios</h1>
     </div>
     <br>
-    <table class="striped centered responsive-table">
+    <table class="striped centered responsive-table" id="myTable">
       <thead>
         <tr>
           <th>Nombre</th>
@@ -18,7 +18,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor=" let user of listUser">
+        <tr *ngFor=" let user of listUser | paginate: { itemsPerPage: 5, currentPage: p }">
           <td>{{user.name}}</td>
           <td>{{user.lastName}}</td>
           <td>{{user.email}}</td>
@@ -32,6 +32,7 @@
         </tr>
       </tbody>
     </table>
+    <pagination-controls class="my-pagination" (pageChange)="p = $event" previousLabel="" nextLabel="" responsive=true></pagination-controls>
     <br>
   </div>
 </div>
