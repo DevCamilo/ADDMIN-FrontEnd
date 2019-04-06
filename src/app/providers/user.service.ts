@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
+    'Content-Type': 'application/json'
   })
 };
 
@@ -16,6 +16,17 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   loginFunction(user: object) {
-    return this.http.post(this.url+'/login', JSON.stringify(user), httpOptions);
+    return this.http.post(this.url + '/login', JSON.stringify(user), httpOptions);
   }
+
+  createUserFunction(user: object, token: String) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+ token
+      })
+    };
+    return this.http.post(this.url + '/create-user', user, httpOptions);
+  }
+
 }

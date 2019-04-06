@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import swal from 'sweetalert2';
-declare var $:any;
+import { UserService } from '../../../providers/user.service';
+import Swal from 'sweetalert2';
+declare var $: any;
 
 @Component({
   selector: 'app-create-user',
@@ -8,8 +9,21 @@ declare var $:any;
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
+  user: any;
+  token = localStorage.getItem('token');
 
-  constructor() { }
+  constructor(private _user: UserService) {
+    this.user = {
+      name: "",
+      lastName: "",
+      telephone: "",
+      tower: "",
+      apto: "",
+      typeUser: Number,
+      email: "",
+      password: ""
+    }
+  }
 
   ngOnInit() {
     $(document).ready(function () {
@@ -17,12 +31,27 @@ export class CreateUserComponent implements OnInit {
     });
   }
 
-  pushMe(){
-    swal.fire(
-      'Good job!',
-      'You clicked the button!',
-      'success'
-    )
+  onSubmit() {
+    this.user.typeUser = parseInt(this.user.typeUser)
+    //console.log(this.user);
+    this._user.createUserFunction(this.user, this.token).subscribe((res: any) => {
+      //console.log(res);
+      if (res.status) {
+        Swal.fire(res.message, '', 'success');
+        this.user = {
+          name: "",
+          lastName: "",
+          telephone: "",
+          tower: "",
+          apto: "",
+          typeUser: 0,
+          email: "",
+          password: ""
+        }
+      } else {
+        Swal.fire(res.message, '', 'error');
+      }
+    });
   }
 
 }

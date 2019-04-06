@@ -2,21 +2,24 @@
 <div class="move">
   <div class="container">
     <div class="row">
-      <form class="col s12 z-depth-4">
+      <form class="col s12 z-depth-4" #userForm="ngForm" (ngSubmit)="onSubmit()">
         <h1 class="space-right">Crear Usuario</h1>
         <div class="row space-right">
           <div class="input-field col s12 m6">
-            <input id="first_name" type="text" class="validate">
+            <input id="first_name" type="text" class="validate" [(ngModel)]="user.name"
+              [ngModelOptions]="{standalone: true}" autocomplete="off">
             <label for="first_name">Nombre</label>
           </div>
           <div class="input-field col s12 m6 space-left">
-            <input id="last_name" type="text" class="validate">
+            <input id="last_name" type="text" class="validate" [(ngModel)]="user.lastName"
+              [ngModelOptions]="{standalone: true}" autocomplete="off">
             <label for="last_name">Apellido</label>
           </div>
         </div>
         <div class="row space-right">
           <div class="input-field col s12 m6">
-            <input id="telephone" type="text" class="validate">
+            <input id="telephone" type="text" class="validate" [(ngModel)]="user.telephone"
+              [ngModelOptions]="{standalone: true}" autocomplete="off">
             <label for="telephone">Télefono</label>
           </div>
           <!-- <div class="input-field col s12 m6">
@@ -25,7 +28,7 @@
             </p>
           </div> -->
           <div class="input-field col s12 m6 space-left">
-            <select>
+            <select [(ngModel)]="user.typeUser" [ngModelOptions]="{standalone: true}">
               <option value="" disabled selected>Seleccione una opción</option>
               <option value="1">Administrador</option>
               <option value="2">Consejo</option>
@@ -36,26 +39,32 @@
         </div>
         <div class="row space-right">
           <div class="input-field col s12 m6">
-            <input id="tower" type="text" class="validate">
+            <input id="tower" type="text" class="validate" [(ngModel)]="user.tower"
+              [ngModelOptions]="{standalone: true}" autocomplete="off">
             <label for="tower">Torre</label>
           </div>
           <div class="input-field col s12 m6 space-left">
-            <input id="apto" type="text" class="validate">
+            <input id="apto" type="text" class="validate" [(ngModel)]="user.apto" [ngModelOptions]="{standalone: true}"
+              autocomplete="off">
             <label for="apto">Apartamento</label>
           </div>
         </div>
         <div class="row space-right">
           <div class="input-field col s12 m6">
-            <input id="email" type="email" class="validate">
+            <input id="email" type="email" class="validate" [(ngModel)]="user.email"
+              [ngModelOptions]="{standalone: true}" autocomplete="off">
             <label for="email">Email</label>
           </div>
           <div class="input-field col s12 m6 space-left">
-            <input id="password" type="text" class="validate">
+            <input id="password" type="text" class="validate" [(ngModel)]="user.password"
+              [ngModelOptions]="{standalone: true}" autocomplete="off">
             <label for="password">Contraseña</label>
           </div>
         </div>
         <div class="space-right">
-          <a class="waves-effect waves-light btn-large" (click)="pushMe()"><i class="material-icons left">save</i>Guardar</a>
+          <button class="btn waves-effect waves-light btn-large" type="submit">
+            <i class="material-icons right">send</i> Guardar
+          </button>
         </div>
         <br>
         <br>
