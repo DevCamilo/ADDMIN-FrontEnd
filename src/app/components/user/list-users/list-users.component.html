@@ -1,0 +1,37 @@
+<app-side-nav></app-side-nav>
+<div class="move">
+  <div class="container z-depth-4 raius">
+    <br>
+    <div class="space-left">
+      <h1>Lista de Usuarios</h1>
+    </div>
+    <br>
+    <table class="striped centered responsive-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Correo</th>
+          <th>Teléfono</th>
+          <th>Modificar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor=" let user of listUser">
+          <td>{{user.name}}</td>
+          <td>{{user.lastName}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.telephone}}</td>
+          <td>
+            <a class="waves-effect waves-light btn green"><i class="material-icons">edit</i></a>
+          </td>
+          <td>
+            <a class="waves-effect waves-light btn red"><i class="material-icons">delete</i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+  </div>
+</div>

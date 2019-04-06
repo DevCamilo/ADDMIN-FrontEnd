@@ -1,12 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
-};
-
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +10,11 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   loginFunction(user: object) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
     return this.http.post(this.url + '/login', JSON.stringify(user), httpOptions);
   }
 
@@ -27,6 +26,16 @@ export class UserService {
       })
     };
     return this.http.post(this.url + '/create-user', user, httpOptions);
+  }
+
+  listUsersFunction(token: String){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+ token
+      })
+    };
+    return this.http.get(this.url + '/user-all', httpOptions)
   }
 
 }
