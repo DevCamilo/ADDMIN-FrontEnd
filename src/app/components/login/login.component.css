@@ -1,28 +1,19 @@
 #login-page {
-    margin-top: 250px; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 500px;
 }
 
-.card {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -moz-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
-.backgraund{
-    margin-top: -86px;
+.backgraund {
     height: 100%;
     width: 100%;
     background-image: url(../../../assets/bg1.jpg);
     background-position: center;
     background-size: cover;
     float: left;
-    position: relative;
+    position: fixed;
     overflow: hidden;
 }
 
@@ -30,8 +21,5 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
     background-color: rgba(110, 110, 110, 0.5);
-  }
+}
