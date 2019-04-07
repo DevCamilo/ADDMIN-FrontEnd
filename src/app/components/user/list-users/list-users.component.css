@@ -17,6 +17,9 @@
     padding-right: 40px;
 }
 
+.modal {
+    max-height: 100%;
+}
 
 .my-pagination /deep/ .ngx-pagination {
     font-size: 25px;

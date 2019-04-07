@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { UserService } from '../../../providers/user.service';
 import Swal from 'sweetalert2';
-declare var $: any;
+declare var $: any, M: any;
 
 @Component({
   selector: 'app-list-users',
@@ -29,7 +29,11 @@ export class ListUsersComponent implements OnInit {
     });
     this.user.listUsersFunction(this.token).subscribe((res: any) => {
       //console.log(res);
-      this.listUser = res.data;
+      if (res.status) {
+        this.listUser = res.data;
+      } else {
+        Swal.fire(res.message, '', 'error');
+      }
     });
   }
 
@@ -57,7 +61,14 @@ export class ListUsersComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.updateUser);
+    // console.log(this.updateUser);
+    this.user.updateUserFunction(this.updateUser, this.token).subscribe((res: any) => {
+      if (res.status) {
+        Swal.fire(res.message, '', 'success');
+      } else {
+        Swal.fire(res.message, '', 'error');
+      }
+    });
   }
 
   setUser(user) {
