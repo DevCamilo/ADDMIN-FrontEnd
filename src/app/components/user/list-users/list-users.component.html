@@ -30,7 +30,8 @@
             <td>{{user.email}}</td>
             <td>{{user.telephone}}</td>
             <td>
-              <a class="waves-effect waves-light btn green"><i class="material-icons">edit</i></a>
+              <a class="waves-effect waves-light btn green  modal-trigger" href="#modal1" (click)="setUser(user)"><i
+                  class="material-icons">edit</i></a>
             </td>
             <td>
               <a class="waves-effect waves-light btn red" (click)="deleteUser(user._id)"><i
@@ -44,5 +45,68 @@
       </pagination-controls>
       <br>
     </div>
+  </div>
+</div>
+<!-- Inicio del Modal para actualizar el usuairo -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Editar Usuaio</h4>
+    <form class="col s12 " #userForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <input id="first_name" type="text" class="validate" [(ngModel)]="updateUser.name"
+            [ngModelOptions]="{standalone: true}" autocomplete="off">
+          <label class="active" for="first_name">Nombre</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <input id="last_name" type="text" class="validate" [(ngModel)]="updateUser.lastName"
+            [ngModelOptions]="{standalone: true}" autocomplete="off">
+          <label class="active" for="last_name">Apellido</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <input id="telephone" type="text" class="validate" [(ngModel)]="updateUser.telephone"
+            [ngModelOptions]="{standalone: true}" autocomplete="off">
+          <label class="active" for="telephone">Télefono</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <select [(ngModel)]="updateUser.typeUser" [ngModelOptions]="{standalone: true}">
+            <option value="" disabled selected>Seleccione una opción</option>
+            <option value="1">Administrador</option>
+            <option value="2">Consejo</option>
+            <option value="3">Residente</option>
+          </select>
+          <label>Tipo de Usuario</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <input id="tower" type="text" class="validate" [(ngModel)]="updateUser.tower"
+            [ngModelOptions]="{standalone: true}" autocomplete="off">
+          <label class="active" for="tower">Torre</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <input id="apto" type="text" class="validate" [(ngModel)]="updateUser.apto"
+            [ngModelOptions]="{standalone: true}" autocomplete="off">
+          <label class="active" for="apto">Apartamento</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <input id="email" type="email" class="validate" [(ngModel)]="updateUser.email"
+            [ngModelOptions]="{standalone: true}" autocomplete="off">
+          <label class="active" for="email">Email</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <input id="password" type="text" class="validate" [(ngModel)]="updateUser.password"
+            [ngModelOptions]="{standalone: true}" autocomplete="off">
+          <label class="active" for="password">Contraseña</label>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light btn-small" type="submit">
+        <i class="material-icons right">send</i> Guardar
+      </button>
+    </form>
   </div>
 </div>

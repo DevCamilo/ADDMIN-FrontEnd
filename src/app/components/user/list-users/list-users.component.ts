@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { UserService } from '../../../providers/user.service';
 import Swal from 'sweetalert2';
+declare var $: any;
 
 @Component({
   selector: 'app-list-users',
@@ -10,15 +11,22 @@ import Swal from 'sweetalert2';
 
 export class ListUsersComponent implements OnInit {
   p: number = 1;
+  flag: Number = 1;
   filterUser: any = "";
   listUser: any;
+  updateUser: any;
   token = localStorage.getItem('token');
 
-  constructor(private user: UserService) { 
-    this.listUser = [];
+  constructor(private user: UserService, private zone: NgZone) {
+    this.listUser = {};
+    this.updateUser = {};
   }
 
   ngOnInit() {
+    $(document).ready(function () {
+      $('.modal').modal();
+      $('select').formSelect();
+    });
     this.user.listUsersFunction(this.token).subscribe((res: any) => {
       //console.log(res);
       this.listUser = res.data;
@@ -27,7 +35,7 @@ export class ListUsersComponent implements OnInit {
 
   deleteUser(id: String) {
     Swal.fire({
-      title: '¿Está seguro que desea eliminar el usuario?',
+      title: '¿Desea eliminar el usuario?',
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -45,8 +53,15 @@ export class ListUsersComponent implements OnInit {
           }
         });
       }
-    })
+    });
+  }
 
+  onSubmit() {
+    console.log(this.updateUser);
+  }
+
+  setUser(user) {
+    this.updateUser = user;
   }
 
 }
