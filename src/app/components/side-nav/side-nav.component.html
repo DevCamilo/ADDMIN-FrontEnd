@@ -14,7 +14,7 @@
   <li><a routerLink="/profile"><i class="small material-icons">account_circle</i>Mi Perfil</a></li>
   <ul class="collapsible fixed">
     <li>
-      <div class="collapsible-header move">
+      <div class="collapsible-header move" style="margin-left: 5px;">
        <i class="small material-icons">playlist_add_check</i> Reservas
       </div>
       <div class="collapsible-body">
@@ -38,7 +38,7 @@
       </div>
     </li>
   </ul>
-  <ul class="collapsible fixed">
+  <ul class="collapsible fixed" *ngIf="typeUser">
     <li>
       <div class="collapsible-header move">
        <i class="small material-icons">account_balance</i> Consejo
@@ -51,7 +51,7 @@
       </div>
     </li>
   </ul>
-  <ul class="collapsible fixed">
+  <ul class="collapsible fixed" *ngIf="typeUser">
     <li>
       <div class="collapsible-header move">
        <i class="small material-icons">people</i> Usuarios

@@ -8,7 +8,7 @@ declare var $: any;
 })
 export class SideNavComponent implements OnInit {
   user: any = JSON.parse(localStorage.getItem('user'));
-  flag: number = 1;
+  typeUser: any;
   constructor() { }
 
   ngOnInit() {
@@ -18,6 +18,7 @@ export class SideNavComponent implements OnInit {
     $(document).ready(function(){
       $('.collapsible').collapsible();
     });
+    this.typeUser = this.user.typeUser == 1;
   }
 
   clearLocal() {
