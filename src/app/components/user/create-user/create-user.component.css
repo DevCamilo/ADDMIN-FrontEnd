@@ -9,6 +9,10 @@
   }
 }
 
+span{
+  color: red;
+}
+
 form {
   border-radius: 1%;
   /*border: 1.5px solid black; */

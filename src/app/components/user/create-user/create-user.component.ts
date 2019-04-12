@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { UserService } from '../../../providers/user.service';
 import Swal from 'sweetalert2';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 declare var $: any;
 
 @Component({
@@ -9,45 +10,36 @@ declare var $: any;
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
-  user: any;
   token = localStorage.getItem('token');
-
-  constructor(private _user: UserService) {
-    this.user = {
-      name: "",
-      lastName: "",
-      telephone: "",
-      tower: "",
-      apto: "",
-      typeUser: Number,
-      email: "",
-      password: ""
-    }
-  }
+  userForm: FormGroup;
+  constructor(private _user: UserService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.userForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      lastName: ['', Validators.required],
+      telephone: ['', Validators.nullValidator],
+      tower: ['', Validators.required],
+      apto: ['', Validators.required],
+      typeUser: ['', Validators.required],
+      email: ['', Validators.email],
+      password: ['', Validators.required]
+    });
     $(document).ready(function () {
       $('select').formSelect();
     });
   }
 
   onSubmit() {
-    this.user.typeUser = parseInt(this.user.typeUser)
-    //console.log(this.user);
-    this._user.createUserFunction(this.user, this.token).subscribe((res: any) => {
+    this.userForm.value.apto = this.userForm.value.apto.toString();
+    this.userForm.value.tower = this.userForm.value.tower.toString();
+    this.userForm.value.telephone = this.userForm.value.telephone.toString();
+    this.userForm.value.typeUser = parseInt(this.userForm.value.typeUser);
+    //console.log(this.userForm.value);
+    this._user.createUserFunction(this.userForm.value, this.token).subscribe((res: any) => {
       //console.log(res);
       if (res.status) {
         Swal.fire(res.message, '', 'success');
-        this.user = {
-          name: "",
-          lastName: "",
-          telephone: "",
-          tower: "",
-          apto: "",
-          typeUser: 0,
-          email: "",
-          password: ""
-        }
       } else {
         Swal.fire(res.message, '', 'error');
       }
