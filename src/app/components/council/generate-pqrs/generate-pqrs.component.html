@@ -1,0 +1,47 @@
+<app-side-nav></app-side-nav>
+<div class="move">
+  <div class="container">
+    <form class="col s12 z-depth-4 space-left space-right" [formGroup]="pqrsForm" (ngSubmit)="onSubmit()">
+      <h1 class="space-right">Generar PQRS</h1>
+      <div class="row space-right">
+        <div class="input-field col s12">
+          <input id="title" type="text" class="validate" formControlName="title" autocomplete="off">
+          <label for="title">Título</label>
+          <!--<span *ngIf="pqrsForm.controls['title'].touched && pqrsForm.controls['title'].errors?.required">
+            El título es requerido
+          </span> -->
+        </div>
+        <div class="input-field col s12">
+          <textarea id="description" class="materialize-textarea" formControlName="description"></textarea>
+          <label for="description">Descripción</label>
+          <!--<span *ngIf="pqrsForm.controls['description'].touched && pqrsForm.controls['description'].errors?.required">
+            La descripcion es requerida
+          </span> -->
+        </div>
+        <div class="input-field col s12">
+          <select>
+            <option *ngFor=" let type of typePqrs" [value]="type._id">{{type.name}}</option>
+          </select>
+          <label>Tipo de PQRS</label>
+        </div>
+      </div>
+      <div class="file-field input-field space-right">
+        <div class="btn">
+          <span>Archivo</span>
+          <input type="file" multiple>
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" placeholder="Cargue las evidencias">
+        </div>
+      </div>
+      <br>
+      <div class="space-right">
+        <button class="btn waves-effect waves-light btn-large" type="submit">
+          <i class="material-icons right">send</i> Guardar
+        </button>
+      </div>
+      <br>
+      <br>
+    </form>
+  </div>
+</div>

@@ -18,7 +18,8 @@ export class CreateUserComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       name: ['', Validators.required],
       lastName: ['', Validators.required],
-      telephone: ['', Validators.nullValidator],
+      //telephone: ['', Validators.nullValidator],
+      telephone: ['', Validators.required],
       tower: ['', Validators.required],
       apto: ['', Validators.required],
       typeUser: ['', Validators.required],
@@ -40,6 +41,7 @@ export class CreateUserComponent implements OnInit {
       //console.log(res);
       if (res.status) {
         Swal.fire(res.message, '', 'success');
+        this.userForm.reset();
       } else {
         Swal.fire(res.message, '', 'error');
       }

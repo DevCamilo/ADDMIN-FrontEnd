@@ -15,8 +15,7 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CreateUserComponent } from './components/user/create-user/create-user.component';
 import { ListUsersComponent } from './components/user/list-users/list-users.component';
-import { PqrsComponent } from './components/council/pqrs/pqrs.component';
-
+import { GeneratePqrsComponent } from './components/council/generate-pqrs/generate-pqrs.component';
 
 // Rutas
 import { app_routing } from './app.routes';
@@ -36,7 +35,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     CreateUserComponent,
     ListUsersComponent,
     FilterPipe,
-    PqrsComponent
+    GeneratePqrsComponent
   ],
   imports: [
     BrowserModule,

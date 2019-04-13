@@ -2,7 +2,7 @@
 <div class="move">
   <div class="container">
     <div class="row">
-      <form class="col s12 z-depth-4" id="formValidate" [formGroup]="userForm" (ngSubmit)="onSubmit(); userForm.reset()">
+      <form class="col s12 z-depth-4" id="formValidate" [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <h1 class="space-right">Crear Usuario</h1>
         <div class="row space-right">
           <div class="input-field col s12 m6">
@@ -22,8 +22,12 @@
         </div>
         <div class="row space-right">
           <div class="input-field col s12 m6">
-            <input id="telephone" type="number" class="validate" formControlName="telephone" autocomplete="off">
-            <label for="telephone">Télefono</label>
+            <input id="telephone" type="number" class="validate" formControlName="telephone" autocomplete="off"
+              required>
+            <label for="telephone">Télefono*</label>
+            <span *ngIf="userForm.controls['telephone'].touched && userForm.controls['telephone'].errors?.required">
+              El teléfono es requerido
+            </span>
           </div>
           <!-- <div class="input-field col s12 m6">
             <p class="range-field">
@@ -45,14 +49,14 @@
             <input id="tower" type="number" class="validate" formControlName="tower" autocomplete="off" required>
             <label for="tower">Torre*</label>
             <span *ngIf="userForm.controls['tower'].touched && userForm.controls['tower'].errors?.required">
-                La torre es requerido
+              La torre es requerido
             </span>
           </div>
           <div class="input-field col s12 m6 space-left">
             <input id="apto" type="number" class="validate" formControlName="apto" autocomplete="off" required>
             <label for="apto">Apartamento*</label>
             <span *ngIf="userForm.controls['apto'].touched && userForm.controls['apto'].errors?.required">
-                El apartamento es requerido
+              El apartamento es requerido
             </span>
           </div>
         </div>
@@ -61,17 +65,17 @@
             <input id="email" type="email" class="validate" formControlName="email" autocomplete="off" required>
             <label for="email">Email*</label>
             <span *ngIf="userForm.controls['email'].touched && userForm.controls['email'].errors?.required">
-                El email es requerido
+              El email es requerido
             </span>
             <span *ngIf="userForm.controls['email'].touched && userForm.controls['email'].errors?.email">
-                El email no es valido
+              El email no es valido
             </span>
           </div>
           <div class="input-field col s12 m6 space-left">
             <input id="password" type="text" class="validate" formControlName="password" autocomplete="off" required>
             <label for="password">Contraseña*</label>
             <span *ngIf="userForm.controls['password'].touched && userForm.controls['password'].errors?.required">
-                El password es requerido
+              El password es requerido
             </span>
           </div>
         </div>
