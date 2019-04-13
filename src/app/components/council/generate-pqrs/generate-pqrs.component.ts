@@ -20,15 +20,16 @@ export class GeneratePqrsComponent implements OnInit {
   ngOnInit() {
     this.pqrsForm = this.formBuilder.group({
       title: ['', Validators.required],
-      description: ['', Validators.required]
+      description: ['', Validators.required],
+      type: ['', Validators.required]
     });
     this.pqrs.listTypePqrs(this.token).subscribe((res: any) => {
       if (res.status) {
+        //console.log(res.data);
         // Se carga la clase de jQuery solo si la respuesta de la API fue correcta
         $(document).ready(function () {
           $('select').formSelect();
         });
-        //console.log(res.data);
         this.typePqrs = res.data;
       } else {
         Swal.fire(res.message, '', 'error');
@@ -37,7 +38,7 @@ export class GeneratePqrsComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('Ok');
+    console.log(this.pqrsForm.value);
     
   }
 

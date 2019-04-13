@@ -5,24 +5,27 @@
       <h1 class="space-right">Generar PQRS</h1>
       <div class="row space-right">
         <div class="input-field col s12">
-          <input id="title" type="text" class="validate" formControlName="title" autocomplete="off">
-          <label for="title">Título</label>
-          <!--<span *ngIf="pqrsForm.controls['title'].touched && pqrsForm.controls['title'].errors?.required">
+          <input id="title" type="text" class="validate" formControlName="title" autocomplete="off" required>
+          <label for="title">Título*</label>
+          <span style="color: red"
+            *ngIf="pqrsForm.controls['title'].touched && pqrsForm.controls['title'].errors?.required">
             El título es requerido
-          </span> -->
+          </span>
         </div>
         <div class="input-field col s12">
-          <textarea id="description" class="materialize-textarea" formControlName="description"></textarea>
-          <label for="description">Descripción</label>
-          <!--<span *ngIf="pqrsForm.controls['description'].touched && pqrsForm.controls['description'].errors?.required">
-            La descripcion es requerida
-          </span> -->
+          <textarea id="description" class="materialize-textarea" formControlName="description" required></textarea>
+          <label for="description">Descripción*</label>
+          <span style="color: red"
+            *ngIf="pqrsForm.controls['description'].touched && pqrsForm.controls['description'].errors?.required">
+            La descripción es requerida
+          </span>
         </div>
         <div class="input-field col s12">
-          <select>
+          <select formControlName="type">
+            <option value="" disabled selected>Seleccione una opcion</option>
             <option *ngFor=" let type of typePqrs" [value]="type._id">{{type.name}}</option>
           </select>
-          <label>Tipo de PQRS</label>
+          <label>Tipo de PQRS*</label>
         </div>
       </div>
       <div class="file-field input-field space-right">
@@ -36,7 +39,7 @@
       </div>
       <br>
       <div class="space-right">
-        <button class="btn waves-effect waves-light btn-large" type="submit">
+        <button class="btn waves-effect waves-light btn-large" type="submit" [disabled]="pqrsForm.invalid">
           <i class="material-icons right">send</i> Guardar
         </button>
       </div>
