@@ -10,6 +10,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CreateUserComponent } from './components/user/create-user/create-user.component';
 import { ListUsersComponent } from './components/user/list-users/list-users.component';
 import { GeneratePqrsComponent } from './components/council/generate-pqrs/generate-pqrs.component';
+import { ListPqrsComponent } from './components/council/list-pqrs/list-pqrs.component';
 
 const app_routes: Routes = [
     { path: '', component: HomeComponent },
@@ -18,6 +19,7 @@ const app_routes: Routes = [
     { path: 'dashboard/create-user', component: CreateUserComponent, canActivate: [AppGuard] },
     { path: 'dashboard/list-users', component: ListUsersComponent, canActivate: [AppGuard] },
     { path: 'dashboard/generate-pqrs', component: GeneratePqrsComponent, canActivate: [AppGuard] },
+    { path: 'dashboard/list-pqrs', component: ListPqrsComponent, canActivate: [AppGuard] },
     { path: '**', component: NotFoundComponent }
 ];
 

@@ -12,6 +12,7 @@ declare var $: any;
 })
 export class GeneratePqrsComponent implements OnInit {
   token = localStorage.getItem('token');
+  user: any =  JSON.parse(localStorage.getItem('user'));
   typePqrs = [];
   pqrsForm: FormGroup;
 
@@ -21,7 +22,8 @@ export class GeneratePqrsComponent implements OnInit {
     this.pqrsForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      type: ['', Validators.required]
+      type: ['', Validators.required],
+      id_origin: [this.user._id, Validators.nullValidator]
     });
     this.pqrs.listTypePqrs(this.token).subscribe((res: any) => {
       if (res.status) {
@@ -37,9 +39,18 @@ export class GeneratePqrsComponent implements OnInit {
     });
   }
 
-  onSubmit(){
-    console.log(this.pqrsForm.value);
-    
+  onSubmit() {
+    this.pqrsForm.value.id_origin = this.user._id;
+    //console.log(this.pqrsForm.value);
+    this.pqrs.createPqrs(this.pqrsForm.value, this.token).subscribe((res: any) =>{
+      if (res.status) {
+        Swal.fire(res.message, '', 'success');
+        this.pqrsForm.reset();
+        this.pqrsForm.value.type = '';
+      } else {
+        Swal.fire(res.message, '', 'error');        
+      }
+    });
   }
 
 }
