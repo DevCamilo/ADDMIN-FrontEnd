@@ -2,24 +2,39 @@
 <div class="move">
   <div class="container z-depth-4">
     <br>
-    <h1>Consultar PQRS</h1>
+    <div class="row">
+      <div class="col s12 m9">
+        <h1>Consultar PQRS</h1>
+      </div>
+      <div class="col s12 m3" style="text-align: center">
+        <a style="margin-top: 42px;" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></a>
+        <h6>Nuevo tipo de PQRS</h6>
+      </div>
+    </div>
     <div class="row">
       <div class="col s12 m6" *ngFor=" let data of allData; let i = index ">
         <ul class="collection with-header">
           <li class="collection-header">
+            <a href="#!"><span class="new badge" data-badge-caption="Total">{{data.count}}</span></a>
             <h4>{{data._id.name}}</h4>
             <p>{{data._id.description}}</p>
+            <a class="waves-effect waves-light btn-small green"><i class="material-icons left">edit</i>Editar tipo de
+              PQRS</a>
           </li>
-          <li class="collection-item avatar" *ngFor=" let info of data.info | paginate: { itemsPerPage: 3, currentPage: p[i], id: data}">
+          <li class="collection-item avatar"
+            *ngFor=" let info of data.info | paginate: { itemsPerPage: 4, currentPage: p[i], id: data}">
             <img src="../../../../assets/avatar.png" alt="" class="circle">
             <span class="title">{{info.user.name}} {{info.user.lastName}}</span>
-            <p><b>{{info.title}}</b> 
+            <p>
+              <b>{{info.title}}</b>
               <br>
-              {{info.description}}
+              {{info.created_at.split("T", 1)}} {{info.created_at.substr(11,8)}}
             </p>
-            <a class="secondary-content"><i class="material-icons">grade</i></a>
+            <a class="waves-effect waves-light btn-small">Responder</a>
+            <a class="secondary-content"><i class="material-icons">{{info.checked}}</i></a>
         </ul>
-        <pagination-controls (pageChange)="p[i] = $event" [id]="data" previousLabel="" nextLabel="">
+        <pagination-controls class="my-pagination" (pageChange)="p[i] = $event" [id]="data" previousLabel=""
+          nextLabel="">
         </pagination-controls>
       </div>
     </div>
