@@ -7,7 +7,9 @@
         <h1>Consultar PQRS</h1>
       </div>
       <div class="col s12 m3" style="text-align: center">
-        <a style="margin-top: 42px;" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></a>
+        <a style="margin-top: 42px;" class="btn-floating btn-large waves-effect waves-light modal-trigger"
+          href="#modal1">
+          <i class="material-icons">add</i></a>
         <h6>Nuevo tipo de PQRS</h6>
       </div>
     </div>
@@ -18,7 +20,8 @@
             <a href="#!"><span class="new badge" data-badge-caption="Total">{{data.count}}</span></a>
             <h4>{{data._id.name}}</h4>
             <p>{{data._id.description}}</p>
-            <a class="waves-effect waves-light btn-small green"><i class="material-icons left">edit</i>Editar tipo de
+            <a class="waves-effect waves-light btn-small green modal-trigger" href="#modal2" (click)="setTypePqrs(data._id)">
+              <i class="material-icons left">edit</i>Editar tipo de
               PQRS</a>
           </li>
           <li class="collection-item avatar"
@@ -41,3 +44,52 @@
     <br>
   </div>
 </div>
+<!-- INICIO MODAL PARA CREAR TIPO DE PQRS -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Crear Tipo de PQRS</h4>
+    <form class="col s12" [formGroup]="createTypePqrsForm" (submit)="createTypePqrs()">
+      <div class="row space-right space-left">
+        <div class="input-field">
+          <input formControlName="name" id="name" type="text" class="validate" required>
+          <label for="name">Nombre</label>
+        </div>
+        <div class="input-field">
+          <input formControlName="description" id="description" type="text" class="validate" required>
+          <label for="description">Descripción</label>
+        </div>
+      </div>
+      <button class="modal-close btn waves-effect waves-light btn-large" type="submit"
+        [disabled]="createTypePqrsForm.invalid">
+        <i class="material-icons right">send</i> Guardar
+      </button>
+    </form>
+  </div>
+</div>
+<!-- FIN DE MODAL PARA CREAR TIPO DE PQRS -->
+
+<!-- INICIO DE MODAL PARA ACTUALIZAR TIPO DE PQRS -->
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <h4>Editar Tipo de PQRS</h4>
+    <br>
+    <form class="col s12" (ngSubmit)="updateTypePqrs()">
+      <div class="row space-right space-left">
+        <div class="input-field">
+          <input id="name" type="text" class="validate" [(ngModel)]="updateType.name"
+          [ngModelOptions]="{standalone: true}" required>
+          <label class="active" for="name">Nombre</label>
+        </div>
+        <div class="input-field">
+          <input id="description" type="text" class="validate" [(ngModel)]="updateType.description"
+          [ngModelOptions]="{standalone: true}" required>
+          <label class="active" for="description">Descripción</label>
+        </div>
+      </div>
+      <button class="modal-close btn waves-effect waves-light btn-large" type="submit">
+        <i class="material-icons right">send</i> Guardar
+      </button>
+    </form>
+  </div>
+</div>
+<!-- FIN DE MODAL PARA ACTUALIZAR TIPO DE PQRS -->

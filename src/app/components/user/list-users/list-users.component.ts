@@ -71,7 +71,7 @@ export class ListUsersComponent implements OnInit {
     });
   }
 
-  setUser(user) {
+  setUser(user: Object) {
     this.updateUser = user;
   }
 

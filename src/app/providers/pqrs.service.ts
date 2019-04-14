@@ -37,4 +37,24 @@ export class PqrsService {
     };
     return this.http.get(this.url +  '/group-pqrs', httpOptions);
   }
+
+  createTypePqrs(typePqrs: Object, token: String){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    return this.http.post(this.url + '/create-type-pqrs', typePqrs, httpOptions);
+  }
+
+  updateTypePqrs(typePqrs: Object, token: String){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    return this.http.post(this.url + '/update-type-pqrs', typePqrs, httpOptions);
+  }
 }

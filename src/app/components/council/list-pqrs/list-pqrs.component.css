@@ -15,6 +15,13 @@
     border-radius: 1%;
 }
 
+.space-right {
+    padding-left: 20px;
+}
+
+.space-left {
+    padding-right: 40px;
+}
 
 .my-pagination /deep/ .ngx-pagination {
     font-size: 25px;
