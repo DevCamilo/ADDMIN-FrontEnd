@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { QuillModule } from 'ngx-quill';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -48,7 +49,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    QuillModule
   ],
   providers: [],
   bootstrap: [AppComponent]

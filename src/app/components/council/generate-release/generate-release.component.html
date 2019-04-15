@@ -3,5 +3,22 @@
   <div class="container z-depth-4">
     <br> 
     <h1>Generar Comunicado</h1>
+    <form [formGroup]="editForm">
+      <div class="form-group">
+        <label for="editor"></label>
+        <quill-editor >  </quill-editor>
+      </div>
+    </form>
   </div>
 </div>
+<!-- 
+IMPORTANTE, ES NECESARIO AÑADIR EN EL ARCHIVO angular.json LA SIGUIENTE INFORMACION PARA LA CORRECTA VISUALIZACION DEL QUILLEDITOR
+"styles": [
+  "src/styles.css",
+  "./node_modules/quill/dist/quill.core.css",
+  "./node_modules/quill/dist/quill.snow.css"
+],
+"scripts": [
+  "./node_modules/quill/dist/quill.js"
+]
+-->
