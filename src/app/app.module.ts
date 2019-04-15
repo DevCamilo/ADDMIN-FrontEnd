@@ -26,6 +26,7 @@ import { app_routing } from './app.routes';
 
 // Pipes
 import { FilterPipe } from './pipes/filter.pipe';
+import { NoSanitizePipe } from './pipes/no-sanitize.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     FilterPipe,
     GeneratePqrsComponent,
     ListPqrsComponent,
-    GenerateReleaseComponent
+    GenerateReleaseComponent,
+    NoSanitizePipe
   ],
   imports: [
     BrowserModule,

@@ -14,3 +14,19 @@
     padding-left: 20px;
     border-radius: 1%;
 }
+
+.modal-content /deep/ .ql-align-center{
+    text-align: center;
+}
+
+.modal-content /deep/ .ql-align-right{
+    text-align: right;
+}
+
+.modal-content /deep/ .ql-align-justify{
+    text-align: justify;
+}
+
+.container /deep/ .ql-editor strong{
+    font-weight: bold;
+}

@@ -3,15 +3,30 @@
   <div class="container z-depth-4">
     <br> 
     <h1>Generar Comunicado</h1>
-    <form [formGroup]="editForm">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="editor"></label>
-        <quill-editor >  </quill-editor>
+    <label for="editor"></label>
+        <quill-editor formControlName="editor" [style]="editorStyle" [modules]="config" placeholder="Inserte el texto aquí..."> </quill-editor>
       </div>
+      <br>  
+      <button class="btn waves-effect waves-light btn-large" type="submit" [disabled]="editForm.invalid">
+        <i class="material-icons right">send</i> Guardar
+      </button>
     </form>
+    <div style="text-align: right; margin-top: -55px;">
+      <button class="btn waves-effect waves-light btn-large blue modal-trigger" href="#modal1" [disabled]="editForm.invalid">
+        <i class="material-icons right">remove_red_eye</i> Vista Previa
+      </button>
+    </div>
+    <br>
   </div>
 </div>
-<!-- 
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <div [innerHTML]="editForm.value.editor | noSanitize"></div>
+  </div>
+</div>
+<!--  <div [innerHTML]="editForm.value.editor | noSanitize" ></div>
 IMPORTANTE, ES NECESARIO AÑADIR EN EL ARCHIVO angular.json LA SIGUIENTE INFORMACION PARA LA CORRECTA VISUALIZACION DEL QUILLEDITOR
 "styles": [
   "src/styles.css",
