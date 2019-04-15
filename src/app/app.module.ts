@@ -17,6 +17,7 @@ import { CreateUserComponent } from './components/user/create-user/create-user.c
 import { ListUsersComponent } from './components/user/list-users/list-users.component';
 import { GeneratePqrsComponent } from './components/council/generate-pqrs/generate-pqrs.component';
 import { ListPqrsComponent } from './components/council/list-pqrs/list-pqrs.component';
+import { GenerateReleaseComponent } from './components/council/generate-release/generate-release.component';
 
 
 // Rutas
@@ -38,7 +39,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     ListUsersComponent,
     FilterPipe,
     GeneratePqrsComponent,
-    ListPqrsComponent
+    ListPqrsComponent,
+    GenerateReleaseComponent
   ],
   imports: [
     BrowserModule,

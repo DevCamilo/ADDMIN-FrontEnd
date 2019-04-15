@@ -28,15 +28,15 @@ export class ListPqrsComponent implements OnInit {
   }
 
   ngOnInit() {
+    $(document).ready(function () {
+      $('.modal').modal();
+    });
     this.createTypePqrsForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required]
     });
-    this.pqrs.groupPqrsByType().subscribe((res: any) => {
+    this.pqrs.groupPqrsByType(this.token).subscribe((res: any) => {
       if (res.status) {
-        $(document).ready(function () {
-          $('.modal').modal();
-        });
         this.allData = res.data;
         // Reasigna los usuarios dentro de info para poder leerlos mas facil en el ngFor
         for (let i = 0; i < this.allData.length; i++) {

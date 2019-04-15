@@ -29,13 +29,14 @@ export class PqrsService {
     return this.http.post(this.url + '/create-pqrs', pqrs, httpOptions);
   }
 
-  groupPqrsByType(){
+  groupPqrsByType(token: String){
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
       })
     };
-    return this.http.get(this.url +  '/group-pqrs', httpOptions);
+    return this.http.get(this.url +  '/group-pqrs-by-type', httpOptions);
   }
 
   createTypePqrs(typePqrs: Object, token: String){
