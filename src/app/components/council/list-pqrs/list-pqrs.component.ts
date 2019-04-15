@@ -12,18 +12,26 @@ declare var $: any;
 export class ListPqrsComponent implements OnInit {
   allData: any;
   token: String = localStorage.getItem('token');
+  user: any =  JSON.parse(localStorage.getItem('user'));
   updateType: any;
+  updatePqrsInfo: any;
   p: Number[] = [];
   createTypePqrsForm: FormGroup;
   constructor(private pqrs: PqrsService, private formBuilder: FormBuilder) { 
-    this.updateType = {}
+    this.updateType = {};
+    this.updatePqrsInfo = {
+      response: '',
+      user: {
+        name: ''
+      }
+    };
   }
 
   ngOnInit() {
     this.createTypePqrsForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required]
-    })
+    });
     this.pqrs.groupPqrsByType().subscribe((res: any) => {
       if (res.status) {
         $(document).ready(function () {
@@ -54,10 +62,10 @@ export class ListPqrsComponent implements OnInit {
     });
   }
 
-  setTypePqrs(user: Object){
-    this.updateType = user;
+  setTypePqrs(typePqrs: Object){
+    this.updateType = typePqrs;
   }
-
+  
   updateTypePqrs(){
     this.pqrs.updateTypePqrs(this.updateType, this.token).subscribe((res: any) =>{
       if (res.status) {        
@@ -67,4 +75,27 @@ export class ListPqrsComponent implements OnInit {
       }
     });
   }
+
+  setPqrs(pqrs: Object){
+    this.updatePqrsInfo = pqrs;
+    this.updatePqrsInfo.id_attendant = this.user._id
+  }
+
+  updatePqrs(){
+    var finalData = {
+      response: this.updatePqrsInfo.response,
+      id_attendant: this.updatePqrsInfo.id_attendant,
+      _id: this.updatePqrsInfo._id
+    }
+    this.pqrs.updatePqrs(finalData, this.token).subscribe((res:any) =>{
+      if (res.status) {
+        Swal.fire(res.message, '', 'success');
+        this.updatePqrsInfo.response = '';
+        this.ngOnInit();                
+      } else {
+        Swal.fire(res.message, '', 'error');                
+      }
+    });
+  }
+
 }

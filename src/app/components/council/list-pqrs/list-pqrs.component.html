@@ -20,7 +20,8 @@
             <a href="#!"><span class="new badge" data-badge-caption="Total">{{data.count}}</span></a>
             <h4>{{data._id.name}}</h4>
             <p>{{data._id.description}}</p>
-            <a class="waves-effect waves-light btn-small green modal-trigger" href="#modal2" (click)="setTypePqrs(data._id)">
+            <a class="waves-effect waves-light btn-small green modal-trigger" href="#modal2"
+              (click)="setTypePqrs(data._id)">
               <i class="material-icons left">edit</i>Editar tipo de
               PQRS</a>
           </li>
@@ -33,7 +34,8 @@
               <br>
               {{info.created_at.split("T", 1)}} {{info.created_at.substr(11,8)}}
             </p>
-            <a class="waves-effect waves-light btn-small">Responder</a>
+            <a class="waves-effect waves-light btn-small modal-trigger" href="#modal3"
+              (click)="setPqrs(info)">Responder</a>
             <a class="secondary-content"><i class="material-icons">{{info.checked}}</i></a>
         </ul>
         <pagination-controls class="my-pagination" (pageChange)="p[i] = $event" [id]="data" previousLabel=""
@@ -44,6 +46,7 @@
     <br>
   </div>
 </div>
+
 <!-- INICIO MODAL PARA CREAR TIPO DE PQRS -->
 <div id="modal1" class="modal">
   <div class="modal-content">
@@ -77,12 +80,12 @@
       <div class="row space-right space-left">
         <div class="input-field">
           <input id="name" type="text" class="validate" [(ngModel)]="updateType.name"
-          [ngModelOptions]="{standalone: true}" required>
+            [ngModelOptions]="{standalone: true}" required>
           <label class="active" for="name">Nombre</label>
         </div>
         <div class="input-field">
           <input id="description" type="text" class="validate" [(ngModel)]="updateType.description"
-          [ngModelOptions]="{standalone: true}" required>
+            [ngModelOptions]="{standalone: true}" required>
           <label class="active" for="description">Descripción</label>
         </div>
       </div>
@@ -93,3 +96,39 @@
   </div>
 </div>
 <!-- FIN DE MODAL PARA ACTUALIZAR TIPO DE PQRS -->
+
+<!-- INICIO DE MODAL PARA RESPONDER A LAS PQRS -->
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <h4>Responder PQRS</h4>
+    <br>
+    <div style="text-align: center" class="row">
+      <div class="col s12 m6">
+        <h5> <b> {{updatePqrsInfo.user.name}} {{updatePqrsInfo.user.lastName}} </b> </h5>
+      </div>
+      <div class="col s12 m6">
+        <h6> Torre: {{updatePqrsInfo.user.tower}} || Apartamento: {{updatePqrsInfo.user.apto}}</h6>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <p style="font-size: 25px">
+          {{updatePqrsInfo.description}}
+        </p>
+      </div>
+    </div>
+    <form class="col s12" (ngSubmit)="updatePqrs()">
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea2" class="materialize-textarea" [(ngModel)]="updatePqrsInfo.response"
+            [ngModelOptions]="{standalone: true}"></textarea>
+          <label class="active" for="textarea2">Respuesta</label>
+        </div>
+      </div>
+      <button class="modal-close btn waves-effect waves-light btn-large" type="submit">
+        <i class="material-icons right">send</i> Guardar
+      </button>
+    </form>
+  </div>
+</div>
+<!-- FIN DE MODAL PARA RESPONDER A LAS PQRS -->

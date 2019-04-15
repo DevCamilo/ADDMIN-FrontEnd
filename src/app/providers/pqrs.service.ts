@@ -57,4 +57,15 @@ export class PqrsService {
     };
     return this.http.post(this.url + '/update-type-pqrs', typePqrs, httpOptions);
   }
+
+  updatePqrs(pqrs: Object, token: String){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    return this.http.post(this.url + '/update-respone-pqrs', pqrs, httpOptions);
+  }
+
 }
