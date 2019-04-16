@@ -12,6 +12,7 @@ import { ListUsersComponent } from './components/user/list-users/list-users.comp
 import { GeneratePqrsComponent } from './components/council/generate-pqrs/generate-pqrs.component';
 import { ListPqrsComponent } from './components/council/list-pqrs/list-pqrs.component';
 import { GenerateReleaseComponent } from './components/council/generate-release/generate-release.component';
+import { ListReleasesComponent } from './components/council/list-releases/list-releases.component';
 
 const app_routes: Routes = [
     { path: '', component: HomeComponent },
@@ -22,6 +23,7 @@ const app_routes: Routes = [
     { path: 'dashboard/generate-pqrs', component: GeneratePqrsComponent, canActivate: [AppGuard] },
     { path: 'dashboard/list-pqrs', component: ListPqrsComponent, canActivate: [AppGuard] },
     { path: 'dashboard/generate-release', component: GenerateReleaseComponent, canActivate: [AppGuard] },
+    { path: 'dashboard/list-release', component: ListReleasesComponent, canActivate: [AppGuard] },
     { path: '**', component: NotFoundComponent }
 ];
 

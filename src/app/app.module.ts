@@ -19,6 +19,7 @@ import { ListUsersComponent } from './components/user/list-users/list-users.comp
 import { GeneratePqrsComponent } from './components/council/generate-pqrs/generate-pqrs.component';
 import { ListPqrsComponent } from './components/council/list-pqrs/list-pqrs.component';
 import { GenerateReleaseComponent } from './components/council/generate-release/generate-release.component';
+import { ListReleasesComponent } from './components/council/list-releases/list-releases.component';
 
 
 // Rutas
@@ -43,7 +44,8 @@ import { NoSanitizePipe } from './pipes/no-sanitize.pipe';
     GeneratePqrsComponent,
     ListPqrsComponent,
     GenerateReleaseComponent,
-    NoSanitizePipe
+    NoSanitizePipe,
+    ListReleasesComponent
   ],
   imports: [
     BrowserModule,
