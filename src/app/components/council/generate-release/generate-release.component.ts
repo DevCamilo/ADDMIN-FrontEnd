@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ReleaseService } from '../../../providers/release.service';
 import Swal from 'sweetalert2';
 declare var $: any;
 
@@ -10,8 +11,10 @@ declare var $: any;
 })
 export class GenerateReleaseComponent implements OnInit {
   editForm: FormGroup;
-  editorContent: String;
-  editorStyle = {
+  user: any = JSON.parse(localStorage.getItem('user'));
+  token: String = localStorage.getItem('token');
+  createRelease: any = {};
+  editorStyle: any = {
     height: '300px'
   }
   config = {
@@ -19,15 +22,15 @@ export class GenerateReleaseComponent implements OnInit {
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
       ['bold', 'italic', 'underline', 'strike'],
       [{ 'color': [] }, { 'background': [] }],
-      [{ 'list': 'ordered'}, { 'align': [] }],
+      [{ 'list': 'ordered' }, { 'align': [] }],
       ['image', 'video', 'link']
     ]
   }
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(private formBuilder: FormBuilder, private release: ReleaseService) {
   }
 
   ngOnInit() {
-    $(document).ready(function(){
+    $(document).ready(function () {
       $('.modal').modal();
     });
     this.editForm = this.formBuilder.group({
@@ -46,8 +49,16 @@ export class GenerateReleaseComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.value) {
-      console.log(this.editForm.value.editor);  
-      this.ngOnInit();    
+        this.createRelease.content = this.editForm.value.editor.replace(/"/gi, "'"); // Remplaza todos los " por ' en la cadena de editor
+        this.createRelease.sender = this.user._id;
+        this.release.createRelease(this.createRelease, this.token).subscribe((res: any) => {
+          if (res.status) {
+            Swal.fire(res.message, '', 'success');
+            this.ngOnInit();
+          } else {
+            Swal.fire(res.message, '', 'error');
+          }
+        });
       }
     });
   }
