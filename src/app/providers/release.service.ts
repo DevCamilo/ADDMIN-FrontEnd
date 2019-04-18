@@ -27,4 +27,14 @@ export class ReleaseService {
     };
     return this.http.get(this.url + '/list-all-releases', httpOptions);
   }
+
+  updateRelease(release: Object, token: String){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    return this.http.post(this.url + '/update-release', release, httpOptions);
+  }
 }

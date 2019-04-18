@@ -1,9 +1,35 @@
 <app-side-nav></app-side-nav>
 <div class="move">
   <div class="container z-depth-4">
+    <br>
     <div *ngFor=" let release of releases">
       <div [innerHTML]="release.content | noSanitize"></div>
+      <div class="row">
+        <div class="col s12 m6">
+          <span> {{release.sender.name}} {{release.sender.lastName}} </span>
+          <br>
+          <span> {{release.created_at.split("T", 1)}} {{release.created_at.substr(11,8)}} </span></div>
+        <div class="col s12 m6" style="text-align: right">
+          <a class="waves-effect waves-light btn green modal-trigger" (click)="setRelease(release)" href="#modal1"
+            style="margin-right: 5px;">
+            <i class="material-icons left">edit</i>Editar</a>
+          <a class="waves-effect waves-light btn red"><i class="material-icons left">delete</i>Eliminar</a>
+        </div>
+      </div>
       <hr>
     </div>
+    <br>
+  </div>
+</div>
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <form #releaseForm="ngForm" (ngSubmit)="onSubmit()">
+      <quill-editor [(ngModel)]="editReleaseForm" [ngModelOptions]="{standalone: true}" [style]="editorStyle"
+        [modules]="config" placeholder="Inserte el texto aquí..."></quill-editor>
+      <br>
+      <button class="modal-close btn waves-effect waves-light btn-large" type="submit">
+        <i class="material-icons right">send</i> Guardar
+      </button>
+    </form>
   </div>
 </div>
