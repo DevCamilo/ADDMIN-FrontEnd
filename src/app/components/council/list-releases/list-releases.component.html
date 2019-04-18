@@ -12,8 +12,11 @@
         <div class="col s12 m6" style="text-align: right">
           <a class="waves-effect waves-light btn green modal-trigger" (click)="setRelease(release)" href="#modal1"
             style="margin-right: 5px;">
-            <i class="material-icons left">edit</i>Editar</a>
-          <a class="waves-effect waves-light btn red"><i class="material-icons left">delete</i>Eliminar</a>
+            <i class="material-icons left">edit</i>Editar
+          </a>
+          <a class="waves-effect waves-light btn red" (click)="deteleRelease(release._id)">
+            <i class="material-icons left">delete</i>Eliminar
+          </a>
         </div>
       </div>
       <hr>

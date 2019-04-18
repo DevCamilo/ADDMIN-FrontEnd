@@ -63,4 +63,28 @@ export class ListReleasesComponent implements OnInit {
       }
     });
   }
+
+  deteleRelease(id: String){
+    Swal.fire({
+      title: '¿Desea eliminar el comunicado?',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.value) {
+        this.release.deleteRelease(id, this.token).subscribe((res: any) => {
+          if (res.status) {
+            Swal.fire(res.message, '', 'success');
+            this.ngOnInit();
+          } else {
+            Swal.fire(res.message, '', 'error');        
+          }
+        }); 
+      }
+    });
+  }
+
 }
