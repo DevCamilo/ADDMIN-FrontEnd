@@ -1,12 +1,43 @@
 <app-side-nav></app-side-nav>
 <div class="move">
-    <div class="container z-depth-5 center">
-        <br />
-        <h1>DASHBOARD</h1>
-        <hr>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eaque earum ad reiciendis provident vel, quam,
-            illo ut tenetur accusamus dolor sit, odit pariatur omnis velit ipsa voluptas voluptates similique!
-        </p>
-        <br />
+    <div class="row" style="text-align: center;">
+        <div class="col s12 m4" *ngFor="let count of counts">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card darken-1">
+                        <div class="card-content">
+                            <div class="row" style="text-align: center; margin: 0 auto">
+                                <div class="col s12 m3">
+                                    <i class="material-icons large">{{count.icon}}</i>
+                                </div>
+                                <div class="col s12 m9">
+                                    <span class="card-title">{{count.name}}:</span>
+                                    <h5>{{count.count}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card darken-1">
+                        <div class="card-content">
+                            <span class="card-title"><b>Bienvenido {{user.name}} {{user.lastName}}</b></span>
+                            <div class="row">
+                                <div class="col s12 m6">Telefono: {{user.telephone}}</div>
+                                <div class="col s12 m6">Email: {{user.email}}</div>
+                                <div class="col s12 m6">Torre: {{user.tower}}</div>
+                                <div class="col s12 m6">Apartamento: {{user.apto}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
