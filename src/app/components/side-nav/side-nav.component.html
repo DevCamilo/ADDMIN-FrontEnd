@@ -15,59 +15,76 @@
   <ul class="collapsible fixed">
     <li>
       <div class="collapsible-header move" style="margin-left: 5px;">
-       <i class="small material-icons">playlist_add_check</i> Reservas
+        <i class="small material-icons">playlist_add_check</i> Reservas
       </div>
       <div class="collapsible-body">
         <ul class="drop">
-            <li><a ><i class="small material-icons">playlist_add</i>Generar Reserva</a></li>
-            <li><a ><i class="small material-icons">playlist_play</i>Consultar Reserva</a></li>
-        </ul> 
+          <li><a><i class="small material-icons">playlist_add</i>Generar Reserva</a></li>
+          <li><a><i class="small material-icons">playlist_play</i>Consultar Reserva</a></li>
+        </ul>
       </div>
     </li>
   </ul>
   <ul class="collapsible fixed">
     <li>
       <div class="collapsible-header move">
-       <i class="small material-icons">attach_money</i> Pagos
+        <i class="small material-icons">attach_money</i> Pagos
       </div>
       <div class="collapsible-body">
         <ul class="drop">
-            <li><a ><i class="small material-icons">payment</i>Generar Pago</a></li>
-            <li><a ><i class="small material-icons">search</i>Consultar Pago</a></li>
-        </ul> 
+          <li><a><i class="small material-icons">payment</i>Generar Pago</a></li>
+          <li><a><i class="small material-icons">search</i>Consultar Pago</a></li>
+        </ul>
       </div>
     </li>
   </ul>
   <ul class="collapsible fixed" *ngIf="typeUser">
     <li>
       <div class="collapsible-header move">
-       <i class="small material-icons">account_balance</i> Consejo
+        <i class="small material-icons">account_balance</i> Concejo
       </div>
       <div class="collapsible-body">
         <ul class="drop">
-            <li><a routerLink="/dashboard/generate-release"><i class="small material-icons">comment</i>Generar Comunicado</a></li>
-            <li><a routerLink="/dashboard/list-release"><i class="small material-icons">question_answer</i>Consultar Comunicado</a></li>
-            <li><a routerLink="/dashboard/generate-pqrs"><i class="small material-icons">record_voice_over</i>Generar PQRS</a></li>
-            <li><a routerLink="/dashboard/list-pqrs"><i class="small material-icons">local_library</i>Consultar PQRS</a></li>
-        </ul> 
+          <li><a routerLink="/dashboard/generate-release"><i class="small material-icons">comment</i>Generar
+              Comunicado</a></li>
+          <li><a routerLink="/dashboard/list-release"><i class="small material-icons">question_answer</i>Consultar
+              Comunicado</a></li>
+          <li><a routerLink="/dashboard/generate-pqrs"><i class="small material-icons">record_voice_over</i>Generar
+              PQRS</a></li>
+          <li><a routerLink="/dashboard/list-pqrs"><i class="small material-icons">local_library</i>Consultar PQRS</a>
+          </li>
+        </ul>
       </div>
     </li>
   </ul>
   <ul class="collapsible fixed" *ngIf="typeUser">
     <li>
       <div class="collapsible-header move">
-       <i class="small material-icons">people</i> Usuarios
+        <i class="small material-icons">people</i> Usuarios
       </div>
       <div class="collapsible-body">
         <ul class="drop">
-            <li><a routerLink="/dashboard/create-user"><i class="small material-icons">person_add</i>Crear Usuario</a></li>
-            <li><a routerLink="/dashboard/list-users"><i class="small material-icons">person_pin</i>Consultar Usuario</a></li>
-        </ul> 
+          <li><a routerLink="/dashboard/create-user"><i class="small material-icons">person_add</i>Crear Usuario</a>
+          </li>
+          <li><a routerLink="/dashboard/list-users"><i class="small material-icons">person_pin</i>Consultar Usuario</a>
+          </li>
+        </ul>
       </div>
     </li>
   </ul>
   <li><a routerLink="/login" (click)="clearLocal()"><i class="small material-icons">power_settings_new</i>Logout</a>
   </li>
 </ul>
+<!--<div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">Logo</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html">Sass</a></li>
+          <li><a href="badges.html">Components</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div> -->
 <a href="#" data-target="slide-out" class="sidenav-trigger"><i style="color: rgba(0, 0, 0, 0.54)"
     class="medium material-icons">apps</i></a>

@@ -11,4 +11,8 @@ export class StatsService {
   countModel(){
     return this.http.get(this.url + '/show-counts');
   }
+
+  countPqrs(){
+    return this.http.get(this.url + '/count-pqrs');
+  }
 }

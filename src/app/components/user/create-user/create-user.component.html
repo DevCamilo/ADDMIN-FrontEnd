@@ -41,7 +41,7 @@
               <option value="2">Consejo</option>
               <option value="3">Residente</option>
             </select>
-            <label>Tipo de Usuario*</label>
+            <label>Rol de Usuario*</label>
           </div>
         </div>
         <div class="row space-right">
@@ -75,7 +75,7 @@
             <input id="password" type="text" class="validate" formControlName="password" autocomplete="off" required>
             <label for="password">Contraseña*</label>
             <span *ngIf="userForm.controls['password'].touched && userForm.controls['password'].errors?.required">
-              El password es requerido
+              La contraseña es requerido
             </span>
           </div>
         </div>

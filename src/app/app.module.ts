@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { QuillModule } from 'ngx-quill';
+import { ChartsModule } from 'ng2-charts';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -54,7 +55,8 @@ import { NoSanitizePipe } from './pipes/no-sanitize.pipe';
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    QuillModule
+    QuillModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
