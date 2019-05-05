@@ -10,7 +10,10 @@
       <a><span class="white-text email">{{user.email}}</span></a>
     </div>
   </li>
-  <li><a routerLink="/dashboard"><i class="small material-icons">dashboard</i>ADDMIN</a></li>
+  <li *ngIf="typeUser == 1"><a routerLink="/dashboard"><i class="small material-icons">dashboard</i>ADDMIN</a></li>
+  <li *ngIf="typeUser == 3"><a routerLink="/dashboard/list-release"><i class="small material-icons">question_answer
+      </i>Comunicados</a>
+  </li>
   <li><a routerLink="/dashboard/profile"><i class="small material-icons">account_circle</i>Mi Perfil</a></li>
   <ul class="collapsible fixed">
     <li>
@@ -38,26 +41,30 @@
       </div>
     </li>
   </ul>
-  <ul class="collapsible fixed" *ngIf="typeUser">
+  <li *ngIf="typeUser == 3"><a style="padding: 0px 34px" routerLink="/dashboard/generate-pqrs">
+      <i style="margin: 0px 27px 0px 0px;" class="small material-icons"> record_voice_over</i>Generar PQRS</a>
+  </li>
+  <ul *ngIf="typeUser == 1" class="collapsible fixed">
     <li>
       <div class="collapsible-header move">
         <i class="small material-icons">account_balance</i> Concejo
       </div>
       <div class="collapsible-body">
         <ul class="drop">
-          <li><a routerLink="/dashboard/generate-release"><i class="small material-icons">comment</i>Generar
-              Comunicado</a></li>
-          <li><a routerLink="/dashboard/list-release"><i class="small material-icons">question_answer</i>Consultar
-              Comunicado</a></li>
+          <li><a routerLink="/dashboard/generate-release">
+              <i class="small material-icons">comment</i>Generar Comunicado</a></li>
+          <li><a routerLink="/dashboard/list-release">
+              <i class="small material-icons">question_answer</i>Consultar Comunicado</a></li>
           <li><a routerLink="/dashboard/generate-pqrs"><i class="small material-icons">record_voice_over</i>Generar
               PQRS</a></li>
-          <li><a routerLink="/dashboard/list-pqrs"><i class="small material-icons">local_library</i>Consultar PQRS</a>
+          <li><a routerLink="/dashboard/list-pqrs">
+              <i class="small material-icons">local_library</i>Consultar PQRS</a>
           </li>
         </ul>
       </div>
     </li>
   </ul>
-  <ul class="collapsible fixed" *ngIf="typeUser">
+  <ul class="collapsible fixed" *ngIf="typeUser == 1">
     <li>
       <div class="collapsible-header move">
         <i class="small material-icons">people</i> Usuarios

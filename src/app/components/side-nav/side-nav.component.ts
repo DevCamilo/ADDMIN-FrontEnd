@@ -18,7 +18,7 @@ export class SideNavComponent implements OnInit {
     $(document).ready(function(){
       $('.collapsible').collapsible();
     });
-    this.typeUser = this.user.typeUser == 1;
+    this.typeUser = this.user.typeUser;
   }
 
   clearLocal() {
