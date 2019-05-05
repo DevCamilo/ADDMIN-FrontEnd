@@ -29,6 +29,7 @@ import { app_routing } from './app.routes';
 // Pipes
 import { FilterPipe } from './pipes/filter.pipe';
 import { NoSanitizePipe } from './pipes/no-sanitize.pipe';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { NoSanitizePipe } from './pipes/no-sanitize.pipe';
     ListPqrsComponent,
     GenerateReleaseComponent,
     NoSanitizePipe,
-    ListReleasesComponent
+    ListReleasesComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

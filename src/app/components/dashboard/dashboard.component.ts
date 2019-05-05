@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StatsService } from '../../providers/stats.service';
 import { ChartType, ChartDataSets, ChartOptions } from 'chart.js';
 import { MultiDataSet, Label, Color } from 'ng2-charts';
-import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+//import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,7 +12,6 @@ import Swal from 'sweetalert2';
 })
 export class DashboardComponent implements OnInit {
   counts: any;
-  user: any = JSON.parse(localStorage.getItem('user'));
 
   chartLabels: Label[];
   chartData: MultiDataSet = [];
@@ -28,18 +27,19 @@ export class DashboardComponent implements OnInit {
 
   barChartOptions: ChartOptions = {
     responsive: true,
-    scales: { xAxes: [{}], yAxes: [{}] },
-    plugins: {
-      datalabels: {
-        anchor: 'end',
-        align: 'end',
-      }
+    scales: {
+      xAxes: [{}], yAxes: [{
+        ticks: {
+          beginAtZero: true,
+          maxTicksLimit: 10,
+        }
+      }]
     }
   };
   barChartLabels: Label[] = ['Mayo'];
   barChartType: ChartType = 'bar';
   barChartLegend = true;
-  barChartPlugins = [pluginDataLabels];
+  //barChartPlugins = [pluginDataLabels];
 
   barChartData: ChartDataSets[] = [
     { data: [0], label: '' }
@@ -75,13 +75,4 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-
-  chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
-
-  chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
-
 }
