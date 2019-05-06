@@ -5,7 +5,7 @@
         <img
           src="http://en.valencialoft.com/wp-content/uploads/2014/04/Juntas-superficie-de-madera-textura-de-fondo-900x1440.jpg">
       </div>
-      <a><img class="circle" src="../../../assets/avatar.png"></a>
+      <a><img class="circle" src="../../../assets/avatar.svg"></a>
       <a><span class="white-text name">{{user.name}} {{user.lastName}}</span></a>
       <a><span class="white-text email">{{user.email}}</span></a>
     </div>
@@ -15,8 +15,9 @@
       </i>Comunicados</a>
   </li>
   <li><a routerLink="/dashboard/profile"><i class="small material-icons">account_circle</i>Mi Perfil</a></li>
+  <li *ngIf="typeUser == 3"><a><i class="small material-icons">playlist_add</i>Generar Reserva</a></li>
   <ul class="collapsible fixed">
-    <li>
+    <li *ngIf="typeUser == 1">
       <div class="collapsible-header move" style="margin-left: 5px;">
         <i class="small material-icons">playlist_add_check</i> Reservas
       </div>
@@ -28,8 +29,9 @@
       </div>
     </li>
   </ul>
+  <li *ngIf="typeUser == 3"><a><i class="small material-icons">payment</i>Generar Pago</a></li>
   <ul class="collapsible fixed">
-    <li>
+    <li *ngIf="typeUser == 1">
       <div class="collapsible-header move">
         <i class="small material-icons">attach_money</i> Pagos
       </div>

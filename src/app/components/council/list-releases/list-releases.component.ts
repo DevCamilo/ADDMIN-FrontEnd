@@ -10,6 +10,7 @@ declare var $: any;
 export class ListReleasesComponent implements OnInit {
   token: String = localStorage.getItem('token');
   user: any = JSON.parse(localStorage.getItem('user'));
+  typeUser: any = this.user.typeUser;
   releases: any;
   editReleaseForm: String;
   editRelease: any;

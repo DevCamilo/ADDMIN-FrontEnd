@@ -1,18 +1,52 @@
 <app-side-nav></app-side-nav>
 <div class="move">
   <div class="container">
-    <div class="row">
-      <div class="col s12">
-        <ul id="tabs-swipe-demo" class="tabs">
-          <li class="tab col s3"><a class="active" href="#test-swipe-1">Usuario</a></li>
-          <li class="tab col s3"><a href="#test-swipe-2">Reservas</a></li>
-          <li class="tab col s3"><a href="#test-swipe-3">Pagos</a></li>
-          <li class="tab col s3"><a href="#test-swipe-4">PQRS</a></li>
-        </ul>
-        <div id="test-swipe-1" class="col s12 blue">Test 1</div>
-        <div id="test-swipe-2" class="col s12 red">Test 2</div>
-        <div id="test-swipe-3" class="col s12 green">Test 3</div>
-        <div id="test-swipe-4" class="col s12 grey">Test 4</div>
+    <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+      <li class="tab"><a class="active" href="#test1">Usuario</a></li>
+      <li class="tab"><a href="#test2">Reservas</a></li>
+      <li class="tab"><a href="#test4">Pagos</a></li>
+      <li class="tab"><a href="#test0">PQRS</a></li>
+    </ul>
+    <div id="test1" class="col s12">
+      <div class="center-align">
+        <img height=200 width=200 class="circle" src="../../../assets/avatar.svg">
       </div>
+      <form class="col s12" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <input id="first_name" type="text" class="validate" [(ngModel)]="userInfo.name"
+              [ngModelOptions]="{standalone: true}" autocomplete="off">
+            <label class="active" for="first_name">Nombre</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <input id="last_name" type="text" class="validate" [(ngModel)]="userInfo.lastName"
+              [ngModelOptions]="{standalone: true}">
+            <label class="active" for="last_name">Apellido</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <input id="telephone" type="number" class="validate" [(ngModel)]="userInfo.telephone"
+              [ngModelOptions]="{standalone: true}">
+            <label class="active" for="telephone">Telefono</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <input id="email" type="email" class="validate"  [(ngModel)]="userInfo.email"
+            [ngModelOptions]="{standalone: true}" disabled >
+            <label class="active" for="email">Email</label>
+          </div>
+          <button class="btn waves-effect waves-light btn-large green" type="submit">
+            <i class="material-icons right">edit</i> Actualizar
+          </button>
+        </div>
+      </form>
+    </div>
+    <div id="test2" class="col s12">
+      <p>Test 2</p>
+    </div>
+    <div id="test4" class="col s12">
+      <p>Test 4</p>
+    </div>
+    <div id="test0" class="col s12">
+      <p>Test 5</p>
     </div>
   </div>
+</div>

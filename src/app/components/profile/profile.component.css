@@ -9,11 +9,32 @@
     }
 }
 
-.divAbajo{
-    border: 3px solid black;
-    border-bottom: 1.5px solid black;
+.tabs .tab a {
+    color: #000;
 }
 
-.divArriba{
-    border-top: 1.5px solid black;
+/*Color del texto*/
+
+.tabs .tab a:hover {
+    background-color: #eee;
+    color: #000;
+}
+
+/*Color del fondo y texto cuando el cursor esta sobre el*/
+
+.tabs .tab a.active {
+    background-color: #888;
+    color: #eee;
+}
+
+/*Color del fondo y texto cuando el tab está activo*/
+
+.tabs /deep/ .indicator {
+    background-color: #000;
+}
+
+/*Color de la línea*/
+
+.carousel .carousel-item {
+    height: 100%;
 }

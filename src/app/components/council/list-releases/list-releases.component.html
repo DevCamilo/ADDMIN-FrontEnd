@@ -10,11 +10,11 @@
           <br>
           <span> {{release.created_at.split("T", 1)}} {{release.created_at.substr(11,8)}} </span></div>
         <div class="col s12 m6" style="text-align: right">
-          <a class="waves-effect waves-light btn green modal-trigger" (click)="setRelease(release)" href="#modal1"
+          <a *ngIf="typeUser == 1" class="waves-effect waves-light btn green modal-trigger" (click)="setRelease(release)" href="#modal1"
             style="margin-right: 5px;">
             <i class="material-icons left">edit</i>Editar
           </a>
-          <a class="waves-effect waves-light btn red" (click)="deteleRelease(release._id)">
+          <a *ngIf="typeUser == 1" class="waves-effect waves-light btn red" (click)="deteleRelease(release._id)">
             <i class="material-icons left">delete</i>Eliminar
           </a>
         </div>
