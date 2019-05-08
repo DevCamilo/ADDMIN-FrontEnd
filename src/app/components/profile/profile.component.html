@@ -29,15 +29,30 @@
             <label class="active" for="telephone">Telefono</label>
           </div>
           <div class="input-field col s12 m6">
-            <input id="email" type="email" class="validate"  [(ngModel)]="userInfo.email"
-            [ngModelOptions]="{standalone: true}" disabled >
+            <input id="email" type="email" class="validate" [(ngModel)]="userInfo.email"
+              [ngModelOptions]="{standalone: true}" disabled>
             <label class="active" for="email">Email</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <input id="tower" type="number" class="validate" [(ngModel)]="userInfo.tower"
+            [ngModelOptions]="{standalone: true}" disabled>
+            <label class="active" for="tower">Torre</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <input id="apto" type="number" class="validate" [(ngModel)]="userInfo.apto"
+            [ngModelOptions]="{standalone: true}" disabled>
+            <label class="active" for="email">Apartamento</label>
           </div>
           <button class="btn waves-effect waves-light btn-large green" type="submit">
             <i class="material-icons right">edit</i> Actualizar
           </button>
         </div>
       </form>
+      <div style="text-align: right; margin-top: -73px;">
+        <button class="btn waves-effect waves-light btn-large blue modal-trigger" href="#modal1">
+          <i class="material-icons right">lock_outline</i> Cambiar Contraseña
+        </button>
+      </div>
     </div>
     <div id="test2" class="col s12">
       <p>Test 2</p>
@@ -48,5 +63,15 @@
     <div id="test0" class="col s12">
       <p>Test 5</p>
     </div>
+  </div>
+</div>
+
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
   </div>
 </div>

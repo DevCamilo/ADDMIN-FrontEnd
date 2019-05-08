@@ -29,7 +29,7 @@
           </li>
           <li class="collection-item avatar"
             *ngFor=" let info of data.info | paginate: { itemsPerPage: 4, currentPage: p[i], id: data}">
-            <img src="../../../../assets/avatar.png" alt="" class="circle">
+            <img src="../../../../assets/avatar.svg" alt="" class="circle">
             <span class="title">{{info.user.name}} {{info.user.lastName}}</span>
             <p>
               <b>{{info.title}}</b>

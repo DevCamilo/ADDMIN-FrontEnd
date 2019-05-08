@@ -24,22 +24,39 @@ export class ProfileComponent implements OnInit {
           name: res.data.name,
           lastName: res.data.lastName,
           telephone: res.data.telephone,
-          email: res.data.email
+          email: res.data.email,
+          tower: res.data.tower,
+          apto: res.data.apto
         }
       } else {
-        Swal.fire(res.message, '', 'error');        
+        Swal.fire(res.message, '', 'error');       
       }
     });
     $(document).ready(function () {
       $('.tabs').tabs();
       $('#tabs-swipe-demo').tabs({ 'swipeable': true });
       $(".tabs-content").css('height','1000px');
+      $('.modal').modal();
     });
   }
 
   onSubmit(){
-    console.log("Ok");
-    
+    const user = {
+      _id: this.user._id,
+      name: this.userInfo.name,
+      lastName: this.userInfo.lastName,
+      telephone: this.userInfo.telephone
+    }
+    user.telephone = user.telephone.toString();
+    this.userApi.updateUserFunction(user, this.token).subscribe((res: any) => {
+      if (res.status) {
+        Swal.fire(res.message, '', 'success');
+        this.ngOnInit();
+        
+      } else {
+        Swal.fire(res.message, '', 'error');       
+      }
+    });
   }
 
 }
