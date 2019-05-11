@@ -69,4 +69,14 @@ export class PqrsService {
     return this.http.post(this.url + '/update-respone-pqrs', pqrs, httpOptions);
   }
 
+  listPqrsByIdOrigin(id: String, token: String){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    return this.http.get(this.url + '/list-pqrs-id-origin/?id=' + id, httpOptions);
+  }
+
 }

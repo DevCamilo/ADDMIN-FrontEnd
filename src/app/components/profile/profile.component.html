@@ -2,12 +2,12 @@
 <div class="move">
   <div class="container">
     <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
-      <li class="tab"><a class="active" href="#test1">Usuario</a></li>
-      <li class="tab"><a href="#test2">Reservas</a></li>
-      <li class="tab"><a href="#test4">Pagos</a></li>
-      <li class="tab"><a href="#test0">PQRS</a></li>
+      <li class="tab"><a class="active" href="#user">Usuario</a></li>
+      <li class="tab"><a href="#reservation">Reservas</a></li>
+      <li class="tab"><a href="#payments">Pagos</a></li>
+      <li class="tab"><a href="#pqrs">PQRS</a></li>
     </ul>
-    <div id="test1" class="col s12">
+    <div id="user" class="col s12">
       <div class="center-align">
         <img height=200 width=200 class="circle" src="../../../assets/avatar.svg">
       </div>
@@ -54,68 +54,103 @@
         </button>
       </div>
     </div>
-    <div id="test2" class="col s12">
+    <div id="reservation" class="col s12">
       <p>Test 2</p>
     </div>
-    <div id="test4" class="col s12">
+    <div id="payments" class="col s12">
       <p>Test 4</p>
     </div>
-    <div id="test0" class="col s12">
-      <p>Test 5</p>
+    <div id="pqrs" class="col s12">
+      <div class="center-table">
+        <table class="striped centered responsive-table" id="myTable">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Descripción</th>
+              <th>Encaragado</th>
+              <th>Respuesta</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor=" let pqrs of pqrsInfo | paginate: { itemsPerPage: 5, currentPage: p }">
+              <td>{{pqrs.title}}</td>
+              <td>{{pqrs.description}}</td>
+              <td *ngIf="pqrs.checked == 'star_border'">{{pqrs.id_attendant.name}}</td>
+              <td *ngIf="pqrs.checked == 'star_border'">{{pqrs.response}}</td>
+              <td *ngIf="pqrs.checked != 'star_border'">Sin Respuesta</td>
+              <td *ngIf="pqrs.checked != 'star_border'">Sin Respuesta</td>
+              <td>{{pqrs.created_at.split("T", 1)}} {{pqrs.created_at.substr(11,8)}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <pagination-controls class="my-pagination" (pageChange)="p = $event" previousLabel="" nextLabel=""
+          responsive=true>
+        </pagination-controls>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Modal para cambiar contraseña -->
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <h4>Cambiar Contraseña</h4>
-    <div class="row">
-      <form class="col s12" [formGroup]="changePasswordForm" (ngSubmit)="onSubmitPassword()">
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="actual_password" type="text" class="validate" formControlName="password" minlength="6" required autocomplete="off">
-            <label for="actual_password">Contraseña Actual</label>
-            <span *ngIf="changePasswordForm.controls['password'].touched && changePasswordForm.controls['password'].errors?.required">
-              La contraseña es requerida
-            </span>
-            <span *ngIf="changePasswordForm.controls['password'].touched && changePasswordForm.controls['password'].errors?.minlength">
-              La contraseña debe tener mínimo 6 dígitos
-            </span>
+  <!-- Modal para cambiar contraseña -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Cambiar Contraseña</h4>
+      <div class="row">
+        <form class="col s12" [formGroup]="changePasswordForm" (ngSubmit)="onSubmitPassword()">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="actual_password" type="text" class="validate" formControlName="password" minlength="6" required
+                autocomplete="off">
+              <label for="actual_password">Contraseña Actual</label>
+              <span
+                *ngIf="changePasswordForm.controls['password'].touched && changePasswordForm.controls['password'].errors?.required">
+                La contraseña es requerida
+              </span>
+              <span
+                *ngIf="changePasswordForm.controls['password'].touched && changePasswordForm.controls['password'].errors?.minlength">
+                La contraseña debe tener mínimo 6 dígitos
+              </span>
+            </div>
+            <div class="input-field col s12">
+              <input id="new_password" type="text" class="validate" formControlName="newPassword" minlength="6" required
+                autocomplete="off">
+              <label for="new_password">Nueva Contraseña</label>
+              <span
+                *ngIf="changePasswordForm.controls['newPassword'].touched && changePasswordForm.controls['newPassword'].errors?.required">
+                La nueva contraseña es requerida
+              </span>
+              <span
+                *ngIf="changePasswordForm.controls['newPassword'].touched && changePasswordForm.controls['newPassword'].errors?.minlength">
+                La nueva contraseña debe tener mínimo 6 dígitos
+              </span>
+            </div>
+            <div class="input-field col s12">
+              <input id="repeat_password" type="text" class="validate" formControlName="repeatPassword" minlength="6"
+                required autocomplete="off">
+              <label for="repeat_password">Repetir Contraseña</label>
+              <span
+                *ngIf="changePasswordForm.controls['repeatPassword'].touched && changePasswordForm.controls['repeatPassword'].errors?.required">
+                La nueva contraseña es requerida
+              </span>
+              <span
+                *ngIf="changePasswordForm.controls['repeatPassword'].touched && changePasswordForm.controls['repeatPassword'].errors?.minlength">
+                La nueva contraseña debe tener mínimo 6 dígitos
+              </span>
+              <span *ngIf="validSamePassword">
+                Las dos contraseñas deben ser iguales
+              </span>
+              <span *ngIf="validNewPassword">
+                La nueva contraseña debe ser diferentes
+              </span>
+              <br>
+              <br>
+            </div>
+            <button class="btn waves-effect waves-light btn-large" type="submit"
+              [disabled]="changePasswordForm.invalid">
+              <i class="material-icons right">send</i> Guardar
+            </button>
           </div>
-          <div class="input-field col s12">
-            <input id="new_password" type="text" class="validate" formControlName="newPassword" minlength="6" required  autocomplete="off">
-            <label for="new_password">Nueva Contraseña</label>
-            <span *ngIf="changePasswordForm.controls['newPassword'].touched && changePasswordForm.controls['newPassword'].errors?.required">
-              La nueva contraseña es requerida
-            </span>
-            <span *ngIf="changePasswordForm.controls['newPassword'].touched && changePasswordForm.controls['newPassword'].errors?.minlength">
-              La nueva contraseña debe tener mínimo 6 dígitos
-            </span>
-          </div>
-          <div class="input-field col s12">
-            <input id="repeat_password" type="text" class="validate" formControlName="repeatPassword" minlength="6" required autocomplete="off">
-            <label for="repeat_password">Repetir Contraseña</label>
-            <span *ngIf="changePasswordForm.controls['repeatPassword'].touched && changePasswordForm.controls['repeatPassword'].errors?.required">
-              La nueva contraseña es requerida
-            </span>
-            <span *ngIf="changePasswordForm.controls['repeatPassword'].touched && changePasswordForm.controls['repeatPassword'].errors?.minlength">
-              La nueva contraseña debe tener mínimo 6 dígitos
-            </span>
-            <span *ngIf="validSamePassword" >
-              Las dos contraseñas deben ser iguales
-            </span>
-            <span *ngIf="validNewPassword" >
-              La nueva contraseña debe ser diferentes
-            </span>
-            <br>
-            <br>
-          </div>
-          <button class="btn waves-effect waves-light btn-large" type="submit" [disabled]="changePasswordForm.invalid">
-            <i class="material-icons right">send</i> Guardar
-          </button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-</div>

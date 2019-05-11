@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../providers/user.service';
+import { PqrsService } from '../../providers/pqrs.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 declare var $: any;
@@ -13,11 +14,15 @@ export class ProfileComponent implements OnInit {
   token: String = localStorage.getItem('token');
   user: any = JSON.parse(localStorage.getItem('user'));
   userInfo: any;
+  pqrsInfo: any;
+  p: Number = 1;
   changePasswordForm: FormGroup;
   validSamePassword: Boolean = false;
   validNewPassword: Boolean = false;
-  constructor(private userApi: UserService, private formBuilder: FormBuilder) {
-    this.userInfo = {}
+
+  constructor(private userApi: UserService, private pqrsApi: PqrsService, private formBuilder: FormBuilder) {
+    this.userInfo = {};
+    this.pqrsInfo = {};
   }
 
   ngOnInit() {
@@ -39,6 +44,13 @@ export class ProfileComponent implements OnInit {
         }
       } else {
         Swal.fire(res.message, '', 'error');
+      }
+    });
+    this.pqrsApi.listPqrsByIdOrigin(this.user._id, this.token).subscribe((res: any) => {
+      if (res.status) {
+        this.pqrsInfo = res.data;
+      } else {
+        Swal.fire(res.message, '', 'error');        
       }
     });
     $(document).ready(function () {

@@ -10,8 +10,7 @@ declare var $: any, M: any;
 })
 
 export class ListUsersComponent implements OnInit {
-  p: number = 1;
-  flag: Number = 1;
+  p:  Number = 1;
   filterUser: any = "";
   listUser: any;
   updateUser: any;
