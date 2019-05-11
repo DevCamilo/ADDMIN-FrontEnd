@@ -11,7 +11,7 @@
       <div class="center-align">
         <img height=200 width=200 class="circle" src="../../../assets/avatar.svg">
       </div>
-      <form class="col s12" (ngSubmit)="onSubmit()">
+      <form class="col s12" (ngSubmit)="onSubmitUser()">
         <div class="row">
           <div class="input-field col s12 m6">
             <input id="first_name" type="text" class="validate" [(ngModel)]="userInfo.name"
@@ -35,12 +35,12 @@
           </div>
           <div class="input-field col s12 m6">
             <input id="tower" type="number" class="validate" [(ngModel)]="userInfo.tower"
-            [ngModelOptions]="{standalone: true}" disabled>
+              [ngModelOptions]="{standalone: true}" disabled>
             <label class="active" for="tower">Torre</label>
           </div>
           <div class="input-field col s12 m6">
             <input id="apto" type="number" class="validate" [(ngModel)]="userInfo.apto"
-            [ngModelOptions]="{standalone: true}" disabled>
+              [ngModelOptions]="{standalone: true}" disabled>
             <label class="active" for="email">Apartamento</label>
           </div>
           <button class="btn waves-effect waves-light btn-large green" type="submit">
@@ -66,12 +66,56 @@
   </div>
 </div>
 
+<!-- Modal para cambiar contraseña -->
 <div id="modal1" class="modal">
   <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    <h4>Cambiar Contraseña</h4>
+    <div class="row">
+      <form class="col s12" [formGroup]="changePasswordForm" (ngSubmit)="onSubmitPassword()">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="actual_password" type="text" class="validate" formControlName="password" minlength="6" required autocomplete="off">
+            <label for="actual_password">Contraseña Actual</label>
+            <span *ngIf="changePasswordForm.controls['password'].touched && changePasswordForm.controls['password'].errors?.required">
+              La contraseña es requerida
+            </span>
+            <span *ngIf="changePasswordForm.controls['password'].touched && changePasswordForm.controls['password'].errors?.minlength">
+              La contraseña debe tener mínimo 6 dígitos
+            </span>
+          </div>
+          <div class="input-field col s12">
+            <input id="new_password" type="text" class="validate" formControlName="newPassword" minlength="6" required  autocomplete="off">
+            <label for="new_password">Nueva Contraseña</label>
+            <span *ngIf="changePasswordForm.controls['newPassword'].touched && changePasswordForm.controls['newPassword'].errors?.required">
+              La nueva contraseña es requerida
+            </span>
+            <span *ngIf="changePasswordForm.controls['newPassword'].touched && changePasswordForm.controls['newPassword'].errors?.minlength">
+              La nueva contraseña debe tener mínimo 6 dígitos
+            </span>
+          </div>
+          <div class="input-field col s12">
+            <input id="repeat_password" type="text" class="validate" formControlName="repeatPassword" minlength="6" required autocomplete="off">
+            <label for="repeat_password">Repetir Contraseña</label>
+            <span *ngIf="changePasswordForm.controls['repeatPassword'].touched && changePasswordForm.controls['repeatPassword'].errors?.required">
+              La nueva contraseña es requerida
+            </span>
+            <span *ngIf="changePasswordForm.controls['repeatPassword'].touched && changePasswordForm.controls['repeatPassword'].errors?.minlength">
+              La nueva contraseña debe tener mínimo 6 dígitos
+            </span>
+            <span *ngIf="validSamePassword" >
+              Las dos contraseñas deben ser iguales
+            </span>
+            <span *ngIf="validNewPassword" >
+              La nueva contraseña debe ser diferentes
+            </span>
+            <br>
+            <br>
+          </div>
+          <button class="btn waves-effect waves-light btn-large" type="submit" [disabled]="changePasswordForm.invalid">
+            <i class="material-icons right">send</i> Guardar
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

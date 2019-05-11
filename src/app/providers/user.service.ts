@@ -48,7 +48,7 @@ export class UserService {
     return this.http.get(this.url + '/delete-user/?id=' + id, httpOptions);
   }
 
-  updateUserFunction(user: any, token: String){
+  updateUserFunction(user: any, token: String) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -58,14 +58,24 @@ export class UserService {
     return this.http.post(this.url + '/update-user', user, httpOptions);
   }
 
-  findUserById(user: any, token: String){
+  findUserById(id: any, token: String) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
       })
     };
-    return this.http.get(this.url + '/user-id/?id=' + user, httpOptions);
+    return this.http.get(this.url + '/user-id/?id=' + id, httpOptions);
+  }
+
+  changePassword(password: any, token: String) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    return this.http.post(this.url + '/change-password', password, httpOptions);
   }
 
 }

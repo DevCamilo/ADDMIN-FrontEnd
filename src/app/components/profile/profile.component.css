@@ -38,3 +38,12 @@
 .carousel .carousel-item {
     height: 100%;
 }
+
+.modal {
+    border-radius: 2%;
+    width: 500px;
+}
+
+span{
+    color: #e57373;
+}

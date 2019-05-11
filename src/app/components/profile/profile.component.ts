@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../providers/user.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 declare var $: any;
 
@@ -12,11 +13,19 @@ export class ProfileComponent implements OnInit {
   token: String = localStorage.getItem('token');
   user: any = JSON.parse(localStorage.getItem('user'));
   userInfo: any;
-  constructor(private userApi: UserService) {
+  changePasswordForm: FormGroup;
+  validSamePassword: Boolean = false;
+  validNewPassword: Boolean = false;
+  constructor(private userApi: UserService, private formBuilder: FormBuilder) {
     this.userInfo = {}
   }
 
   ngOnInit() {
+    this.changePasswordForm = this.formBuilder.group({
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      newPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      repeatPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+    });
     this.userApi.findUserById(this.user._id, this.token).subscribe((res: any) => {
       if (res.status) {
         //console.log(res.data);
@@ -29,18 +38,17 @@ export class ProfileComponent implements OnInit {
           apto: res.data.apto
         }
       } else {
-        Swal.fire(res.message, '', 'error');       
+        Swal.fire(res.message, '', 'error');
       }
     });
     $(document).ready(function () {
       $('.tabs').tabs();
       $('#tabs-swipe-demo').tabs({ 'swipeable': true });
-      $(".tabs-content").css('height','1000px');
       $('.modal').modal();
     });
   }
 
-  onSubmit(){
+  onSubmitUser() {
     const user = {
       _id: this.user._id,
       name: this.userInfo.name,
@@ -52,11 +60,39 @@ export class ProfileComponent implements OnInit {
       if (res.status) {
         Swal.fire(res.message, '', 'success');
         this.ngOnInit();
-        
+
       } else {
-        Swal.fire(res.message, '', 'error');       
+        Swal.fire(res.message, '', 'error');
       }
     });
+  }
+
+  onSubmitPassword() {
+    if (this.changePasswordForm.value.password == this.changePasswordForm.value.newPassword) {
+      this.validNewPassword = true;
+      this.validSamePassword = false;
+    } else {
+      if (this.changePasswordForm.value.newPassword == this.changePasswordForm.value.repeatPassword) {
+        this.validSamePassword = false;
+        this.validNewPassword = false;
+        const password = {
+          _id: this.user._id,
+          password: this.changePasswordForm.value.password,
+          newPassword: this.changePasswordForm.value.newPassword
+        }
+        this.userApi.changePassword(password, this.token).subscribe((res: any) => {
+          if (res.status) {
+            Swal.fire(res.message, '', 'success');
+            this.ngOnInit();
+          } else {
+            Swal.fire(res.message, '', 'error');
+          }
+        })
+      } else {
+        this.validNewPassword = false;
+        this.validSamePassword = true;
+      }
+    }
   }
 
 }
