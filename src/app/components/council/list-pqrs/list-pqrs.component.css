@@ -22,34 +22,3 @@
 .space-left {
     padding-right: 40px;
 }
-
-.my-pagination /deep/ .ngx-pagination {
-    font-size: 25px;
-}
-
-.my-pagination /deep/ .ngx-pagination a {
-    font-size: 25px;
-    padding: 2.8125px 9.375px;
-    margin: 0px 0.9375px 0px 0px;
-    border-radius: 10%;
-    text-align: center;
-    width: 40px;
-}
-
-.my-pagination /deep/ .ngx-pagination .pagination-previous {
-    font-size: 25px;
-    padding: 2.8125px 9.375px;
-    margin: 0px 0.9375px 0px 0px;
-    border-radius: 10%;
-    text-align: center;
-    width: 40px;
-    background: none;
-}
-
-.my-pagination /deep/ .ngx-pagination .current {
-    background: #4db6ac;
-    border-radius: 10%;
-    width: 40px;
-    text-align: center;
-    font-size: 25px;
-}

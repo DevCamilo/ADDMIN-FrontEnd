@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   token: String = localStorage.getItem('token');
   user: any = JSON.parse(localStorage.getItem('user'));
   userInfo: any;
-  pqrsInfo: any;
+  pqrsInfo: Array<Object>;
   p: Number = 1;
   changePasswordForm: FormGroup;
   validSamePassword: Boolean = false;
@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private userApi: UserService, private pqrsApi: PqrsService, private formBuilder: FormBuilder) {
     this.userInfo = {};
-    this.pqrsInfo = {};
+    this.pqrsInfo;
   }
 
   ngOnInit() {
