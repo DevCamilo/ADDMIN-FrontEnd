@@ -1,33 +1,53 @@
 <app-nav-bar></app-nav-bar>
-<div class="backgraund">
+<div class="background">
   <div class="filter">
-    <div id="login-page" class="row">
-      <div class="col s12 z-depth-6 card-panel">
-        <form #usuarioForm="ngForm" (ngSubmit)="onSubmit()" class="login-form">
-          <div class="row">
-          </div>
-          <div class="row">
-            <h2 style="text-align:center">Login</h2>
-            <div class="input-field col s12">
-              <i class="material-icons prefix">mail_outline</i>
-              <input class="validate" id="email" type="email" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}">
-              <label for="email" data-error="wrong" data-success="right">Email</label>
+    <div class="section"></div>
+    <main style="text-align: center">
+      <div class="section"></div>
+      <div class="section"></div>
+      <div class="container">
+        <div class="z-depth-1 grey lighten-4 row"
+          style="display: inline-block; padding: 30px 50px 0px 50px; border: 1px solid #EEE;">
+
+          <h3>Ingresar</h3>
+          <form class="col s12" #usuarioForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class='row'>
+              <div class='col s12'>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">lock_outline</i>
-              <input id="password" type="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">
-              <label for="password">Contraseña</label>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                <i class="material-icons prefix">mail_outline</i>
+                <input class='validate' type='email' id='email' [(ngModel)]="user.email"
+                  [ngModelOptions]="{standalone: true}" />
+                <label for='email'>Correo</label>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <button  type="Submit" class="btn waves-effect waves-light col s12">Entrar</button>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                <i class="material-icons prefix">lock_outline</i>
+                <input class='validate' type='password' id='password' [(ngModel)]="user.password"
+                  [ngModelOptions]="{standalone: true}" />
+                <label for='password'>Contraseña</label>
+              </div>
+              <label style='float: right;'>
+                <a class='pink-text' href='#!'><b>¿Olvidaste tu Contraseña?</b></a>
+              </label>
             </div>
-          </div>
-        </form>
+
+            <br />
+            <div class='row'>
+              <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Iniciar</button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+      <div class="section"></div>
+      <div class="section"></div>
+      <div class="section"></div>
+      <div class="section"></div>
+    </main>
   </div>
 </div>

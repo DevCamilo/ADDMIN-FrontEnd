@@ -1,31 +1,9 @@
-#login-page {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-}
-
-@media (max-width: 500px) {
-    #login-page {
-        width: 250px;
-    }
-}
-
-.backgraund {
-    height: 100%;
-    width: 100%;
+.background {
     background-image: url(../../../assets/bg1.jpg);
     background-position: center;
     background-size: cover;
-    float: left;
-    position: fixed;
-    overflow: hidden;
 }
 
 .filter {
-    height: 100%;
-    width: 100%;
-    position: absolute;
     background-color: rgba(110, 110, 110, 0.5);
 }

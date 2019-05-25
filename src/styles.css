@@ -3,13 +3,14 @@ body, html {
     height: 100%;
     width: 100%;
     margin: 0px;
+    padding: 0px;
 }
 
-.my-pagination /deep/ .ngx-pagination {
+.my-pagination .ngx-pagination {
     font-size: 25px;
 }
 
-.my-pagination /deep/ .ngx-pagination a {
+.my-pagination .ngx-pagination a {
     font-size: 25px;
     padding: 2.8125px 9.375px;
     margin: 0px 0.9375px 0px 0px;
@@ -18,7 +19,7 @@ body, html {
     width: 40px;
 }
 
-.my-pagination /deep/ .ngx-pagination .pagination-previous {
+.my-pagination .ngx-pagination .pagination-previous {
     font-size: 25px;
     padding: 2.8125px 9.375px;
     margin: 0px 0.9375px 0px 0px;
@@ -28,7 +29,7 @@ body, html {
     background: none;
 }
 
-.my-pagination /deep/ .ngx-pagination .current {
+.my-pagination .ngx-pagination .current {
     background: #4db6ac;
     border-radius: 10%;
     width: 40px;
