@@ -15,18 +15,42 @@
     border-radius: 1%;
 }
 
-.modal-content /deep/ .ql-align-center{
+.preview {
+    text-align: right;
+    margin-top: -55px;
+}
+
+@media(max-width: 550px) {
+    .preview{
+        margin-top: 10px;
+        float: left;
+    }
+    .container {
+        height: 730px;
+    }
+}
+
+@media(max-width: 400px) {
+    h1{
+        font-size: 40px;
+    }
+    .container {
+        height: 700px;
+    }
+}
+
+.modal-content /deep/ .ql-align-center {
     text-align: center;
 }
 
-.modal-content /deep/ .ql-align-right{
+.modal-content /deep/ .ql-align-right {
     text-align: right;
 }
 
-.modal-content /deep/ .ql-align-justify{
+.modal-content /deep/ .ql-align-justify {
     text-align: justify;
 }
 
-.container /deep/ .ql-editor strong{
+.container /deep/ .ql-editor strong {
     font-weight: bold;
 }

@@ -2,8 +2,23 @@
   padding-left: 300px;
 }
 
+@media(max-width: 1295px) {
+  .fontText {
+    font-size: 20px;
+  }
+  .fontIcon {
+    font-size: 45px;
+  }
+}
+
 @media (max-width: 992px) {
   .move {
     padding-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .fontIcon {
+    font-size: 90px;
   }
 }

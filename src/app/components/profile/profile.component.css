@@ -44,6 +44,19 @@
     width: 500px;
 }
 
-span{
+span {
     color: #e57373;
+}
+
+.changePass {
+    text-align: right;
+    margin-top: -73px;
+}
+
+@media(max-width: 550px) {
+    .changePass{
+        margin-top: 0px;
+        float: left;
+        margin-left: -10px;
+    }
 }
