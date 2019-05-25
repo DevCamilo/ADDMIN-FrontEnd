@@ -40,8 +40,13 @@
 }
 
 .modal {
-    border-radius: 2%;
     width: 500px;
+}
+
+@media(max-width: 745px){
+    .modal{
+        width: 90%;
+    }
 }
 
 span {
