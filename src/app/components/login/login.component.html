@@ -7,7 +7,7 @@
       <div class="section"></div>
       <div class="container">
         <div class="z-depth-1 grey lighten-4 row"
-          style="display: inline-block; padding: 30px 50px 0px 50px; border: 1px solid #EEE;">
+          style="display: inline-block; padding: 30px 30px 20px 30px; border: 1px solid #EEE;">
 
           <h3>Ingresar</h3>
           <form class="col s12" #usuarioForm="ngForm" (ngSubmit)="onSubmit()">
@@ -17,7 +17,7 @@
             </div>
 
             <div class='row'>
-              <div class='input-field col s12'>
+              <div class='input-field col s12' style="margin-left: -10px">
                 <i class="material-icons prefix">mail_outline</i>
                 <input class='validate' type='email' id='email' [(ngModel)]="user.email"
                   [ngModelOptions]="{standalone: true}" />
@@ -26,13 +26,13 @@
             </div>
 
             <div class='row'>
-              <div class='input-field col s12'>
+              <div class='input-field col s12' style="margin-left: -10px">
                 <i class="material-icons prefix">lock_outline</i>
                 <input class='validate' type='password' id='password' [(ngModel)]="user.password"
                   [ngModelOptions]="{standalone: true}" />
                 <label for='password'>Contraseña</label>
               </div>
-              <label style='float: right;'>
+              <label style='float: right; margin-right: 20px;'>
                 <a class='pink-text' href='#!'><b>¿Olvidaste tu Contraseña?</b></a>
               </label>
             </div>
