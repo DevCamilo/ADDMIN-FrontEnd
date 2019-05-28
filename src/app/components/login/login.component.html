@@ -8,14 +8,13 @@
       <div class="container">
         <div class="z-depth-1 grey lighten-4 row"
           style="display: inline-block; padding: 30px 30px 20px 30px; border: 1px solid #EEE;">
-
           <h3>Ingresar</h3>
+
           <form class="col s12" #usuarioForm="ngForm" (ngSubmit)="onSubmit()">
             <div class='row'>
               <div class='col s12'>
               </div>
             </div>
-
             <div class='row'>
               <div class='input-field col s12' style="margin-left: -10px">
                 <i class="material-icons prefix">mail_outline</i>
@@ -24,7 +23,6 @@
                 <label for='email'>Correo</label>
               </div>
             </div>
-
             <div class='row'>
               <div class='input-field col s12' style="margin-left: -10px">
                 <i class="material-icons prefix">lock_outline</i>
@@ -36,18 +34,65 @@
                 <a class='pink-text'><b>¿Olvidaste tu Contraseña?</b></a>
               </label>
             </div>
-
             <br />
             <div class='row'>
               <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Iniciar</button>
             </div>
           </form>
+          
         </div>
       </div>
-      <div class="section"></div>
       <div class="section"></div>
       <div class="section"></div>
       <div class="section"></div>
     </main>
   </div>
 </div>
+
+<!-- INICIO DE FOOTER -->
+<footer class="page-footer black">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Footer Content</h5>
+          <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus
+            exercitationem explicabo enim itaque, soluta sequi officiis impedit deserunt voluptate dolorum
+            praesentium
+            saepe, iure nam, dignissimos reprehenderit odio beatae repellat libero?</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Repositorios</h5>
+          <ul>
+            <li>
+              <div class="row">
+                <div class="col s12">
+                  <a class="grey-text text-lighten-3" target="_blank"
+                    href="https://github.com/DevCamilo/ADDMIN-FrontEnd">
+                    <i class="small material-icons left">desktop_windows</i>
+                    Frontend
+                  </a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="row">
+                <div class="col s12">
+                  <a class="grey-text text-lighten-3" target="_blank"
+                    href="https://github.com/DevCamilo/ADDMIN-BackEnd">
+                    <i class="small material-icons left">https</i>
+                    Backend
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2019 Copyright ADDMIN CORP
+      </div>
+    </div>
+  </footer>
+<!-- FINAL DE FOOTER -->
