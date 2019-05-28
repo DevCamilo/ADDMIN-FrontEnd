@@ -13,6 +13,7 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
     $(document).ready(function(){
       $('.sidenav').sidenav();
+      $('.tooltipped').tooltip();
     });
   }
 

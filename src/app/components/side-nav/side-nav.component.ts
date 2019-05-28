@@ -14,9 +14,8 @@ export class SideNavComponent implements OnInit {
   ngOnInit() {
     $(document).ready(function () {
       $('.sidenav').sidenav();
-    });
-    $(document).ready(function(){
       $('.collapsible').collapsible();
+      $('.tooltipped').tooltip();
     });
     this.typeUser = this.user.typeUser;
   }
