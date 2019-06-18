@@ -27,6 +27,10 @@
     color: #eee;
 }
 
+.tabs .tab.disabled a,.tabs .tab.disabled a:hover {
+	color:rgba(102,147,153,0.7);	
+}
+
 /*Color del fondo y texto cuando el tab está activo*/
 
 .tabs /deep/ .indicator {

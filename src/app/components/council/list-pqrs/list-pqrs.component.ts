@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PqrsService } from '../../../providers/pqrs.service';
-import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 declare var $: any;
 

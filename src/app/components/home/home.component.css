@@ -13,6 +13,25 @@
     width: 750px;
 }
 
+.triangulo {
+    width: 0;
+    height: 0;
+    width: 0;
+    height: 0;
+    border-left: 300px solid transparent;
+    border-right: 300px solid transparent;
+    border-top: 100px solid #000;
+    margin: 0 auto;
+}
+
+.cuadrado {
+    width: 600px;
+    height: 400px;
+    background-color: black;
+    color: white;
+    margin: 0 auto;
+}
+
 @media (max-width: 855px) {
     .sup {
         margin-top: 50px;
@@ -32,7 +51,7 @@
     }
 }
 
-@media (max-width: 420px){
+@media (max-width: 420px) {
     .sup {
         margin-top: 10px;
     }

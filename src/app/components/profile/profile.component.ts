@@ -57,6 +57,7 @@ export class ProfileComponent implements OnInit {
       $('.tabs').tabs();
       $('#tabs-swipe-demo').tabs({ 'swipeable': true });
       $('.modal').modal();
+      $('.tooltipped').tooltip();
     });
   }
 
