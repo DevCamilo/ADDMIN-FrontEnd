@@ -16,8 +16,6 @@
 .triangulo {
     width: 0;
     height: 0;
-    width: 0;
-    height: 0;
     border-left: 300px solid transparent;
     border-right: 300px solid transparent;
     border-top: 100px solid #000;
@@ -32,6 +30,12 @@
     margin: 0 auto;
 }
 
+.img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
 @media (max-width: 855px) {
     .sup {
         margin-top: 50px;
@@ -39,6 +43,15 @@
     }
     .line {
         width: 550px;
+    }
+    .triangulo {
+        border-left: 200px solid transparent;
+        border-right: 200px solid transparent;
+        border-top: 100px solid #000;
+    }
+    .cuadrado {
+        width: 400px;
+        height: 400px;
     }
 }
 
@@ -54,6 +67,15 @@
 @media (max-width: 420px) {
     .sup {
         margin-top: 10px;
+    }
+    .triangulo {
+        border-left: 175px solid transparent;
+        border-right: 175px solid transparent;
+        border-top: 100px solid #000;
+    }
+    .cuadrado {
+        width: 350px;
+        height: 400px;
     }
 }
 
