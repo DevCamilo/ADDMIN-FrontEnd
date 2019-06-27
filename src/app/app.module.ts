@@ -21,7 +21,8 @@ import { GeneratePqrsComponent } from './components/council/generate-pqrs/genera
 import { ListPqrsComponent } from './components/council/list-pqrs/list-pqrs.component';
 import { GenerateReleaseComponent } from './components/council/generate-release/generate-release.component';
 import { ListReleasesComponent } from './components/council/list-releases/list-releases.component';
-
+import { GeneratePaymentComponent } from './components/payment/generate-payment/generate-payment.component';
+import { ListPaymentComponent } from './components/payment/list-payment/list-payment.component';
 
 // Rutas
 import { app_routing } from './app.routes';
@@ -48,8 +49,10 @@ import { ProfileComponent } from './components/profile/profile.component';
     GenerateReleaseComponent,
     NoSanitizePipe,
     ListReleasesComponent,
-    ProfileComponent
-  ],
+    ProfileComponent,
+    GeneratePaymentComponent,
+    ListPaymentComponent
+    ],
   imports: [
     BrowserModule,
     app_routing,

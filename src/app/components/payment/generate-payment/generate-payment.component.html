@@ -1,0 +1,52 @@
+<app-side-nav></app-side-nav>
+<div class="move">
+  <div class="container">
+    <div class="col s10 m10 l10">
+      <div class="row">
+        <h2>Generar Pagos</h2>
+        <form class="col s12 m12 l12" id="formularios">
+          <br />
+          <br />
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Escriba su nombre" id="first_name" type="text" class="validate" maxlength="10"
+                [(ngModel)]="info.nombre" [ngModelOptions]="{standalone: true}">
+              <label for="first_name" class="active">Nombre</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last_name" placeholder="Escriba su apellido" type="text" class="validate" maxlength="10"
+                [(ngModel)]="info.apellido" [ngModelOptions]="{standalone: true}">
+              <label for="last_name" class="active">Apellido</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Escriba su Torre" id="torre" type="number" class="validate" />
+              <label for="torre" class="active">Torre</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="apartamento" placeholder="Escriba su apartamento" type="number" class="validate" maxlength="3">
+              <label for="apartamento" class="active">Apartamento</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate">
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="password" type="password" class="validate" maxlength="16" minlength="5">
+              <label for="password">Contraseña</label>
+            </div>
+          </div>
+        </form>
+        <button id="boton-enviar" class="btn-large white-text waves-effect waves-teal darken-2" (click)="validacion()"
+          type="submit" name="action">Enviar
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

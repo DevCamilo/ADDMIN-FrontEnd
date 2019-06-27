@@ -14,6 +14,8 @@ import { ListPqrsComponent } from './components/council/list-pqrs/list-pqrs.comp
 import { GenerateReleaseComponent } from './components/council/generate-release/generate-release.component';
 import { ListReleasesComponent } from './components/council/list-releases/list-releases.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { GeneratePaymentComponent } from './components/payment/generate-payment/generate-payment.component';
+import { ListPaymentComponent } from './components/payment/list-payment/list-payment.component';
 
 const app_routes: Routes = [
     { path: '', component: HomeComponent },
@@ -26,6 +28,8 @@ const app_routes: Routes = [
     { path: 'dashboard/generate-release', component: GenerateReleaseComponent, canActivate: [AppGuard] },
     { path: 'dashboard/list-release', component: ListReleasesComponent, canActivate: [AppGuard] },
     { path: 'dashboard/profile', component: ProfileComponent, canActivate: [AppGuard] },
+    { path: 'dashboard/generate-payment', component: GeneratePaymentComponent, canActivate: [AppGuard] },
+    { path: 'dashboard/list-payment', component: ListPaymentComponent, canActivate: [AppGuard] },
     { path: '**', component: NotFoundComponent }
 ];
 

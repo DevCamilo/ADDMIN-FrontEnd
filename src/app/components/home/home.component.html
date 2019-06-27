@@ -1,4 +1,47 @@
-<app-nav-bar></app-nav-bar>
+<div class="navbar-fixed">
+    <!--<nav class=" brown lighten-1">-->
+    <nav class="black">
+      <div class="nav-wrapper">
+        <a routerLink="/" class="brand-logo fix" style="margin-left: 15px"><i
+            class="large material-icons">home</i>ADDMIN</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a (click)="translate(1)"><img src="../../../assets/unitedstates_flags_flag_8833.png" alt=""></a></li>
+          <li><a (click)="translate(2)"><img src="../../../assets/Spain_flags_flag_8858.png" alt=""></a></li>
+          <li><a routerLink="/login"><i class="large material-icons left">person</i>{{content.ingreso}}</a></li>
+          <li>
+            <a class="tooltipped" data-position="bottom" data-tooltip="Próximamente" style="cursor: default">
+              <i class="large material-icons left">local_phone</i>
+              {{content.contacto}}
+            </a>
+          </li>
+          <li>
+            <a class="tooltipped" data-position="bottom" data-tooltip="Próximamente" style="cursor: default">
+              <i class="large material-icons left">info_outline</i>
+              {{content.info}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <ul class="sidenav" id="mobile-demo">
+    <li><a routerLink="/login"><i class="small material-icons left">person</i>Ingresar</a></li>
+    <li>
+      <a class="tooltipped" data-position="right" data-tooltip="Próximamente">
+        <i class="small material-icons left">local_phone</i>
+        Contacto
+      </a>
+    </li>
+    <li>
+      <a class="tooltipped" data-position="right" data-tooltip="Próximamente">
+        <i class="small material-icons left">info_outline</i>
+        Información
+      </a>
+    </li>
+  </ul>
+
+
 <div class="parallax-container paralax1">
   <div class="cuadrado">
     <img src="../../../assets/icon1.jpg" class="img">
@@ -6,61 +49,61 @@
   </div>
   <div class="triangulo">
   </div>
-  <div class="parallax"><img src="../../assets/bg1.jpg"></div>
+  <div class="parallax"><img src="assets/bg1.jpg"></div>
 </div>
 <div class="row" style="text-align: center">
-  <h1>LO QUE HACEMOS</h1>
+  <h1>{{content.hacer}}</h1>
   <hr class="line">
   <br>
   <div class="col s12 m4">
     <i class="large material-icons">group</i>
     <br>
-    <b>Titulo del icono</b>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae est sequi quas itaque laboriosam natus,
-      reiciendis modi explicabo cupiditate illo ipsam quaerat sint fugit reprehenderit, facilis aut aspernatur laborum
-      repellendus!</p>
+    <b>{{content.soporte}}</b>
+    <p style="text-align: justify">
+      {{content.soporteCon}}
+    </p>
   </div>
   <div class="col s12 m4">
     <i class="large material-icons">desktop_windows</i>
     <br>
-    <b>Titulo del icono</b>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae est sequi quas itaque laboriosam natus,
-      reiciendis modi explicabo cupiditate illo ipsam quaerat sint fugit reprehenderit, facilis aut aspernatur laborum
-      repellendus!</p>
+    <b>{{content.accesibilidad}}</b>
+    <p style="text-align: justify">
+      {{content.accesibilidadCon}}
+    </p>
   </div>
   <div class="col s12 m4">
     <i class="large material-icons">event_available</i>
     <br>
-    <b>Titulo del icono</b>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae est sequi quas itaque laboriosam natus,
-      reiciendis modi explicabo cupiditate illo ipsam quaerat sint fugit reprehenderit, facilis aut aspernatur laborum
-      repellendus!</p>
+    <b>{{content.reservas}}</b>
+    <p style="text-align: justify">
+      {{content.reservasCon}}
+    </p>
   </div>
 </div>
 <div class="row" style="text-align: center">
   <div class="col s12 m4">
     <i class="large material-icons">beenhere</i>
     <br>
-    <b>Titulo del icono</b>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae est sequi quas itaque laboriosam natus,
-      reiciendis modi explicabo cupiditate illo ipsam quaerat sint fugit reprehenderit, facilis aut aspernatur laborum
-      repellendus!</p>
+    <b>{{content.seguridad}}</b>
+    <p style="text-align: justify">
+      {{content.seguridadCon}}
+    </p>
   </div>
   <div class="col s12 m4">
     <i class="large material-icons">account_balance</i>
     <br>
-    <b>Titulo del icono</b>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae est sequi quas itaque laboriosam natus,
-      reiciendis modi explicabo cupiditate illo ipsam quaerat sint fugit reprehenderit, facilis aut aspernatur laborum
-      repellendus!</p>
+    <b>{{content.pagos}}</b>
+    <p style="text-align: justify">
+      {{content.pagosCon}}
+    </p>
   </div>
   <div class="col s12 m4">
     <i class="large material-icons">access_alarm</i>
     <br>
-    <b>Titulo del icono</b>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae est sequi quas itaque laboriosam natus,
-      reiciendis modi explicabo cupiditate illo ipsam quaerat sint fugit reprehenderit, facilis aut aspernatur laborum
-      repellendus!</p>
+    <b>{{content.eficiencia}}</b>
+    <p style="text-align: justify">
+      {{content.eficienciaCon}}
+    </p>
   </div>
 </div>
 
@@ -69,21 +112,17 @@
   <div class="row">
     <div class="container sup">
       <div class="col s12 m6" style=" background-color:rgba(0, 0, 0, 0.4);">
-        <h1>Misión</h1>
-        <p style="text-align: justify;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo repudiandae id,
-          consectetur adipisci recusandae
-          alias! Sed, veritatis magnam nisi unde, impedit accusamus amet dignissimos hic blanditiis aliquid libero
-          exercitationem a.
+        <h1>{{content.mision}}</h1>
+        <p style="text-align: justify;">
+          {{content.misionCon}}
         </p>
       </div>
     </div>
     <div class="container sup">
       <div class="col s12 m6" style="background-color:rgba(0, 0, 0, 0.4);">
-        <h1>Visión</h1>
-        <p style="text-align: justify;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo repudiandae id,
-          consectetur adipisci recusandae
-          alias! Sed, veritatis magnam nisi unde, impedit accusamus amet dignissimos hic blanditiis aliquid libero
-          exercitationem a.
+        <h1>{{content.vision}}</h1>
+        <p style="text-align: justify;">
+          {{content.visionCon}}
         </p>
       </div>
     </div>
@@ -95,45 +134,27 @@
 
 <!-- INICIO DE GALERÍA -->
 <div class="row">
-  <h1 style="text-align:center"> GALERÍA </h1>
+  <h1 style="text-align:center"> {{content.galeria}} </h1>
   <hr class="line">
   <br>
   <div class="col s12 m4">
     <div class="card">
       <div class="card-image">
-        <img src="../../assets/bg1.jpg">
-        <span class="card-title">Card Title</span>
-        <a class="btn-floating halfway-fab waves-effect waves-light black"><i class="material-icons">add</i></a>
-      </div>
-      <div class="card-content">
-        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require
-          little markup to use effectively.</p>
+        <img src="https://www.metrocuadrado.com/noticias/sites/default/files/styles/full_image/public/field/image/68678231_ml.jpg?itok=VTkpOvFs">
       </div>
     </div>
   </div>
   <div class="col s12 m4">
     <div class="card">
       <div class="card-image">
-        <img src="../../assets/folio03.jpg">
-        <span class="card-title">Card Title</span>
-        <a class="btn-floating halfway-fab waves-effect waves-light black"><i class="material-icons">add</i></a>
-      </div>
-      <div class="card-content">
-        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require
-          little markup to use effectively.</p>
+        <img src="https://www.tinsamexico.mx/wp-content/uploads/2018/02/regimen-de-propiedad-en-condominio.jpg">
       </div>
     </div>
   </div>
   <div class="col s12 m4">
     <div class="card">
       <div class="card-image">
-        <img src="../../assets/folio07.jpg">
-        <span class="card-title">Card Title</span>
-        <a class="btn-floating halfway-fab waves-effect waves-light black"><i class="material-icons">add</i></a>
-      </div>
-      <div class="card-content">
-        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require
-          little markup to use effectively.</p>
+        <img src="https://co.habcdn.com/photos/business/medium/conjuntos-web-99085.jpg">
       </div>
     </div>
   </div>
@@ -145,20 +166,18 @@
   <div class="container">
     <div class="row">
       <div class="col l6 s12">
-        <h5 class="white-text">Footer Content</h5>
-        <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus
-          exercitationem explicabo enim itaque, soluta sequi officiis impedit deserunt voluptate dolorum praesentium
-          saepe, iure nam, dignissimos reprehenderit odio beatae repellat libero?</p>
+        <h5 class="white-text">ADDMIN</h5>
+        <p class="grey-text text-lighten-4">{{content.eslogan}}</p>
       </div>
       <div class="col l4 offset-l2 s12">
-        <h5 class="white-text">Repositorios</h5>
+        <h5 class="white-text">{{content.siguenos}}</h5>
         <ul>
           <li>
             <div class="row">
               <div class="col s12">
-                <a class="grey-text text-lighten-3" target="_blank" href="https://github.com/DevCamilo/ADDMIN-FrontEnd">
-                  <i class="small material-icons left">desktop_windows</i>
-                  Frontend
+                <a class="grey-text text-lighten-3" target="_blank" href="https://www.facebook.com/">
+                  <i class="small fab fa-facebook-square"></i> &nbsp;
+                  Facebook
                 </a>
               </div>
             </div>
@@ -166,9 +185,19 @@
           <li>
             <div class="row">
               <div class="col s12">
-                <a class="grey-text text-lighten-3" target="_blank" href="https://github.com/DevCamilo/ADDMIN-BackEnd">
-                  <i class="small material-icons left">https</i>
-                  Backend
+                <a class="grey-text text-lighten-3" target="_blank" href="https://www.twitter.com/">
+                  <i class="small fab fa-twitter-square"></i> &nbsp;
+                  Twitter
+                </a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="row">
+              <div class="col s12">
+                <a class="grey-text text-lighten-3" target="_blank" href="https://www.linkedin.com/">
+                  <i class="small fab fa-linkedin"></i> &nbsp;
+                  LinkedIn
                 </a>
               </div>
             </div>
