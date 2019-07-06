@@ -21,23 +21,23 @@
           </div>
           <div class="row">
             <div class="input-field col s6">
-              <input placeholder="Escriba su Torre" id="torre" type="number" class="validate" />
+              <input placeholder="Escriba su Torre" id="torre" type="number" class="validate" [(ngModel)]="info.torre" [ngModelOptions]="{standalone: true}" />
               <label for="torre" class="active">Torre</label>
             </div>
             <div class="input-field col s6">
-              <input id="apartamento" placeholder="Escriba su apartamento" type="number" class="validate" maxlength="3">
+              <input id="apartamento" placeholder="Escriba su apartamento" type="number" class="validate" maxlength="3" [(ngModel)]="info.apto" [ngModelOptions]="{standalone: true}">
               <label for="apartamento" class="active">Apartamento</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="email" type="email" class="validate">
+              <input id="email" type="email" class="validate" [(ngModel)]="info.email" [ngModelOptions]="{standalone: true}">
               <label for="email">Email</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="password" type="password" class="validate" maxlength="16" minlength="5">
+              <input id="password" type="password" class="validate" maxlength="16" minlength="5" [(ngModel)]="info.pass" [ngModelOptions]="{standalone: true}">
               <label for="password">Contraseña</label>
             </div>
           </div>

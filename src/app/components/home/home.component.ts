@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 declare var $: any;
 
 @Component({
@@ -8,12 +8,13 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
   content: any;
+  @Input() info: any;
   constructor() {
     this.content = {
       ingreso: "Ingresar",
       contacto: "Contacto",
       info: "Información",
-      hacer: "¿QUE HACEMOS?",
+      hacer: "¿QUÉ HACEMOS?",
       soporte: "Soporte",
       soporteCon: "Con ADDMIN podrás contar con un soporte calificado las 24 horas de los 7 días de la semana para responder tus dudas y solucionar tus problemas de forma eficiente.",
       accesibilidad: "Accesibilidad",
@@ -39,6 +40,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     $(document).ready(function () {
       $('.parallax').parallax();
+      $('.sidenav').sidenav();
+      $('.tooltipped').tooltip();
     });
   }
 
@@ -75,7 +78,7 @@ export class HomeComponent implements OnInit {
         ingreso: "Ingresar",
         contacto: "Contacto",
         info: "Información",
-        hacer: "¿QUE HACEMOS?",
+        hacer: "¿QUÉ HACEMOS?",
         soporte: "Soporte",
         soporteCon: "Con ADDMIN podrás contar con un soporte calificado las 24 horas de los 7 días de la semana para responder tus dudas y solucionar tus problemas de forma eficiente.",
         accesibilidad: "Accesibilidad",

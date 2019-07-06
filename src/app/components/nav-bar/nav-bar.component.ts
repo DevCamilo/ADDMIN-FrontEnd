@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-declare var $:any;
+declare var $: any;
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,11 +7,11 @@ declare var $:any;
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
-    $(document).ready(function(){
+    $(document).ready(function () {
       $('.sidenav').sidenav();
       $('.tooltipped').tooltip();
     });
