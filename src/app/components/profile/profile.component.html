@@ -8,8 +8,7 @@
       <li class="tab"><a class="active" href="#user">Usuario</a></li>
       <li class="tab disabled"><a class="tooltipped" data-position="bottom" data-tooltip="Próximamente"
           href="#reservation">Reservas</a></li>
-      <li class="tab disabled"><a class="tooltipped" data-position="bottom" data-tooltip="Próximamente"
-          href="#payments">Pagos</a></li>
+      <li class="tab"><a href="#payments">Pagos</a></li>
       <li class="tab"><a href="#pqrs">PQRS</a></li>
     </ul>
     <div id="user" class="col s12">
@@ -63,11 +62,35 @@
       <p>Test 2</p>
     </div>
     <div id="payments" class="col s12">
-      <p>Test 4</p>
+      <div class="center-table">
+        <table class="striped centered responsive-table" id="myTable">
+          <thead>
+            <tr>
+              <th>Tipo de Pago</th>
+              <th>Valor Original</th>
+              <th>Valor Descuento</th>
+              <th>Valor Final</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor=" let payment of paymentInfo | paginate: { itemsPerPage: 5, currentPage: p[i], id: 1 }">
+              <td>{{payment.id_type_payment.name}}</td>
+              <td>{{payment.original_value}}</td>
+              <td>{{payment.discount_value}}</td>
+              <td>{{payment.final_value}}</td>
+              <td>{{payment.created_at.split("T", 1)}} {{payment.created_at.substr(11,8)}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <pagination-controls class="my-pagination" (pageChange)="p[i] = $event" [id]="1" previousLabel="" nextLabel=""
+          responsive=true>
+        </pagination-controls>
+      </div>
     </div>
     <div id="pqrs" class="col s12">
       <div class="center-table">
-        <table class="striped centered responsive-table" id="myTable">
+        <table class="striped centered responsive-table" id="myTable2">
           <thead>
             <tr>
               <th>Título</th>
@@ -78,7 +101,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor=" let pqrs of pqrsInfo | paginate: { itemsPerPage: 5, currentPage: p }">
+            <tr *ngFor=" let pqrs of pqrsInfo | paginate: { itemsPerPage: 5, currentPage: p, id: 2 }">
               <td>{{pqrs.title}}</td>
               <td>{{pqrs.description}}</td>
               <td *ngIf="pqrs.checked == 'star_border'">{{pqrs.id_attendant.name}}</td>
@@ -89,7 +112,7 @@
             </tr>
           </tbody>
         </table>
-        <pagination-controls class="my-pagination" (pageChange)="p = $event" previousLabel="" nextLabel=""
+        <pagination-controls class="my-pagination" (pageChange)="p = $event" [id]="2" previousLabel="" nextLabel=""
           responsive=true>
         </pagination-controls>
       </div>

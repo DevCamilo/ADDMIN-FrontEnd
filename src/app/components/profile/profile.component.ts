@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../providers/user.service';
 import { PqrsService } from '../../providers/pqrs.service';
+import { PaymentService } from '../../providers/payment.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 declare var $: any;
@@ -15,14 +16,16 @@ export class ProfileComponent implements OnInit {
   user: any = JSON.parse(localStorage.getItem('user'));
   userInfo: any;
   pqrsInfo: Array<Object>;
-  p: Number = 1;
+  paymentInfo: any;
+  p: Number[] = [];
   changePasswordForm: FormGroup;
   validSamePassword: Boolean = false;
   validNewPassword: Boolean = false;
 
-  constructor(private userApi: UserService, private pqrsApi: PqrsService, private formBuilder: FormBuilder) {
+  constructor(private userApi: UserService, private pqrsApi: PqrsService, private formBuilder: FormBuilder, private paymentApi: PaymentService) {
     this.userInfo = {};
     this.pqrsInfo;
+    this.paymentInfo = [];
   }
 
   ngOnInit() {
@@ -50,8 +53,12 @@ export class ProfileComponent implements OnInit {
       if (res.status) {
         this.pqrsInfo = res.data;
       } else {
-        Swal.fire(res.message, '', 'error');        
+        Swal.fire(res.message, '', 'error');
       }
+    });
+    this.paymentApi.listPaymentByUserId(this.token, this.user._id).subscribe((res: any) => {
+      //console.log(res.data);
+      this.paymentInfo = res.data;
     });
     $(document).ready(function () {
       $('.tabs').tabs();
