@@ -12,7 +12,9 @@ export class FilterPaymentPipe implements PipeTransform {
         resultPayment.push(payment);
       } else if (payment.id_user.name.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
         resultPayment.push(payment);
-      } else if (payment.original_value.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
+      } else if (payment.id_user.lastName.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
+        resultPayment.push(payment);
+      } else if (payment.original_value.toString().toLowerCase().indexOf(arg.toLowerCase()) > -1){
         resultPayment.push(payment);
       }
     }

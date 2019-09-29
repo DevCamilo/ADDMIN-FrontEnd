@@ -29,7 +29,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { app_routing } from './app.routes';
 
 // Pipes
-import { FilterPipe } from './pipes/filterUser.pipe';
+import { FilterUserPipe } from './pipes/filterUser.pipe';
 import { NoSanitizePipe } from './pipes/no-sanitize.pipe';
 import { FilterPaymentPipe } from './pipes/filterPayment.pipe';
 
@@ -44,7 +44,7 @@ import { FilterPaymentPipe } from './pipes/filterPayment.pipe';
     NotFoundComponent,
     CreateUserComponent,
     ListUsersComponent,
-    FilterPipe,
+    FilterUserPipe,
     GeneratePqrsComponent,
     ListPqrsComponent,
     GenerateReleaseComponent,
