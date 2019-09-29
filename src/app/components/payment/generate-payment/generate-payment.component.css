@@ -13,8 +13,7 @@ form {
     padding-top: 5px;
     border-radius: 1%;
     margin-bottom: 10px;
-}
-
+  }
 .space-right {
     padding-left: 20px;
 }
@@ -23,15 +22,6 @@ form {
     padding-right: 40px;
 }
 
-#formularios {
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: var(--verde);
-}
-
-#boton-enviar {
-    margin-top: 20px;
+select{
+    height: 30px;
 }

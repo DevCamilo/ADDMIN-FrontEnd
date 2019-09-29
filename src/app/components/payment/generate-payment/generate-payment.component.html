@@ -3,50 +3,39 @@
   <div class="container">
     <div class="col s10 m10 l10">
       <div class="row">
-        <h2>Generar Pagos</h2>
-        <form class="col s12 m12 l12" id="formularios">
-          <br />
-          <br />
-          <div class="row">
-            <div class="input-field col s6">
-              <input placeholder="Escriba su nombre" id="first_name" type="text" class="validate" maxlength="10"
-                [(ngModel)]="info.nombre" [ngModelOptions]="{standalone: true}">
-              <label for="first_name" class="active">Nombre</label>
+        <form class="col s12 z-depth-4" id="formValidate" [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+          <h1 class="space-right">Generar Pago</h1>
+          <div class="row space-right space-left">
+            <div class="input-field col s12 m6">
+              <input list="users" type="text" formControlName="id_user">
+              <datalist id="users">
+                <option *ngFor="let users of listUsers" [value]="users._id" data-icon="../../../../assets/avatar.svg">
+                  {{users.name}} {{users.lastName}}
+                </option>
+              </datalist>
+              <label>Seleccione Un Usuario</label>
             </div>
-            <div class="input-field col s6">
-              <input id="last_name" placeholder="Escriba su apellido" type="text" class="validate" maxlength="10"
-                [(ngModel)]="info.apellido" [ngModelOptions]="{standalone: true}">
-              <label for="last_name" class="active">Apellido</label>
+            <div class="input-field col s12 m6">
+              <input list="typePayment" type="text" formControlName="id_type_payment" >
+              <datalist id="typePayment">
+                <option *ngFor="let typePayment of listPaymentesType" [value]="typePayment._id">{{typePayment.name}}
+                </option>
+              </datalist>
+              <label>Seleccione Un Tipo de Pago</label>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s6">
-              <input placeholder="Escriba su Torre" id="torre" type="number" class="validate" [(ngModel)]="info.torre" [ngModelOptions]="{standalone: true}" />
-              <label for="torre" class="active">Torre</label>
+            <div class="input-field col s12 m6">
+              <input id="original_value" type="number" class="validate" formControlName="original_value" required>
+              <label for="original_value">Valor Pagado</label>
             </div>
-            <div class="input-field col s6">
-              <input id="apartamento" placeholder="Escriba su apartamento" type="number" class="validate" maxlength="3" [(ngModel)]="info.apto" [ngModelOptions]="{standalone: true}">
-              <label for="apartamento" class="active">Apartamento</label>
+            <div class="input-field col s12 m6">
+              <input id="discount_value" type="number" class="validate" value="0" formControlName="discount_value"
+                required>
+              <label for="discount_value" class="active">Descuento</label>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email" type="email" class="validate" [(ngModel)]="info.email" [ngModelOptions]="{standalone: true}">
-              <label for="email">Email</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="password" type="password" class="validate" maxlength="16" minlength="5" [(ngModel)]="info.pass" [ngModelOptions]="{standalone: true}">
-              <label for="password">Contraseña</label>
-            </div>
+            <button class="btn waves-effect waves-light btn-large" type="submit" [disabled]="paymentForm.invalid">
+              <i class="material-icons right">send</i> Guardar
+            </button>
           </div>
         </form>
-        <button id="boton-enviar" class="btn-large white-text waves-effect waves-teal darken-2" (click)="validacion()"
-          type="submit" name="action">Enviar
-          <i class="material-icons right">send</i>
-        </button>
       </div>
     </div>
-  </div>
-</div>
