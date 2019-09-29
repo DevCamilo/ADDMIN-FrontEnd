@@ -24,7 +24,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor=" let user of listUser | filter:filterUser | paginate: { itemsPerPage: 5, currentPage: p }">
+          <tr *ngFor=" let user of listUser | filter: filterUser | paginate: { itemsPerPage: 5, currentPage: p }">
             <td>{{user.name}}</td>
             <td>{{user.lastName}}</td>
             <td>{{user.email}}</td>

@@ -52,14 +52,14 @@ export class GeneratePaymentComponent implements OnInit {
 
   onSubmit() {
     this.paymentForm.value.final_value = this.paymentForm.value.original_value - this.paymentForm.value.discount_value;
-    // this.paymentAPI.createPayment(this.token, this.paymentForm.value).subscribe((res: any) =>{
-    //   if (res.status) {
-    //     Swal.fire(res.message, '', 'success');
-    //     this.paymentForm.reset();
-    //   } else {
-    //     Swal.fire(res.message, '', 'error');
-    //   }
-    // });
+    this.paymentAPI.createPayment(this.token, this.paymentForm.value).subscribe((res: any) =>{
+      if (res.status) {
+        Swal.fire(res.message, '', 'success');
+        this.paymentForm.reset();
+      } else {
+        Swal.fire(res.message, '', 'error');
+      }
+    });
     console.log(this.paymentForm.value);
   }
 

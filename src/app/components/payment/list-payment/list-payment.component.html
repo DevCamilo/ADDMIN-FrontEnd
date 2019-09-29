@@ -1,22 +1,46 @@
 <app-side-nav></app-side-nav>
 <div class="move">
   <div class="container z-depth-4 radius space-right">
-    <h1>Consultar Pagos</h1>
     <div class="center-table">
+      <h1>Consultar Pagos</h1>
+      <div class="row">
+          <div class="input-field col s12">
+            <input id="disabled" type="text" class="validate" name="filter" [(ngModel)]="filterPayment">
+            <label for="disabled">Buscar...</label>
+          </div>
+        </div>
       <table class="striped centered responsive-table" id="myTable">
         <thead>
           <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Correo</th>
-            <th>Teléfono</th>
+            <th>Tipo de Pago</th>
+            <th>Usuario</th>
+            <th>Valor Original</th>
+            <th>Valor Descontado</th>
+            <th>Valor Final</th>
             <th>Modificar</th>
             <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
-
+          <tr *ngFor=" let paymet of listPayments | paginate: { itemsPerPage: 5, currentPage: p }">
+            <td>{{paymet.id_type_payment.name}}</td>
+            <td>{{paymet.id_user.name}} {{paymet.id_user.lastName}}</td>
+            <td>{{paymet.original_value}}</td>
+            <td>{{paymet.discount_value}}</td>
+            <td>{{paymet.final_value}}</td>
+            <td>
+                <a class="waves-effect waves-light btn green  modal-trigger" href="#modal1"><i
+                    class="material-icons">edit</i></a>
+              </td>
+              <td>
+                <a class="waves-effect waves-light btn red"><i
+                    class="material-icons">delete</i></a>
+              </td>
+          </tr>
         </tbody>
       </table>
+      <pagination-controls class="my-pagination" (pageChange)="p = $event" previousLabel="" nextLabel=""
+        responsive=true>
+      </pagination-controls>
     </div>
   </div>

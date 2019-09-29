@@ -1,7 +1,7 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../providers/user.service';
 import Swal from 'sweetalert2';
-declare var $: any, M: any;
+declare var $: any;
 
 @Component({
   selector: 'app-list-users',
@@ -16,7 +16,7 @@ export class ListUsersComponent implements OnInit {
   updateUser: any;
   token = localStorage.getItem('token');
 
-  constructor(private user: UserService, private zone: NgZone) {
+  constructor(private user: UserService) {
     this.listUser = {};
     this.updateUser = {};
   }

@@ -23,14 +23,15 @@ import { GenerateReleaseComponent } from './components/council/generate-release/
 import { ListReleasesComponent } from './components/council/list-releases/list-releases.component';
 import { GeneratePaymentComponent } from './components/payment/generate-payment/generate-payment.component';
 import { ListPaymentComponent } from './components/payment/list-payment/list-payment.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 // Rutas
 import { app_routing } from './app.routes';
 
 // Pipes
-import { FilterPipe } from './pipes/filter.pipe';
+import { FilterPipe } from './pipes/filterUser.pipe';
 import { NoSanitizePipe } from './pipes/no-sanitize.pipe';
-import { ProfileComponent } from './components/profile/profile.component';
+import { FilterPaymentPipe } from './pipes/filterPayment.pipe';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     ListReleasesComponent,
     ProfileComponent,
     GeneratePaymentComponent,
-    ListPaymentComponent
+    ListPaymentComponent,
+    FilterPaymentPipe
     ],
   imports: [
     BrowserModule,

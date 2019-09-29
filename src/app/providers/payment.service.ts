@@ -19,6 +19,16 @@ export class PaymentService {
     return this.http.post(this.url + '/create-payment', payment, httpOptions);
   }
 
+  listAllPayment(token: String){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    return this.http.get(this.url + '/list-all-payment', httpOptions);
+  }
+
   listAllPaymentType(token: String){
     const httpOptions = {
       headers: new HttpHeaders({
