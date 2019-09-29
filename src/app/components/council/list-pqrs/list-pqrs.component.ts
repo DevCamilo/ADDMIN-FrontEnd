@@ -85,8 +85,10 @@ export class ListPqrsComponent implements OnInit {
     var finalData = {
       response: this.updatePqrsInfo.response,
       id_attendant: this.updatePqrsInfo.id_attendant,
-      _id: this.updatePqrsInfo._id
+      id: this.updatePqrsInfo._id
     }
+    console.log(finalData);
+    
     this.pqrs.updatePqrs(finalData, this.token).subscribe((res:any) =>{
       if (res.status) {
         Swal.fire(res.message, '', 'success');

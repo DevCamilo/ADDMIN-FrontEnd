@@ -74,7 +74,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor=" let payment of paymentInfo | paginate: { itemsPerPage: 5, currentPage: p[i], id: 1 }">
+            <tr *ngFor=" let payment of paymentInfo | paginate: { itemsPerPage: 5, currentPage: p[0], id: 1 }">
               <td>{{payment.id_type_payment.name}}</td>
               <td>{{payment.original_value}}</td>
               <td>{{payment.discount_value}}</td>
@@ -83,7 +83,7 @@
             </tr>
           </tbody>
         </table>
-        <pagination-controls class="my-pagination" (pageChange)="p[i] = $event" [id]="1" previousLabel="" nextLabel=""
+        <pagination-controls class="my-pagination" (pageChange)="p[0] = $event" [id]="1" previousLabel="" nextLabel=""
           responsive=true>
         </pagination-controls>
       </div>

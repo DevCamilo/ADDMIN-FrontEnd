@@ -60,7 +60,7 @@ export class ListUsersComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log(this.updateUser);
+    console.log(this.updateUser);
     this.user.updateUserFunction(this.updateUser, this.token).subscribe((res: any) => {
       if (res.status) {
         Swal.fire(res.message, '', 'success');
