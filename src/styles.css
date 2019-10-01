@@ -42,3 +42,8 @@ body, html {
     text-align: center;
     font-size: 25px;
 }
+
+.dt-button {
+    padding: 0;
+    border: none;
+}

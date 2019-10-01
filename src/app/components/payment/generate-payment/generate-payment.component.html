@@ -4,7 +4,7 @@
     <div class="col s10 m10 l10">
       <div class="row">
         <form class="col s12 z-depth-4" id="formValidate" [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
-          <h1 class="space-right">Generar Pago</h1>
+          <h1 class="space-right">{{conten.title}}</h1>
           <div class="row space-right space-left">
             <div class="input-field col s12 m6">
               <input list="users" type="text" formControlName="id_user">
@@ -13,7 +13,7 @@
                   {{users.name}} {{users.lastName}}
                 </option>
               </datalist>
-              <label>Seleccione Un Usuario</label>
+              <label>{{conten.selectUser}}</label>
             </div>
             <div class="input-field col s12 m6">
               <input list="typePayment" type="text" formControlName="id_type_payment" >
@@ -21,19 +21,22 @@
                 <option *ngFor="let typePayment of listPaymentesType" [value]="typePayment._id">{{typePayment.name}}
                 </option>
               </datalist>
-              <label>Seleccione Un Tipo de Pago</label>
+              <label>{{conten.selectTypePayment}}</label>
             </div>
             <div class="input-field col s12 m6">
               <input id="original_value" type="number" class="validate" formControlName="original_value" required>
-              <label for="original_value">Valor Pagado</label>
+              <label for="original_value">{{conten.value}}</label>
             </div>
             <div class="input-field col s12 m6">
               <input id="discount_value" type="number" class="validate" value="0" formControlName="discount_value"
                 required>
-              <label for="discount_value" class="active">Descuento</label>
+              <label for="discount_value" class="active">{{conten.discount}}</label>
+              <span *ngIf="paymentForm.controls['discount_value'].touched && paymentForm.controls['discount_value'].errors?.required">
+                El valor es requerido
+              </span>
             </div>
             <button class="btn waves-effect waves-light btn-large" type="submit" [disabled]="paymentForm.invalid">
-              <i class="material-icons right">send</i> Guardar
+              <i class="material-icons right">send</i> {{conten.save}}
             </button>
           </div>
         </form>

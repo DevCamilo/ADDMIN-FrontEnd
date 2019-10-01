@@ -4,11 +4,11 @@
     <div class="center-table">
       <h1>Consultar Pagos</h1>
       <div class="row">
-          <div class="input-field col s12">
-            <input id="disabled" type="text" class="validate" name="filterPayment" [(ngModel)]="filterPayment">
-            <label for="disabled">Buscar...</label>
-          </div>
+        <div class="input-field col s12">
+          <input id="disabled" type="text" class="validate" name="filterPayment" [(ngModel)]="filterPayment">
+          <label for="disabled">Buscar...</label>
         </div>
+      </div>
       <table class="striped centered responsive-table" id="myTable">
         <thead>
           <tr>
@@ -22,20 +22,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor=" let paymet of listPayments | filterPayment: filterPayment | paginate: { itemsPerPage: 5, currentPage: p }">
+          <tr
+            *ngFor=" let paymet of listPayments | filterPayment: filterPayment | paginate: { itemsPerPage: 5, currentPage: p }">
             <td>{{paymet.id_type_payment.name}}</td>
             <td>{{paymet.id_user.name}} {{paymet.id_user.lastName}}</td>
             <td>{{paymet.original_value}}</td>
             <td>{{paymet.discount_value}}</td>
             <td>{{paymet.final_value}}</td>
             <td>
-                <a class="waves-effect waves-light btn green  modal-trigger" href="#modal1"><i
-                    class="material-icons">edit</i></a>
-              </td>
-              <td>
-                <a class="waves-effect waves-light btn red"><i
-                    class="material-icons">delete</i></a>
-              </td>
+              <a class="waves-effect waves-light btn green  modal-trigger" href="#modal1"
+                (click)="setPayment(paymet)"><i class="material-icons">edit</i></a>
+            </td>
+            <td>
+              <a class="waves-effect waves-light btn red" (click)="deletePayment(paymet._id)"><i
+                  class="material-icons">delete</i></a>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -44,3 +45,44 @@
       </pagination-controls>
     </div>
   </div>
+</div>
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <form class="col s12" id="formValidate" (ngSubmit)="onSubmit()">
+      <h1 class="space-right">Actualizar Pago</h1>
+      <div class="row space-right space-left">
+        <div class="input-field col s12 m6">
+          <input list="users" type="text" [(ngModel)]="updatePayment.id_user" [ngModelOptions]="{standalone: true}">
+          <datalist id="users">
+            <option *ngFor="let users of listUsers" [value]="users._id" data-icon="../../../../assets/avatar.svg">
+              {{users.name}} {{users.lastName}}
+            </option>
+          </datalist>
+          <label class="active">Selecione un usuario</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <input list="typePayment" type="text" [(ngModel)]="updatePayment.id_type_payment"
+            [ngModelOptions]="{standalone: true}">
+          <datalist id="typePayment">
+            <option *ngFor="let typePayment of listPaymentesType" [value]="typePayment._id">{{typePayment.name}}
+            </option>
+          </datalist>
+          <label class="active">Seleccione un Tipo de Pago</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <input id="original_value" type="number" class="validate" [(ngModel)]="updatePayment.original_value"
+            [ngModelOptions]="{standalone: true}" required>
+          <label class="active" for="original_value">Valor a Pagar</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <input id="discount_value" type="number" class="validate" value="0" [(ngModel)]="updatePayment.discount_value"
+            [ngModelOptions]="{standalone: true}" required>
+          <label for="discount_value" class="active">Descuento</label>
+        </div>
+        <button class="btn waves-effect waves-light btn-large" type="submit">
+          <i class="material-icons right">send</i> Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

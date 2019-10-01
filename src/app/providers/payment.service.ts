@@ -48,4 +48,24 @@ export class PaymentService {
     };
     return this.http.get(this.url + '/list-all-type-payment', httpOptions);
   }
+
+  deletePayment(token: String, id: String){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    return this.http.get(this.url + '/delete-payment?id=' + id, httpOptions);
+  }
+
+  updatePayment(token: String, data: Object){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    return this.http.post(this.url + '/update-payment', data, httpOptions);
+  }
 }

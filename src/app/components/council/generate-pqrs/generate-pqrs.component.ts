@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PqrsService } from '../../../providers/pqrs.service';
-import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as data from '../../../../assets/translate/languages.json';
+import Swal from 'sweetalert2';
 
 declare var $: any;
 
@@ -13,12 +14,19 @@ declare var $: any;
 export class GeneratePqrsComponent implements OnInit {
   token = localStorage.getItem('token');
   user: any =  JSON.parse(localStorage.getItem('user'));
+  language: any = localStorage.getItem('language');
+  content: any;
   typePqrs = [];
   pqrsForm: FormGroup;
 
   constructor(private pqrs: PqrsService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    if (this.language == 'es') {
+      this.content = data.es.generatePqrs;
+    } else {
+      this.content = data.en.generatePqrs;
+    }
     this.pqrsForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],

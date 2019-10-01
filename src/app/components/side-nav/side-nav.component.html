@@ -12,59 +12,59 @@
   </li>
   <li *ngIf="typeUser == 1"><a routerLink="/dashboard"><i class="small material-icons">dashboard</i>ADDMIN</a></li>
   <li *ngIf="typeUser == 3"><a routerLink="/dashboard/list-release"><i class="small material-icons">question_answer
-      </i>Comunicados</a>
+      </i>{{content.consultNotice}}</a>
   </li>
-  <li><a routerLink="/dashboard/profile"><i class="small material-icons">account_circle</i>Mi Perfil</a></li>
-  <li *ngIf="typeUser == 3"><a><i class="small material-icons">playlist_add</i>Generar Reserva</a></li>
+  <li><a routerLink="/dashboard/profile"><i class="small material-icons">account_circle</i>{{content.myProfile}}</a></li>
+  <li *ngIf="typeUser == 3"><a><i class="small material-icons">playlist_add</i>{{content.generateReservation}}</a></li>
   <ul class="collapsible fixed">
     <li *ngIf="typeUser == 1">
       <div class="collapsible-header move" style="margin-left: 5px;">
-        <i class="small material-icons">playlist_add_check</i> Reservas
+        <i class="small material-icons">playlist_add_check</i> {{content.reservations}}
       </div>
       <div class="collapsible-body">
         <ul class="drop">
           <li><a id="lel" class="tooltipped" data-position="right" data-tooltip="Proximamente">
-              <i class="small material-icons">playlist_add</i>Generar Reserva</a></li>
+              <i class="small material-icons">playlist_add</i>{{content.generateReservation}}</a></li>
           <li><a class="tooltipped" data-position="right" data-tooltip="Proximamente">
-              <i class="small material-icons">playlist_play</i>Consultar Reserva</a></li>
+              <i class="small material-icons">playlist_play</i>{{content.consultReservation}}</a></li>
         </ul>
       </div>
     </li>
   </ul>
-  <li *ngIf="typeUser == 3"><a><i class="small material-icons">payment</i>Generar Pago</a></li>
+  <li *ngIf="typeUser == 3"><a><i class="small material-icons">payment</i>{{content.generatePayment}}</a></li>
   <ul class="collapsible fixed">
     <li *ngIf="typeUser == 1">
       <div class="collapsible-header move">
-        <i class="small material-icons">attach_money</i> Pagos
+        <i class="small material-icons">attach_money</i> {{content.payments}}
       </div>
       <div class="collapsible-body">
         <ul class="drop">
           <li><a routerLink="/dashboard/generate-payment">
-              <i class="small material-icons">payment</i>Generar Pago</a></li>
+              <i class="small material-icons">payment</i>{{content.generatePayment}}</a></li>
           <li><a routerLink="/dashboard/list-payment">
-              <i class="small material-icons">search</i>Consultar Pago</a></li>
+              <i class="small material-icons">search</i>{{content.consultPayment}}</a></li>
         </ul>
       </div>
     </li>
   </ul>
   <li *ngIf="typeUser == 3"><a style="padding: 0px 34px" routerLink="/dashboard/generate-pqrs">
-      <i style="margin: 0px 27px 0px 0px;" class="small material-icons"> record_voice_over</i>Generar PQRS</a>
+      <i style="margin: 0px 27px 0px 0px;" class="small material-icons"> record_voice_over</i>{{content.generatePqrs}}</a>
   </li>
   <ul *ngIf="typeUser == 1" class="collapsible fixed">
     <li>
       <div class="collapsible-header move">
-        <i class="small material-icons">account_balance</i> Concejo
+        <i class="small material-icons">account_balance</i> {{content.council}}
       </div>
       <div class="collapsible-body">
         <ul class="drop">
           <li><a routerLink="/dashboard/generate-release">
-              <i class="small material-icons">comment</i>Generar Comunicado</a></li>
+              <i class="small material-icons">comment</i>{{content.generateNotice}}</a></li>
           <li><a routerLink="/dashboard/list-release">
-              <i class="small material-icons">question_answer</i>Consultar Comunicado</a></li>
-          <li><a routerLink="/dashboard/generate-pqrs"><i class="small material-icons">record_voice_over</i>Generar
-              PQRS</a></li>
+              <i class="small material-icons">question_answer</i>{{content.consultNotice}}</a></li>
+          <li><a routerLink="/dashboard/generate-pqrs"><i
+                class="small material-icons">record_voice_over</i>{{content.generatePqrs}}</a></li>
           <li><a routerLink="/dashboard/list-pqrs">
-              <i class="small material-icons">local_library</i>Consultar PQRS</a>
+              <i class="small material-icons">local_library</i>{{content.consultPqrs}}</a>
           </li>
         </ul>
       </div>
@@ -73,19 +73,37 @@
   <ul class="collapsible fixed" *ngIf="typeUser == 1">
     <li>
       <div class="collapsible-header move">
-        <i class="small material-icons">people</i> Usuarios
+        <i class="small material-icons">people</i> {{content.users}}
       </div>
       <div class="collapsible-body">
         <ul class="drop">
-          <li><a routerLink="/dashboard/create-user"><i class="small material-icons">person_add</i>Crear Usuario</a>
+          <li><a routerLink="/dashboard/create-user"><i
+                class="small material-icons">person_add</i>{{content.generateUser}}</a>
           </li>
-          <li><a routerLink="/dashboard/list-users"><i class="small material-icons">person_pin</i>Consultar Usuario</a>
+          <li><a routerLink="/dashboard/list-users"><i
+                class="small material-icons">person_pin</i>{{content.consultUsers}}</a>
           </li>
         </ul>
       </div>
     </li>
   </ul>
-  <li><a routerLink="/login" (click)="clearLocal()"><i class="small material-icons">power_settings_new</i>Salir</a>
+  <ul class="collapsible fixed">
+    <li>
+      <div class="collapsible-header move">
+        <i class="small material-icons">g_translate</i> {{content.languages}}
+      </div>
+      <div class="collapsible-body">
+        <ul class="drop">
+          <li><a (click)="translate(2)">ES</a>
+          </li>
+          <li><a (click)="translate(1)">EN</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  <li><a routerLink="/login" (click)="clearLocal()"><i
+        class="small material-icons">power_settings_new</i>{{content.logOut}}</a>
   </li>
 </ul>
 <!--<div class="navbar-fixed">

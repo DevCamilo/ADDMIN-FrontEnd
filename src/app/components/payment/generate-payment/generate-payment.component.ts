@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PaymentService } from '../../../providers/payment.service';
 import { UserService } from '../../../providers/user.service';
+import * as data from '../../../../assets/translate/languages.json';
 import Swal from 'sweetalert2';
 declare var $: any;
 
@@ -12,6 +13,8 @@ declare var $: any;
 })
 export class GeneratePaymentComponent implements OnInit {
   token = localStorage.getItem('token');
+  language = localStorage.getItem('language');
+  conten: any;
   listPaymentesType = [];
   listUsers = [];
   paymentForm: FormGroup;
@@ -19,6 +22,11 @@ export class GeneratePaymentComponent implements OnInit {
   constructor(private paymentAPI: PaymentService, private userAPI: UserService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    if (this.language == 'es') {
+      this.conten = data.es.generatePayment;
+    } else {
+      this.conten = data.en.generatePayment;
+    }
     this.paymentForm = this.formBuilder.group({
       id_user: ['', Validators.required],
       id_type_payment: ['', Validators.required],
@@ -33,7 +41,7 @@ export class GeneratePaymentComponent implements OnInit {
         });
         this.listPaymentesType = res.data;
         this.userAPI.listUsersFunction(this.token).subscribe((res: any) => {
-          if(res.status){
+          if (res.status) {
             $(document).ready(function () {
               $('select').formSelect();
             });
@@ -52,7 +60,7 @@ export class GeneratePaymentComponent implements OnInit {
 
   onSubmit() {
     this.paymentForm.value.final_value = this.paymentForm.value.original_value - this.paymentForm.value.discount_value;
-    this.paymentAPI.createPayment(this.token, this.paymentForm.value).subscribe((res: any) =>{
+    this.paymentAPI.createPayment(this.token, this.paymentForm.value).subscribe((res: any) => {
       if (res.status) {
         Swal.fire(res.message, '', 'success');
         this.paymentForm.reset();

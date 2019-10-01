@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
         var toastHTML = '<span>' + res.message + '</span>';
         M.toast({ html: toastHTML });
       } else {
-        localStorage.setItem('token', res.token)
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('language', 'es');
         localStorage.setItem('user', JSON.stringify(res.data[0]));
         if (res.data[0].typeUser == 1) {
           return this.router.navigate(['/dashboard']);

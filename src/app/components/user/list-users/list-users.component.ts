@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../providers/user.service';
+import * as data from '../../../../assets/translate/languages.json';
 import Swal from 'sweetalert2';
 declare var $: any;
 
@@ -15,6 +16,8 @@ export class ListUsersComponent implements OnInit {
   listUser: any;
   updateUser: any;
   token = localStorage.getItem('token');
+  language = localStorage.getItem('language');
+  content: any;
 
   constructor(private user: UserService) {
     this.listUser = {};
@@ -22,6 +25,11 @@ export class ListUsersComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.language == 'es') {
+      this.content = data.es.listUsers;
+    } else {
+      this.content = data.en.listUsers;
+    }
     $(document).ready(function () {
       $('.modal').modal();
       $('select').formSelect();

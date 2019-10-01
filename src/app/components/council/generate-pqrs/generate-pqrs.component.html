@@ -2,18 +2,18 @@
 <div class="move">
   <div class="container">
     <form class="col s12 z-depth-4 space-left space-right" [formGroup]="pqrsForm" (ngSubmit)="onSubmit()">
-      <h1 class="space-right">Generar PQRS</h1>
+      <h1 class="space-right">{{content.title}}</h1>
       <div class="row space-right">
         <div class="input-field col s12">
           <select formControlName="type">
-            <option value="" disabled selected>Seleccione una opcion</option>
+            <option value="" disabled selected>{{content.selectOpt}}</option>
             <option *ngFor=" let type of typePqrs" [value]="type._id">{{type.name}}</option>
           </select>
-          <label>Tipo de PQRS*</label>
+          <label>{{content.typePqrs}}*</label>
         </div>
         <div class="input-field col s12">
           <input id="title" type="text" class="validate" formControlName="title" autocomplete="off" required>
-          <label for="title">Título*</label>
+          <label for="title">{{content.titleDesc}}*</label>
           <span style="color: red"
             *ngIf="pqrsForm.controls['title'].touched && pqrsForm.controls['title'].errors?.required">
             El título es requerido
@@ -21,7 +21,7 @@
         </div>
         <div class="input-field col s12">
           <textarea id="description" class="materialize-textarea" formControlName="description" required></textarea>
-          <label for="description">Descripción*</label>
+          <label for="description">{{content.desc}}*</label>
           <span style="color: red"
             *ngIf="pqrsForm.controls['description'].touched && pqrsForm.controls['description'].errors?.required">
             La descripción es requerida
@@ -30,17 +30,17 @@
       </div>
       <div class="file-field input-field space-right">
         <div class="btn">
-          <span>Imagen</span>
+          <span>{{content.image}}</span>
           <input type="file" multiple>
         </div>
         <div class="file-path-wrapper">
-          <input class="file-path validate" placeholder="Cargue las evidencias">
+          <input class="file-path validate" placeholder="{{content.evidence}}">
         </div>
       </div>
       <br>
       <div class="space-right">
         <button class="btn waves-effect waves-light btn-large" type="submit" [disabled]="pqrsForm.invalid">
-          <i class="material-icons right">send</i> Guardar
+          <i class="material-icons right">send</i> {{content.save}}
         </button>
       </div>
       <br>
