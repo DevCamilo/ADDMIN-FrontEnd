@@ -15,6 +15,7 @@ export class GeneratePaymentComponent implements OnInit {
   token = localStorage.getItem('token');
   currentUser: any = JSON.parse(localStorage.getItem('user'));
   language = localStorage.getItem('language');
+  loading: boolean = true;
   conten: any;
   listPaymentesType = [];
   listUsers = [];
@@ -48,6 +49,7 @@ export class GeneratePaymentComponent implements OnInit {
         });
         this.listPaymentesType = res.data;
         this.userAPI.listUsersFunction(this.token).subscribe((res: any) => {
+          this.loading = false;
           if (res.status) {
             $(document).ready(function () {
               $('select').formSelect();

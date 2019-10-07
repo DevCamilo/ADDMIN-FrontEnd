@@ -14,18 +14,19 @@ export class ListPaymentComponent implements OnInit {
   filterPayment: any = "";
   token = localStorage.getItem('token');
   listPayments: any;
+  loading: any = true;
   listPaymentesType = [];
   listUsers = [];
   updatePayment: any = {};
   constructor(private paymentAPI: PaymentService, private userAPI: UserService) {
     this.listPayments = [];
     this.updatePayment = {
-        _id: "",
-        id_user: "",
-        id_type_payment: "",
-        final_value: 0,
-        discount_value: 0,
-        original_value: 0
+      _id: "",
+      id_user: "",
+      id_type_payment: "",
+      final_value: 0,
+      discount_value: 0,
+      original_value: 0
     }
   }
 
@@ -37,7 +38,8 @@ export class ListPaymentComponent implements OnInit {
         });
         this.listPaymentesType = res.data;
         this.userAPI.listUsersFunction(this.token).subscribe((res: any) => {
-          if(res.status){
+          this.loading = false;
+          if (res.status) {
             $(document).ready(function () {
               $('select').formSelect();
             });
@@ -52,11 +54,12 @@ export class ListPaymentComponent implements OnInit {
       }
     });
     this.paymentAPI.listAllPayment(this.token).subscribe((res: any) => {
-      console.log(res.data);
+      //console.log(res.data);
       this.listPayments = res.data;
       $(document).ready(function () {
         $('.modal').modal();
         $('#myTable').DataTable({
+          bDestroy: true,
           bPaginate: false,
           bFilter: false,
           bInfo: false,
@@ -109,6 +112,9 @@ export class ListPaymentComponent implements OnInit {
           if (res.status) {
             Swal.fire(res.message, '', 'success');
             this.ngOnInit();
+            $(document).ready(function() {
+              $("#myTable").dataTable().fnDestroy();
+          } );
           } else {
             Swal.fire(res.message, '', 'error');
           }
@@ -117,14 +123,14 @@ export class ListPaymentComponent implements OnInit {
     });
   }
 
-  setPayment(obj){
+  setPayment(obj) {
     console.log(obj);
     this.updatePayment = obj;
     this.updatePayment.id_user = obj.id_user._id;
     this.updatePayment.id_type_payment = obj.id_type_payment._id;
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log('Ok');
     this.paymentAPI.updatePayment(this.token, this.updatePayment).subscribe((res: any) => {
       if (res.status) {

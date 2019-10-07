@@ -11,6 +11,7 @@ export class ListReleasesComponent implements OnInit {
   token: String = localStorage.getItem('token');
   user: any = JSON.parse(localStorage.getItem('user'));
   typeUser: any = this.user.typeUser;
+  loading: boolean = true;
   releases: any;
   editReleaseForm: String;
   editRelease: any;
@@ -35,6 +36,7 @@ export class ListReleasesComponent implements OnInit {
     this.release.listAllReleases(this.token).subscribe((res: any) => {
       if (res.status) {
         this.releases = res.data;
+        this.loading = false;
         $(document).ready(function () {
           $('.modal').modal();
         });

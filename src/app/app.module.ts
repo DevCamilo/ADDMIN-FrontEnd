@@ -24,6 +24,7 @@ import { ListReleasesComponent } from './components/council/list-releases/list-r
 import { GeneratePaymentComponent } from './components/payment/generate-payment/generate-payment.component';
 import { ListPaymentComponent } from './components/payment/list-payment/list-payment.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 // Rutas
 import { app_routing } from './app.routes';
@@ -53,7 +54,8 @@ import { FilterPaymentPipe } from './pipes/filterPayment.pipe';
     ProfileComponent,
     GeneratePaymentComponent,
     ListPaymentComponent,
-    FilterPaymentPipe
+    FilterPaymentPipe,
+    LoaderComponent
     ],
   imports: [
     BrowserModule,

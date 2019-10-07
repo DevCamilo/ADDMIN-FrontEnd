@@ -1,5 +1,6 @@
 <app-side-nav></app-side-nav>
-<div class="move">
+<app-loader *ngIf="loading"></app-loader>
+<div *ngIf="!loading" class="move">
     <div class="row" style="text-align: center;">
         <div class="col s12 m4" *ngFor="let count of counts">
             <div class="row">
@@ -21,7 +22,7 @@
             </div>
         </div>
     </div>
-    <div class="row" >
+    <div class="row">
         <div class="col s12 m6">
             <div class="card darken-1">
                 <br />

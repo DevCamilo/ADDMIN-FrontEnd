@@ -1,5 +1,6 @@
 <app-side-nav></app-side-nav>
-<div class="move">
+<app-loader *ngIf="loading"></app-loader>
+<div *ngIf="!loading" class="move">
   <div class="container">
     <form class="col s12 z-depth-4 space-left space-right" [formGroup]="pqrsForm" (ngSubmit)="onSubmit()">
       <h1 class="space-right">{{content.title}}</h1>

@@ -15,6 +15,7 @@ export class ListUsersComponent implements OnInit {
   filterUser: any = "";
   listUser: any;
   updateUser: any;
+  loading: boolean = true;
   token = localStorage.getItem('token');
   language = localStorage.getItem('language');
   content: any;
@@ -36,6 +37,7 @@ export class ListUsersComponent implements OnInit {
     });
     this.user.listUsersFunction(this.token).subscribe((res: any) => {
       //console.log(res);
+      this.loading = false;
       if (res.status) {
         this.listUser = res.data;
       } else {

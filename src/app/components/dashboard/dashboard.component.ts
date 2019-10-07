@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class DashboardComponent implements OnInit {
   counts: any;
-
+  loading: boolean = true;
   chartLabels: Label[];
   chartData: MultiDataSet = [];
   chartType: ChartType = 'doughnut';
@@ -52,6 +52,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.stats.countModel().subscribe((res: any) => {
       if (res.status) {
+        this.loading = false
         this.counts = res.data
       } else {
         Swal.fire(res.message, '', 'error');

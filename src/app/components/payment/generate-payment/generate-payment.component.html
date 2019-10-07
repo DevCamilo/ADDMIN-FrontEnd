@@ -1,5 +1,6 @@
 <app-side-nav></app-side-nav>
-<div class="move">
+<app-loader *ngIf="loading"></app-loader>
+<div *ngIf="!loading" class="move">
   <div class="container">
     <div class="col s10 m10 l10">
       <div class="row">
@@ -47,3 +48,5 @@
         </form>
       </div>
     </div>
+  </div>
+</div>

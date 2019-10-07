@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   token: String = localStorage.getItem('token');
   user: any = JSON.parse(localStorage.getItem('user'));
   userInfo: any;
+  loading: boolean = true;
   pqrsInfo: Array<Object>;
   paymentInfo: any;
   p: Number[] = [];
@@ -51,6 +52,7 @@ export class ProfileComponent implements OnInit {
     });
     this.pqrsApi.listPqrsByIdOrigin(this.user._id, this.token).subscribe((res: any) => {
       if (res.status) {
+        this.loading = false;
         this.pqrsInfo = res.data;
       } else {
         Swal.fire(res.message, '', 'error');
@@ -59,12 +61,12 @@ export class ProfileComponent implements OnInit {
     this.paymentApi.listPaymentByUserId(this.token, this.user._id).subscribe((res: any) => {
       //console.log(res.data);
       this.paymentInfo = res.data;
-    });
-    $(document).ready(function () {
-      $('.tabs').tabs();
-      $('#tabs-swipe-demo').tabs({ 'swipeable': true });
-      $('.modal').modal();
-      $('.tooltipped').tooltip();
+      $(document).ready(function () {
+        $('.tabs').tabs();
+        $('#tabs-swipe-demo').tabs({ 'swipeable': true });
+        $('.modal').modal();
+        $('.tooltipped').tooltip();
+      });
     });
   }
 

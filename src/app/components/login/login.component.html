@@ -9,7 +9,12 @@
         <div class="z-depth-1 grey lighten-4 row"
           style="display: inline-block; padding: 30px 30px 20px 30px; border: 1px solid #EEE;">
           <h3>Ingresar</h3>
-
+          <div *ngIf="loading">
+            <br />
+            <div class="progress">
+              <div class="indeterminate"></div>
+            </div>
+          </div>
           <form class="col s12" #usuarioForm="ngForm" (ngSubmit)="onSubmit()">
             <div class='row'>
               <div class='col s12'>
@@ -36,10 +41,11 @@
             </div>
             <br />
             <div class='row'>
-              <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Iniciar</button>
+              <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'
+                [disabled]="loading">Iniciar</button>
             </div>
           </form>
-          
+
         </div>
       </div>
       <div class="section"></div>
@@ -51,45 +57,43 @@
 
 <!-- INICIO DE FOOTER -->
 <footer class="page-footer black">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">ADDMIN</h5>
+        <p class="grey-text text-lighten-4">Conectándote con TÚ comunidad.</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Repositorios</h5>
+        <ul>
+          <li>
+            <div class="row">
+              <div class="col s12">
+                <a class="grey-text text-lighten-3" target="_blank" href="https://github.com/DevCamilo/ADDMIN-FrontEnd">
+                  <i class="small material-icons left">desktop_windows</i>
+                  Frontend
+                </a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="row">
+              <div class="col s12">
+                <a class="grey-text text-lighten-3" target="_blank" href="https://github.com/DevCamilo/ADDMIN-BackEnd">
+                  <i class="small material-icons left">https</i>
+                  Backend
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
     <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">ADDMIN</h5>
-          <p class="grey-text text-lighten-4">Conectándote con TÚ comunidad.</p>
-        </div>
-        <div class="col l4 offset-l2 s12">
-          <h5 class="white-text">Repositorios</h5>
-          <ul>
-            <li>
-              <div class="row">
-                <div class="col s12">
-                  <a class="grey-text text-lighten-3" target="_blank"
-                    href="https://github.com/DevCamilo/ADDMIN-FrontEnd">
-                    <i class="small material-icons left">desktop_windows</i>
-                    Frontend
-                  </a>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="row">
-                <div class="col s12">
-                  <a class="grey-text text-lighten-3" target="_blank"
-                    href="https://github.com/DevCamilo/ADDMIN-BackEnd">
-                    <i class="small material-icons left">https</i>
-                    Backend
-                  </a>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
+      © 2019 Copyright ADDMIN CORP
     </div>
-    <div class="footer-copyright">
-      <div class="container">
-        © 2019 Copyright ADDMIN CORP
-      </div>
-    </div>
-  </footer>
+  </div>
+</footer>
 <!-- FINAL DE FOOTER -->

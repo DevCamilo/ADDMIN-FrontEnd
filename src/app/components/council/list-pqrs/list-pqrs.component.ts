@@ -12,12 +12,13 @@ declare var $: any;
 export class ListPqrsComponent implements OnInit {
   allData: any;
   token: String = localStorage.getItem('token');
-  user: any =  JSON.parse(localStorage.getItem('user'));
+  user: any = JSON.parse(localStorage.getItem('user'));
+  loading: boolean = true;
   updateType: any;
   updatePqrsInfo: any;
   p: Number[] = [];
   createTypePqrsForm: FormGroup;
-  constructor(private pqrs: PqrsService, private formBuilder: FormBuilder) { 
+  constructor(private pqrs: PqrsService, private formBuilder: FormBuilder) {
     this.updateType = {};
     this.updatePqrsInfo = {
       response: '',
@@ -36,6 +37,7 @@ export class ListPqrsComponent implements OnInit {
       description: ['', Validators.required]
     });
     this.pqrs.groupPqrsByType(this.token).subscribe((res: any) => {
+      this.loading = false;
       if (res.status) {
         this.allData = res.data;
         // Reasigna los usuarios dentro de info para poder leerlos mas facil en el ngFor
@@ -62,40 +64,40 @@ export class ListPqrsComponent implements OnInit {
     });
   }
 
-  setTypePqrs(typePqrs: Object){
+  setTypePqrs(typePqrs: Object) {
     this.updateType = typePqrs;
   }
-  
-  updateTypePqrs(){
-    this.pqrs.updateTypePqrs(this.updateType, this.token).subscribe((res: any) =>{
-      if (res.status) {        
-        Swal.fire(res.message, '', 'success');        
+
+  updateTypePqrs() {
+    this.pqrs.updateTypePqrs(this.updateType, this.token).subscribe((res: any) => {
+      if (res.status) {
+        Swal.fire(res.message, '', 'success');
       } else {
-        Swal.fire(res.message, '', 'error');        
+        Swal.fire(res.message, '', 'error');
       }
     });
   }
 
-  setPqrs(pqrs: Object){
+  setPqrs(pqrs: Object) {
     this.updatePqrsInfo = pqrs;
     this.updatePqrsInfo.id_attendant = this.user._id
   }
 
-  updatePqrs(){
+  updatePqrs() {
     var finalData = {
       response: this.updatePqrsInfo.response,
       id_attendant: this.updatePqrsInfo.id_attendant,
       id: this.updatePqrsInfo._id
     }
     console.log(finalData);
-    
-    this.pqrs.updatePqrs(finalData, this.token).subscribe((res:any) =>{
+
+    this.pqrs.updatePqrs(finalData, this.token).subscribe((res: any) => {
       if (res.status) {
         Swal.fire(res.message, '', 'success');
         this.updatePqrsInfo.response = '';
-        this.ngOnInit();                
+        this.ngOnInit();
       } else {
-        Swal.fire(res.message, '', 'error');                
+        Swal.fire(res.message, '', 'error');
       }
     });
   }

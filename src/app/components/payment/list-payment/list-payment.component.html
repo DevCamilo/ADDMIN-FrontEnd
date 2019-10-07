@@ -1,5 +1,6 @@
 <app-side-nav></app-side-nav>
-<div class="move">
+<app-loader *ngIf="loading"></app-loader>
+<div *ngIf="!loading" class="move">
   <div class="container z-depth-4 radius space-right">
     <div class="center-table">
       <h1>Consultar Pagos</h1>

@@ -15,6 +15,7 @@ export class GeneratePqrsComponent implements OnInit {
   token = localStorage.getItem('token');
   user: any =  JSON.parse(localStorage.getItem('user'));
   language: any = localStorage.getItem('language');
+  loading: boolean = true;
   content: any;
   typePqrs = [];
   pqrsForm: FormGroup;
@@ -34,6 +35,7 @@ export class GeneratePqrsComponent implements OnInit {
       id_origin: [this.user._id, Validators.nullValidator]
     });
     this.pqrs.listTypePqrs(this.token).subscribe((res: any) => {
+      this.loading = false;
       if (res.status) {
         //console.log(res.data);
         // Se carga la clase de jQuery solo si la respuesta de la API fue correcta
