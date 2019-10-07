@@ -11,11 +11,14 @@
     </div>
   </li>
   <li *ngIf="typeUser == 1"><a routerLink="/dashboard"><i class="small material-icons">dashboard</i>ADDMIN</a></li>
-  <li *ngIf="typeUser == 3"><a routerLink="/dashboard/list-release"><i class="small material-icons">question_answer
+  <li *ngIf="typeUser == 3 || typeUser == 2"><a routerLink="/dashboard/list-release"><i
+        class="small material-icons">question_answer
       </i>{{content.consultNotice}}</a>
   </li>
-  <li><a routerLink="/dashboard/profile"><i class="small material-icons">account_circle</i>{{content.myProfile}}</a></li>
-  <li *ngIf="typeUser == 3"><a><i class="small material-icons">playlist_add</i>{{content.generateReservation}}</a></li>
+  <li><a routerLink="/dashboard/profile"><i class="small material-icons">account_circle</i>{{content.myProfile}}</a>
+  </li>
+  <li *ngIf="typeUser == 3 || typeUser == 2"><a class="tooltipped" data-position="right" data-tooltip="Proximamente"><i
+        class="small material-icons">playlist_add</i>{{content.generateReservation}}</a></li>
   <ul class="collapsible fixed">
     <li *ngIf="typeUser == 1">
       <div class="collapsible-header move" style="margin-left: 5px;">
@@ -23,7 +26,7 @@
       </div>
       <div class="collapsible-body">
         <ul class="drop">
-          <li><a id="lel" class="tooltipped" data-position="right" data-tooltip="Proximamente">
+          <li><a class="tooltipped" data-position="right" data-tooltip="Proximamente">
               <i class="small material-icons">playlist_add</i>{{content.generateReservation}}</a></li>
           <li><a class="tooltipped" data-position="right" data-tooltip="Proximamente">
               <i class="small material-icons">playlist_play</i>{{content.consultReservation}}</a></li>
@@ -31,7 +34,8 @@
       </div>
     </li>
   </ul>
-  <li *ngIf="typeUser == 3"><a><i class="small material-icons">payment</i>{{content.generatePayment}}</a></li>
+  <li *ngIf="typeUser == 3 || typeUser == 2"><a routerLink="/dashboard/generate-payment"><i
+        class="small material-icons">payment</i>{{content.generatePayment}}</a></li>
   <ul class="collapsible fixed">
     <li *ngIf="typeUser == 1">
       <div class="collapsible-header move">
@@ -47,8 +51,9 @@
       </div>
     </li>
   </ul>
-  <li *ngIf="typeUser == 3"><a style="padding: 0px 34px" routerLink="/dashboard/generate-pqrs">
-      <i style="margin: 0px 27px 0px 0px;" class="small material-icons"> record_voice_over</i>{{content.generatePqrs}}</a>
+  <li *ngIf="typeUser == 3 || typeUser == 2"><a style="padding: 0px 34px" routerLink="/dashboard/generate-pqrs">
+      <i style="margin: 0px 27px 0px 0px;" class="small material-icons">
+        record_voice_over</i>{{content.generatePqrs}}</a>
   </li>
   <ul *ngIf="typeUser == 1" class="collapsible fixed">
     <li>

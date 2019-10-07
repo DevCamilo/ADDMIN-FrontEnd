@@ -13,6 +13,7 @@ declare var $: any;
 })
 export class GeneratePaymentComponent implements OnInit {
   token = localStorage.getItem('token');
+  currentUser: any = JSON.parse(localStorage.getItem('user'));
   language = localStorage.getItem('language');
   conten: any;
   listPaymentesType = [];
@@ -22,18 +23,24 @@ export class GeneratePaymentComponent implements OnInit {
   constructor(private paymentAPI: PaymentService, private userAPI: UserService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    if (this.language == 'es') {
-      this.conten = data.es.generatePayment;
+    this.language == 'es' ? this.conten = data.es.generatePayment : this.conten = data.en.generatePayment;
+    if (this.currentUser.typeUser == 1) {
+      this.paymentForm = this.formBuilder.group({
+        id_user: ['', Validators.required],
+        id_type_payment: ['', Validators.required],
+        final_value: [0, Validators.required],
+        discount_value: [0, Validators.required],
+        original_value: ['', Validators.required]
+      });
     } else {
-      this.conten = data.en.generatePayment;
+      this.paymentForm = this.formBuilder.group({
+        id_user: [this.currentUser._id, Validators.required],
+        id_type_payment: ['', Validators.required],
+        final_value: [0, Validators.required],
+        discount_value: [0, Validators.required],
+        original_value: ['', Validators.required]
+      });
     }
-    this.paymentForm = this.formBuilder.group({
-      id_user: ['', Validators.required],
-      id_type_payment: ['', Validators.required],
-      final_value: [0, Validators.required],
-      discount_value: [0, Validators.required],
-      original_value: ['', Validators.required]
-    });
     this.paymentAPI.listAllPaymentType(this.token).subscribe((res: any) => {
       if (res.status) {
         $(document).ready(function () {

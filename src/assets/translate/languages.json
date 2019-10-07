@@ -3,6 +3,7 @@
         "generatePayment": {
             "title": "Generate Payment",
             "selectUser": "Select a User",
+            "user": "User",
             "selectTypePayment": "Select a Payment Type",
             "value": "Amount to Be Paid",
             "discount": "Discount",
@@ -77,6 +78,7 @@
         "generatePayment": {
             "title": "Generar Pago",
             "selectUser": "Seleccione un Usuario",
+            "user": "Usuario",
             "selectTypePayment": "Seleccione un Tipo de Pago",
             "value": "Valor a Pagar",
             "discount": "Descuento",

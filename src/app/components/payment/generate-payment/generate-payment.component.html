@@ -6,17 +6,21 @@
         <form class="col s12 z-depth-4" id="formValidate" [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
           <h1 class="space-right">{{conten.title}}</h1>
           <div class="row space-right space-left">
-            <div class="input-field col s12 m6">
+            <div *ngIf="currentUser.typeUser == 1" class="input-field col s12 m6">
               <input list="users" type="text" formControlName="id_user">
               <datalist id="users">
-                <option *ngFor="let users of listUsers" [value]="users._id" data-icon="../../../../assets/avatar.svg">
+                <option *ngFor="let users of listUsers" [value]="users._id" data-icon="assets/avatar.svg">
                   {{users.name}} {{users.lastName}}
                 </option>
               </datalist>
               <label>{{conten.selectUser}}</label>
             </div>
+            <div *ngIf="currentUser.typeUser == 2 || currentUser.typeUser == 3" class="input-field col s12 m6">
+              <input type="text" formControlName="id_user" [value]="currentUser._id" disabled>
+              <label class="active">{{conten.user}}</label>
+            </div>
             <div class="input-field col s12 m6">
-              <input list="typePayment" type="text" formControlName="id_type_payment" >
+              <input list="typePayment" type="text" formControlName="id_type_payment">
               <datalist id="typePayment">
                 <option *ngFor="let typePayment of listPaymentesType" [value]="typePayment._id">{{typePayment.name}}
                 </option>
@@ -31,7 +35,8 @@
               <input id="discount_value" type="number" class="validate" value="0" formControlName="discount_value"
                 required>
               <label for="discount_value" class="active">{{conten.discount}}</label>
-              <span *ngIf="paymentForm.controls['discount_value'].touched && paymentForm.controls['discount_value'].errors?.required">
+              <span
+                *ngIf="paymentForm.controls['discount_value'].touched && paymentForm.controls['discount_value'].errors?.required">
                 El valor es requerido
               </span>
             </div>
