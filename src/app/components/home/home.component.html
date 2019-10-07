@@ -9,15 +9,15 @@
         <li><a (click)="translate(2)"><img src="../../../assets/Spain_flags_flag_8858.png" alt=""></a></li>
         <li><a routerLink="/login"><i class="large material-icons left">person</i>{{content.ingreso}}</a></li>
         <li>
-          <a class="tooltipped" data-position="bottom" data-tooltip="Próximamente" style="cursor: default">
-            <i class="large material-icons left">local_phone</i>
-            {{content.contacto}}
+          <a id="infoClick">
+            <i class="large material-icons left">info_outline</i>
+            {{content.info}}
           </a>
         </li>
         <li>
-          <a class="tooltipped" data-position="bottom" data-tooltip="Próximamente" style="cursor: default">
-            <i class="large material-icons left">info_outline</i>
-            {{content.info}}
+          <a id="contactClick">
+            <i class="large material-icons left">local_phone</i>
+            {{content.contacto}}
           </a>
         </li>
       </ul>
@@ -27,17 +27,17 @@
 <ul class="sidenav" id="mobile-demo">
   <li><a routerLink="/login"><i class="small material-icons left">person</i>Ingresar</a></li>
   <li>
-    <a class="tooltipped" data-position="right" data-tooltip="Próximamente">
-      <i class="small material-icons left">local_phone</i>
-      Contacto
-    </a>
-  </li>
-  <li>
-    <a class="tooltipped" data-position="right" data-tooltip="Próximamente">
+    <a id="infoClick2" style="cursor: pointer">
       <i class="small material-icons left">info_outline</i>
       Información
     </a>
   </li>
+  <li>
+      <a id="contactClick2" style="cursor: pointer">
+        <i class="small material-icons left">local_phone</i>
+        Contacto
+      </a>
+    </li>
   <li><a (click)="translate(1)"><img style="margin-left: 70px;" src="../../../assets/unitedstates_flags_flag_8833.png"
         alt=""></a></li>
   <li><a (click)="translate(2)"><img style="margin-left: 70px;" src="../../../assets/Spain_flags_flag_8858.png"
@@ -53,6 +53,9 @@
   </div>
   <div class="parallax"><img src="assets/bg1.jpg"></div>
 </div>
+<a id="info"></a>
+<br />
+<br />
 <div class="row" style="text-align: center">
   <h1>{{content.hacer}}</h1>
   <hr class="line">
@@ -164,47 +167,35 @@
 <!-- FIN DE GALERÍA -->
 
 <!-- INICIO DE FOOTER -->
-<footer class="page-footer black">
+<footer class="page-footer black" id="contact">
   <div class="container">
     <div class="row">
-      <div class="col l6 s12">
+      <div class="col s12 m6">
         <h5 class="white-text">ADDMIN</h5>
         <p class="grey-text text-lighten-4">{{content.eslogan}}</p>
       </div>
-      <div class="col l4 offset-l2 s12">
+      <div class="col s12 m6">
         <h5 class="white-text">{{content.siguenos}}</h5>
-        <ul>
-          <li>
-            <div class="row">
-              <div class="col s12">
-                <a class="grey-text text-lighten-3" target="_blank" href="https://www.facebook.com/">
-                  <i class="small fab fa-facebook-square"></i> &nbsp;
-                  Facebook
-                </a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="row">
-              <div class="col s12">
-                <a class="grey-text text-lighten-3" target="_blank" href="https://www.twitter.com/">
-                  <i class="small fab fa-twitter-square"></i> &nbsp;
-                  Twitter
-                </a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="row">
-              <div class="col s12">
-                <a class="grey-text text-lighten-3" target="_blank" href="https://www.linkedin.com/">
-                  <i class="small fab fa-linkedin"></i> &nbsp;
-                  LinkedIn
-                </a>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <div class="row">
+          <div class="col s12 m4">
+            <a class="grey-text text-lighten-3" target="_blank" href="https://www.facebook.com/">
+              <i class="small fab fa-facebook-square"></i> &nbsp;
+              Facebook
+            </a>
+          </div>
+          <div class="col s12 m4">
+            <a class="grey-text text-lighten-3" target="_blank" href="https://www.twitter.com/">
+              <i class="small fab fa-twitter-square"></i> &nbsp;
+              Twitter
+            </a>
+          </div>
+          <div class="col s12 m4">
+            <a class="grey-text text-lighten-3" target="_blank" href="https://www.linkedin.com/">
+              <i class="small fab fa-linkedin"></i> &nbsp;
+              LinkedIn
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

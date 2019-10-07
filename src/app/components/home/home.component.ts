@@ -10,7 +10,7 @@ declare var $: any;
 export class HomeComponent implements OnInit {
   content: any;
   @Input() info: any;
-  constructor() { 
+  constructor() {
     this.content = data.es.home;
   }
 
@@ -19,6 +19,26 @@ export class HomeComponent implements OnInit {
       $('.parallax').parallax();
       $('.sidenav').sidenav();
       $('.tooltipped').tooltip();
+      $("#infoClick").click(function () {
+        $('html,body').animate({
+          scrollTop: $("#info").offset().top
+        }, 2000);
+      });
+      $("#contactClick").click(function () {
+        $('html,body').animate({
+          scrollTop: $("#contact").offset().top
+        }, 2000);
+      });
+      $("#infoClick2").click(function () {
+        $('html,body').animate({
+          scrollTop: $("#info").offset().top
+        }, 2000);
+      });
+      $("#contactClick2").click(function () {
+        $('html,body').animate({
+          scrollTop: $("#contact").offset().top
+        }, 2000);
+      });
     });
   }
 
