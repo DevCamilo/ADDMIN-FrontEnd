@@ -43,13 +43,8 @@ export class HomeComponent implements OnInit {
   }
 
   translate(num: Number) {
-    console.log(num);
-    if (num == 1) {
-      this.content = data.en.home;
-    } else {
-      this.content = data.es.home;
-    }
-
+    //console.log(num);
+    num == 1 ? this.content = data.en.home : this.content = data.es.home;
   }
 
 }

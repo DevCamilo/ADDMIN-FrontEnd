@@ -77,7 +77,7 @@ export class GeneratePaymentComponent implements OnInit {
         Swal.fire(res.message, '', 'error');
       }
     });
-    console.log(this.paymentForm.value);
+    //console.log(this.paymentForm.value);
   }
 
 }

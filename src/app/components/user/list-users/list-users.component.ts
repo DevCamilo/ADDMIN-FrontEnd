@@ -26,11 +26,7 @@ export class ListUsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.language == 'es') {
-      this.content = data.es.listUsers;
-    } else {
-      this.content = data.en.listUsers;
-    }
+    this.language == 'es' ? this.content = data.es.listUsers : this.content = data.en.listUsers;
     $(document).ready(function () {
       $('.modal').modal();
       $('select').formSelect();
@@ -70,10 +66,8 @@ export class ListUsersComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.updateUser);
+    // console.log(this.updateUser);
     this.updateUser.typeUser = parseInt(this.updateUser.typeUser);
-    console.log('ok');
-    
     this.user.updateUserFunction(this.updateUser, this.token).subscribe((res: any) => {
       if (res.status) {
         Swal.fire(res.message, '', 'success');

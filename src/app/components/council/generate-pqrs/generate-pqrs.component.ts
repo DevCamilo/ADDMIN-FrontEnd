@@ -23,11 +23,7 @@ export class GeneratePqrsComponent implements OnInit {
   constructor(private pqrs: PqrsService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    if (this.language == 'es') {
-      this.content = data.es.generatePqrs;
-    } else {
-      this.content = data.en.generatePqrs;
-    }
+    this.language == 'es' ? this.content = data.es.generatePqrs : this.content = data.en.generatePqrs;
     this.pqrsForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],

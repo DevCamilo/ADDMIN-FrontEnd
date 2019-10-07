@@ -124,14 +124,13 @@ export class ListPaymentComponent implements OnInit {
   }
 
   setPayment(obj) {
-    console.log(obj);
+    //console.log(obj);
     this.updatePayment = obj;
     this.updatePayment.id_user = obj.id_user._id;
     this.updatePayment.id_type_payment = obj.id_type_payment._id;
   }
 
   onSubmit() {
-    console.log('Ok');
     this.paymentAPI.updatePayment(this.token, this.updatePayment).subscribe((res: any) => {
       if (res.status) {
         Swal.fire(res.message, '', 'success');

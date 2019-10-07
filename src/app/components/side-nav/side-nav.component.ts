@@ -15,11 +15,7 @@ export class SideNavComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if (this.language == 'es') {
-      this.content = data.es.sideNav;
-    } else {
-      this.content = data.en.sideNav;
-    }
+    this.language == 'es' ? this.content = data.es.sideNav : this.content = data.en.sideNav;
     $(document).ready(function () {
       $('.sidenav').sidenav();
       $('.collapsible').collapsible();
