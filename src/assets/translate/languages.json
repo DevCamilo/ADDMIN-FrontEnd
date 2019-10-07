@@ -30,6 +30,8 @@
             "delete": "Delete"
         },
         "sideNav": {
+            "admin": "Administrator",
+            "resident": "Resident",
             "myProfile": "My Profile",
             "reservations": "Reservations",
             "generateReservation": "Generate Reservation",
@@ -105,6 +107,8 @@
             "delete": "Eliminar"
         },
         "sideNav": {
+            "admin": "Administrador",
+            "resident": "Residente",
             "myProfile": "Mi Perfil",
             "reservations": "Reservas",
             "generateReservation": "Generar Reserva",
