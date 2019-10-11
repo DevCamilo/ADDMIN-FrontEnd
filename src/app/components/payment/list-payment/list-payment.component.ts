@@ -38,7 +38,6 @@ export class ListPaymentComponent implements OnInit {
         });
         this.listPaymentesType = res.data;
         this.userAPI.listUsersFunction(this.token).subscribe((res: any) => {
-          this.loading = false;
           if (res.status) {
             $(document).ready(function () {
               $('select').formSelect();
@@ -94,6 +93,7 @@ export class ListPaymentComponent implements OnInit {
           ]
         });
       });
+      this.loading = false;
     });
   }
 
@@ -112,9 +112,9 @@ export class ListPaymentComponent implements OnInit {
           if (res.status) {
             Swal.fire(res.message, '', 'success');
             this.ngOnInit();
-            $(document).ready(function() {
+            $(document).ready(function () {
               $("#myTable").dataTable().fnDestroy();
-          } );
+            });
           } else {
             Swal.fire(res.message, '', 'error');
           }
