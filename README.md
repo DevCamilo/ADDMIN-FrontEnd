@@ -13,4 +13,4 @@
 
 ## Links
 - [addmin.ml](http://addmin.ml/)
-- [https://dev-camilo.000webhostapp.com](https://dev-camilo.000webhostapp.com)
+- [https://devcamilo.github.io/ADDMIN/](https://devcamilo.github.io/ADDMIN/)
