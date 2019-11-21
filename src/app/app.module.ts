@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { QuillModule } from 'ngx-quill';
 import { ChartsModule } from 'ng2-charts';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -69,7 +70,8 @@ import { FilterPaymentPipe } from './pipes/filterPayment.pipe';
     HttpClientModule,
     NgxPaginationModule,
     QuillModule,
-    ChartsModule
+    ChartsModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
