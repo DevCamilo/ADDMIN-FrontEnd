@@ -13,4 +13,4 @@
 
 ## Links
 - [addmin.ml](http://addmin.ml/)
-- [https://camilo-reyes.000webhostapp.com/addmin/](https://camilo-reyes.000webhostapp.com/addmin/)
+- [https://devcamilo.github.io/ADDMIN/](https://devcamilo.github.io/ADDMIN/)
