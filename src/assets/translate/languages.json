@@ -9,6 +9,17 @@
             "discount": "Discount",
             "save": "Save"
         },
+        "listPayment": {
+            "title": "Check Payments",
+            "search": "Search",
+            "typePayment": "Type Payment",
+            "user": "User",
+            "originalValue": "Original Value",
+            "discountedValue": "Discounted Value",
+            "finalValue": "Final Value",
+            "modify" : "Modify",
+            "delete": "Delete"
+        },
         "generatePqrs": {
             "title": "Generate PQRS",
             "typePqrs": "Type PQRS",
@@ -18,6 +29,9 @@
             "image": "IMAGE",
             "evidence": "Load the Evidence",
             "save": "Save"
+        },
+        "listPqrs": {
+            "title": "Check PQRS"
         },
         "listUsers": {
             "title": "User List",
@@ -86,6 +100,17 @@
             "discount": "Descuento",
             "save": "Guardar"
         },
+        "listPayment": {
+            "title": "Consultar Pagos",
+            "search": "Buscar",
+            "typePayment": "Tipo de Pago",
+            "user": "Usuario",
+            "originalValue": "Valor Original",
+            "discountedValue": "Valor Descontado",
+            "finalValue": "Valor Final",
+            "modify" : "Modificar",
+            "delete": "Eliminar"
+        },
         "generatePqrs": {
             "title": "Generate PQRS",
             "typePqrs": "Tipo de PQRS",
@@ -97,7 +122,7 @@
             "save": "Guardar"
         },
         "listUsers": {
-            "title": "Lita de Usuarios",
+            "title": "Lista de Usuarios",
             "search": "Buscar",
             "name": "Nombre",
             "lastName": "Apellido",
