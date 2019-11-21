@@ -16,6 +16,8 @@ import { ListReleasesComponent } from './components/council/list-releases/list-r
 import { ProfileComponent } from './components/profile/profile.component';
 import { GeneratePaymentComponent } from './components/payment/generate-payment/generate-payment.component';
 import { ListPaymentComponent } from './components/payment/list-payment/list-payment.component';
+import { GenerateReservationComponent } from './components/reservations/generate-reservation/generate-reservation.component';
+import { ListReservationsComponent } from './components/reservations/list-reservations/list-reservations.component';
 
 const app_routes: Routes = [
     { path: '', component: HomeComponent },
@@ -30,6 +32,8 @@ const app_routes: Routes = [
     { path: 'dashboard/profile', component: ProfileComponent, canActivate: [AppGuard] },
     { path: 'dashboard/generate-payment', component: GeneratePaymentComponent, canActivate: [AppGuard] },
     { path: 'dashboard/list-payment', component: ListPaymentComponent, canActivate: [AppGuard] },
+    { path: 'dashboard/generate-reservation', component: GenerateReservationComponent, canActivate: [AppGuard] },
+    { path: 'dashboard/list-reservation', component: ListReservationsComponent, canActivate: [AppGuard] },
     { path: '**', component: NotFoundComponent }
 ];
 

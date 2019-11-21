@@ -21,7 +21,7 @@
   </li>
   <li><a routerLink="/dashboard/profile"><i class="small material-icons">account_circle</i>{{content.myProfile}}</a>
   </li>
-  <li *ngIf="typeUser == 3 || typeUser == 2"><a class="tooltipped" data-position="right" data-tooltip="Proximamente"><i
+  <li *ngIf="typeUser == 3 || typeUser == 2"><a routerLink="/dashboard/generate-reservation"><i
         class="small material-icons">playlist_add</i>{{content.generateReservation}}</a></li>
   <ul class="collapsible fixed">
     <li *ngIf="typeUser == 1">
@@ -30,9 +30,9 @@
       </div>
       <div class="collapsible-body">
         <ul class="drop">
-          <li><a class="tooltipped" data-position="right" data-tooltip="Proximamente">
+          <li><a routerLink="/dashboard/generate-reservation">
               <i class="small material-icons">playlist_add</i>{{content.generateReservation}}</a></li>
-          <li><a class="tooltipped" data-position="right" data-tooltip="Proximamente">
+          <li><a routerLink="/dashboard/list-reservation">
               <i class="small material-icons">playlist_play</i>{{content.consultReservation}}</a></li>
         </ul>
       </div>
