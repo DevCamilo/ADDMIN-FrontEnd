@@ -67,6 +67,10 @@ body, html {
     border-color: unset;
 }
 
+.fc-time{
+    display: none;
+}
+
 @media (max-width: 992px) {
     .main-loader {
         padding-left: 0;

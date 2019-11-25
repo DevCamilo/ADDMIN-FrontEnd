@@ -12,3 +12,8 @@
 .radius {
     border-radius: 1%;
 }
+
+.space {
+    padding-left: 20px;
+    padding-right: 40px;
+}
