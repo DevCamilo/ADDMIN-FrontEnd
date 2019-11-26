@@ -7,6 +7,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { QuillModule } from 'ngx-quill';
 import { ChartsModule } from 'ng2-charts';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -71,7 +72,8 @@ import { FilterPaymentPipe } from './pipes/filterPayment.pipe';
     NgxPaginationModule,
     QuillModule,
     ChartsModule,
-    FullCalendarModule
+    FullCalendarModule,
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

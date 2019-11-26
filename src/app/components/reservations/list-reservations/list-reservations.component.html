@@ -3,23 +3,34 @@
   <div class="container z-depth-4 radius space">
     <br>
     <h1>Consultar Reservas</h1>
-    <full-calendar locale="es" [plugins]="calendarPlugins" [buttonText]="{ today: 'Hoy'}" [events]="calendarEvents"></full-calendar>
+    <full-calendar locale="es" [plugins]="calendarPlugins" [buttonText]="{ today: 'Hoy'}" [events]="calendarEvents">
+    </full-calendar>
     <br>
     <h3>Crear Tipo de Reserva</h3>
     <form class="col s12" [formGroup]="typeReservationForm" (ngSubmit)="onSubmit()">
-      <div class="input-field col s12 m6">
-        <input id="name" type="text" class="validate" formControlName="name" autocomplete="off" required>
+      <div class="input-field col s12">
+        <input type="text" class="validate" formControlName="name" autocomplete="off" required>
         <label>Nombre*</label>
-        <span *ngIf="typeReservationForm.controls['name'].touched && typeReservationForm.controls['name'].errors?.required">
+        <span
+          *ngIf="typeReservationForm.controls['name'].touched && typeReservationForm.controls['name'].errors?.required">
           El nombres es requerido
         </span>
       </div>
-      <div class="input-field col s12 m6">
-        <input id="name" type="text" class="validate" formControlName="description" autocomplete="off" required>
+      <div class="input-field col s12">
+        <input type="text" class="validate" formControlName="description" autocomplete="off" required>
         <label>Descripción*</label>
-        <span *ngIf="typeReservationForm.controls['description'].touched && typeReservationForm.controls['description'].errors?.required">
+        <span
+          *ngIf="typeReservationForm.controls['description'].touched && typeReservationForm.controls['description'].errors?.required">
           La descripción es requerida
         </span>
+      </div>
+      <div class="input-field col s12" style="width: 150px;">
+        <input [style.background]="color1" [(colorPicker)]="color1"
+          (colorPickerOpen)="onEventLog('colorPickerOpen', $event)"
+          (colorPickerClose)="onEventLog('colorPickerClose', $event)"
+          (cpInputChange)="onEventLog('cpInputChange', $event)"
+          (cpSliderDragStart)="onEventLog('cpSliderDragStart', $event)"
+          (cpSliderDragEnd)="onEventLog('cpSliderDragEnd', $event)" />
       </div>
       <button class="btn waves-effect waves-light btn-large" type="submit" [disabled]="typeReservationForm.invalid">
         <i class="material-icons right">send</i> Guardar

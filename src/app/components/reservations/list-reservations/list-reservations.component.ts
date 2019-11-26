@@ -3,7 +3,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import { EventInput } from '@fullcalendar/core';
 import { ReservationService } from '../../../providers/reservation.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { ColorPickerService } from 'ngx-color-picker';
 
 @Component({
   selector: 'app-list-reservations',
@@ -15,14 +15,14 @@ export class ListReservationsComponent implements OnInit {
   calendarPlugins: any = [dayGridPlugin];
   calendarEvents: EventInput[];
   typeReservationForm: FormGroup;
+  color1: string = '#03a9f4';
 
-  constructor(private reservationAPI: ReservationService, private formBuilder: FormBuilder) { }
+  constructor(private reservationAPI: ReservationService, private formBuilder: FormBuilder, private cpService: ColorPickerService) { }
 
-  ngOnInit() {    
+  ngOnInit() {
     this.typeReservationForm = this.formBuilder.group({
       name: ['', Validators.required],
-      description: ['', Validators.required],
-      color: ['', Validators.required],
+      description: ['', Validators.required]
     });
     this.reservationAPI.listReservations(this.token).subscribe((res: any) => {
       let arrayReservations = [];
@@ -44,8 +44,13 @@ export class ListReservationsComponent implements OnInit {
     });
   }
 
-  onSubmit(){
-    
+  onSubmit() {
+    console.log(this.color1);
+
   }
+
+  onEventLog(event: string, data: any): void { }
+
+  
 
 }
