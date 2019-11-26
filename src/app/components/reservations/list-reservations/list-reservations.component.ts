@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import dayGridPlugin from '@fullcalendar/daygrid';
 import { EventInput } from '@fullcalendar/core';
 import { ReservationService } from '../../../providers/reservation.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ColorPickerService } from 'ngx-color-picker';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-reservations',
@@ -17,7 +17,7 @@ export class ListReservationsComponent implements OnInit {
   typeReservationForm: FormGroup;
   color1: string = '#03a9f4';
 
-  constructor(private reservationAPI: ReservationService, private formBuilder: FormBuilder, private cpService: ColorPickerService) { }
+  constructor(private reservationAPI: ReservationService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.typeReservationForm = this.formBuilder.group({
@@ -39,18 +39,26 @@ export class ListReservationsComponent implements OnInit {
         }
         this.calendarEvents = arrayReservations;
       } else {
-        console.log('Fail');
+        Swal.fire(res.message, '', 'error');
       }
     });
   }
 
   onSubmit() {
-    console.log(this.color1);
+    this.typeReservationForm.value.color = this.color1;
+    this.reservationAPI.createTypeReservation(this.typeReservationForm.value, this.token).subscribe((res: any) => {
+      if (res.status) {
+        Swal.fire(res.message, '', 'success');
+        this.typeReservationForm.reset();
+      } else {
+        Swal.fire(res.message, '', 'error');
+      }
+    });
 
   }
 
   onEventLog(event: string, data: any): void { }
 
-  
+
 
 }

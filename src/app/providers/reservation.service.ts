@@ -27,4 +27,24 @@ export class ReservationService {
     };
     return this.http.get(this.url + '/list-reservations', httpOptions);
   }
+
+  createTypeReservation(reserv: Object, token: String){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    return this.http.post(this.url + '/create-type-reservation', reserv, httpOptions);
+  }
+
+  listTypeReservation(token: String){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    return this.http.get(this.url + '/list-type-reservation', httpOptions)
+  }
 }

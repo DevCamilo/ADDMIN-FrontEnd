@@ -1,7 +1,49 @@
 <app-side-nav></app-side-nav>
 <div class="move">
-  <div class="container z-depth-4 radius">
+  <div class="container z-depth-4 radius space">
+    <br>
     <h1>Generar Reserva</h1>
-    
+    <div class="row">
+      <div class="col s12 m6">
+        <form class="col s12" #reservationForm="ngForm" (ngSubmit)="onSubmit()">
+          <div *ngIf="currentUser.typeUser == 1" class="input-field col s12">
+            <input list="users" type="text" [(ngModel)]="reservation.user" [ngModelOptions]="{standalone: true}">
+            <datalist id="users">
+              <option *ngFor="let users of listUsers" [value]="users._id">
+                {{users.name}} {{users.lastName}}
+              </option>
+            </datalist>
+            <label>Selecione un Usuario</label>
+          </div>
+          <div class="input-field col s12">
+            <input list="typeReservation" type="text" [(ngModel)]="reservation.type_reservation" [ngModelOptions]="{standalone: true}">
+            <datalist id="typeReservation">
+              <option *ngFor="let typeReservation of listTypeReservation" [value]="typeReservation._id"
+                data-icon="assets/avatar.svg">
+                {{typeReservation.name}}
+              </option>
+            </datalist>
+            <label>Tipo de Reserva</label>
+          </div>
+          <div class="input-field col s12">
+            <input type="text" class="datepicker1">
+            <label>Fecha de Inicio</label>
+          </div>
+          <div class="input-field col s12">
+            <input type="text" class="datepicker2">
+            <label>Fecha de Finalización</label>
+          </div>
+          <button class="btn waves-effect waves-light btn-large" type="submit">
+            <i class="material-icons right">send</i> Guardar
+          </button>
+        </form>
+      </div>
+      <div class="col s12 m6">
+        <full-calendar locale="es" [plugins]="calendarPlugins" [buttonText]="{ today: 'Hoy' }"
+          [events]="calendarEvents">
+        </full-calendar>
+      </div>
+    </div>
+    <br><br>
   </div>
 </div>
