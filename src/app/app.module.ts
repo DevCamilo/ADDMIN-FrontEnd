@@ -8,6 +8,7 @@ import { QuillModule } from 'ngx-quill';
 import { ChartsModule } from 'ng2-charts';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -64,7 +65,7 @@ import { FilterPaymentPipe } from './pipes/filterPayment.pipe';
     GenerateReservationComponent,
     ListReservationsComponent,
     ConsultReservationComponent
-    ],
+  ],
   imports: [
     BrowserModule,
     app_routing,
@@ -77,7 +78,9 @@ import { FilterPaymentPipe } from './pipes/filterPayment.pipe';
     FullCalendarModule,
     ColorPickerModule
   ],
-  providers: [],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
