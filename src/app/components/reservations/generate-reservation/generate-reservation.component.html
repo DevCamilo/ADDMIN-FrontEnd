@@ -16,7 +16,8 @@
             <label>Selecione un Usuario</label>
           </div>
           <div class="input-field col s12">
-            <input list="typeReservation" type="text" [(ngModel)]="reservation.type_reservation" [ngModelOptions]="{standalone: true}">
+            <input list="typeReservation" type="text" [(ngModel)]="reservation.type_reservation"
+              [ngModelOptions]="{standalone: true}">
             <datalist id="typeReservation">
               <option *ngFor="let typeReservation of listTypeReservation" [value]="typeReservation._id"
                 data-icon="assets/avatar.svg">
@@ -33,9 +34,14 @@
             <input type="text" class="datepicker2">
             <label>Fecha de Finalización</label>
           </div>
-          <button class="btn waves-effect waves-light btn-large" type="submit">
-            <i class="material-icons right">send</i> Guardar
-          </button>
+          <div *ngIf="error" class="col s12">
+            <div class="card-panel red lighten-1">{{message}}</div>
+          </div>
+          <div class="col s12">
+            <button class="btn waves-effect waves-light btn-large" type="submit">
+              <i class="material-icons right">send</i> Guardar
+            </button>
+          </div>
         </form>
       </div>
       <div class="col s12 m6">

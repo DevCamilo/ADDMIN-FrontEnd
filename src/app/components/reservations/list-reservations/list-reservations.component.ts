@@ -13,7 +13,9 @@ import Swal from 'sweetalert2';
 export class ListReservationsComponent implements OnInit {
   token = localStorage.getItem('token');
   calendarPlugins: any = [dayGridPlugin];
-  calendarEvents: EventInput[];
+  calendarEvents: EventInput[] = [{
+    title: 'Test', start: '2019-11-25T21:31:03.000-05:00', end: '2019-11-27T21:31:03.000-05:00'
+  }];
   typeReservationForm: FormGroup;
   color1: string = '#03a9f4';
 
@@ -33,7 +35,6 @@ export class ListReservationsComponent implements OnInit {
             start: res.data[i].date_start,
             end: res.data[i].date_end,
             color: res.data[i].type_reservation.color,
-            allDay: true
           };
           arrayReservations.push(obj);
         }

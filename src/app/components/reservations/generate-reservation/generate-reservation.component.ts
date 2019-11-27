@@ -5,6 +5,7 @@ import { UserService } from '../../../providers/user.service';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import Swal from 'sweetalert2';
 declare var $: any;
+
 @Component({
   selector: 'app-generate-reservation',
   templateUrl: './generate-reservation.component.html',
@@ -18,6 +19,8 @@ export class GenerateReservationComponent implements OnInit {
   listUsers = [];
   listTypeReservation = [];
   reservation: any;
+  error: boolean = false;
+  message: string = '';
 
   constructor(private reservationAPI: ReservationService, private userAPI: UserService) {
     this.reservation = {
@@ -61,7 +64,6 @@ export class GenerateReservationComponent implements OnInit {
             start: res.data[i].date_start,
             end: res.data[i].date_end,
             color: res.data[i].type_reservation.color,
-            allDay: true
           };
           arrayReservations.push(obj);
         }
@@ -73,14 +75,42 @@ export class GenerateReservationComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.reservation);
-    var date1 = $('.datepicker1').val();
-    var date2 = $('.datepicker2').val();
-    var dateObj1 = new Date(date1);
-    var dateObj2 = new Date(date2);
-    this.reservation.date_start = dateObj1.toISOString();
-    this.reservation.date_end = dateObj2.toISOString();
-    console.log(this.reservation);
+    this.error = false
+    let date1 = $('.datepicker1').val();
+    let date2 = $('.datepicker2').val();
+    if (date1 != '' && date2 != '' && this.reservation.type_reservation != '' && this.reservation.user != '') {
+      let dateObj1 = new Date(date1);
+      let dateObj2 = new Date(date2);
+      this.reservation.date_start = dateObj1.toISOString();
+      this.reservation.date_end = dateObj2.toISOString().slice(0, -14);
+      this.reservation.date_end += 'T23:59:59.000-05:00';
+      if (dateObj1 >= new Date() && dateObj1 >= new Date()) {
+        if (dateObj1 <= dateObj2 && dateObj1 <= dateObj2) {
+          console.log('Fecha Valida');
+          this.reservationAPI.createReservation(this.reservation, this.token).subscribe((res: any) => {
+            if (res.status) {
+              Swal.fire(res.message, '', 'success');
+              $('.datepicker1').val('');
+              $('.datepicker2').val('');
+              this.reservation.user = '';
+              this.reservation.type_reservation = '';
+              this.ngOnInit();
+            } else {
+              Swal.fire(res.message, '', 'error');
+            }
+          });
+        } else {
+          this.error = true;
+          this.message = 'La fecha final no puede ser menor a la fecha de inicio';
+        }
+      } else {
+        this.error = true;
+        this.message = 'La fecha de inicio no puede ser menor a la fecha actual';
+      }
+    } else {
+      this.error = true;
+      this.message = 'Faltan datos por enviar';
+    }
   }
 
 }
