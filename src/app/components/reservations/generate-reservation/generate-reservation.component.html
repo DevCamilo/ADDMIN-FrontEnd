@@ -15,6 +15,11 @@
             </datalist>
             <label>Selecione un Usuario</label>
           </div>
+          <div *ngIf="currentUser.typeUser == 2 || currentUser.typeUser == 3" class="input-field col s12">
+            <input type="text" [(ngModel)]="reservation.user" [ngModelOptions]="{standalone: true}"
+              [value]="currentUser._id" disabled>
+            <label class="active">Usuario</label>
+          </div>
           <div class="input-field col s12">
             <input list="typeReservation" type="text" [(ngModel)]="reservation.type_reservation"
               [ngModelOptions]="{standalone: true}">

@@ -23,11 +23,20 @@ export class GenerateReservationComponent implements OnInit {
   message: string = '';
 
   constructor(private reservationAPI: ReservationService, private userAPI: UserService) {
-    this.reservation = {
-      type_reservation: '',
-      user: '',
-      date_start: '',
-      date_end: ''
+    if (this.currentUser.typeUser == 2 || this.currentUser.typeUser == 3) {
+      this.reservation = {
+        type_reservation: '',
+        user: this.currentUser._id,
+        date_start: '',
+        date_end: ''
+      }
+    } else {
+      this.reservation = {
+        type_reservation: '',
+        user: '',
+        date_start: '',
+        date_end: ''
+      } 
     }
   }
 
