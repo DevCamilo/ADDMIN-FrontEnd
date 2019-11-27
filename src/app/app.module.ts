@@ -29,6 +29,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { GenerateReservationComponent } from './components/reservations/generate-reservation/generate-reservation.component';
 import { ListReservationsComponent } from './components/reservations/list-reservations/list-reservations.component';
+import { ConsultReservationComponent } from './components/reservations/consult-reservation/consult-reservation.component';
 
 // Rutas
 import { app_routing } from './app.routes';
@@ -61,7 +62,8 @@ import { FilterPaymentPipe } from './pipes/filterPayment.pipe';
     FilterPaymentPipe,
     LoaderComponent,
     GenerateReservationComponent,
-    ListReservationsComponent
+    ListReservationsComponent,
+    ConsultReservationComponent
     ],
   imports: [
     BrowserModule,

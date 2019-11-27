@@ -18,6 +18,7 @@ import { GeneratePaymentComponent } from './components/payment/generate-payment/
 import { ListPaymentComponent } from './components/payment/list-payment/list-payment.component';
 import { GenerateReservationComponent } from './components/reservations/generate-reservation/generate-reservation.component';
 import { ListReservationsComponent } from './components/reservations/list-reservations/list-reservations.component';
+import { ConsultReservationComponent } from './components/reservations/consult-reservation/consult-reservation.component';
 
 const app_routes: Routes = [
     { path: '', component: HomeComponent },
@@ -34,6 +35,7 @@ const app_routes: Routes = [
     { path: 'dashboard/list-payment', component: ListPaymentComponent, canActivate: [AppGuard] },
     { path: 'dashboard/generate-reservation', component: GenerateReservationComponent, canActivate: [AppGuard] },
     { path: 'dashboard/list-reservation', component: ListReservationsComponent, canActivate: [AppGuard] },
+    { path: 'dashboard/consult-reservation', component: ConsultReservationComponent, canActivate: [AppGuard] },
     { path: '**', component: NotFoundComponent }
 ];
 

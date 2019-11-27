@@ -35,6 +35,7 @@ export class ListReservationsComponent implements OnInit {
             start: res.data[i].date_start,
             end: res.data[i].date_end,
             color: res.data[i].type_reservation.color,
+            url: 'http://localhost:4200/dashboard/consult-reservation?id='+res.data[i]._id
           };
           arrayReservations.push(obj);
         }
