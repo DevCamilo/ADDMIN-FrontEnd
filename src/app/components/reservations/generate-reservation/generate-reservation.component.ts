@@ -54,8 +54,6 @@ export class GenerateReservationComponent implements OnInit {
     this.reservationAPI.listTypeReservation(this.token).subscribe((res: any) => {
       if (res.status) {
         $(document).ready(function () {
-          $('select').formSelect();
-          $('.datepicker').datepicker();
           $('.datepicker1').datepicker();
           $('.datepicker2').datepicker();
         });
@@ -114,7 +112,7 @@ export class GenerateReservationComponent implements OnInit {
         }
       } else {
         this.error = true;
-        this.message = 'La fecha de inicio no puede ser menor a la fecha actual';
+        this.message = 'La fecha de inicio no puede ser menor o igual a la fecha actual';
       }
     } else {
       this.error = true;

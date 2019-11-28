@@ -18,7 +18,7 @@ export class ReservationService {
     return this.http.post(this.url + '/create-reservation', reserv, httpOptions);
   }
 
-  listReservations(token: String){
+  listReservations(token: String) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -28,7 +28,27 @@ export class ReservationService {
     return this.http.get(this.url + '/list-reservations', httpOptions);
   }
 
-  createTypeReservation(reserv: Object, token: String){
+  listReservationById(id: String, token: String) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    return this.http.get(this.url + '/list-reservation-by-id/?id=' + id, httpOptions);
+  }
+
+  listReservationsByIdUser(id: String, token: String) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    return this.http.get(this.url + '/list-reservation-by-id-user/?id=' + id, httpOptions);
+  }
+
+  createTypeReservation(reserv: Object, token: String) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -38,7 +58,7 @@ export class ReservationService {
     return this.http.post(this.url + '/create-type-reservation', reserv, httpOptions);
   }
 
-  listTypeReservation(token: String){
+  listTypeReservation(token: String) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

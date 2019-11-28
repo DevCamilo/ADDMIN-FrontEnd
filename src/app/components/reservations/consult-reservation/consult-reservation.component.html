@@ -3,8 +3,68 @@
   <div class="container z-depth-4 radius space">
     <br>
     <h1>Consultar Reservas</h1>
-    <p>
-      consult-reservation works!
-    </p>
+    <br>
+    <form class="col s12" #reservationForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <input list="users" type="text" [(ngModel)]="reservation.user" [ngModelOptions]="{standalone: true}"
+            [value]="reservation.user">
+          <datalist id="users">
+            <option *ngFor="let users of listUsers" [value]="users._id">
+              {{users.name}} {{users.lastName}}
+            </option>
+          </datalist>
+          <label class="active">Selecione un Usuario</label>
+        </div>
+        <div class="col s12 m6" valign-wrapper style="text-align: center;">
+          <br>
+          <h6>{{extraInfo.name}} {{extraInfo.lastName}}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <input list="typeReservation" type="text" [(ngModel)]="reservation.type_reservation"
+            [ngModelOptions]="{standalone: true}" [value]="reservation.type_reservation">
+          <datalist id="typeReservation">
+            <option *ngFor="let typeReservation of listTypeReservation" [value]="typeReservation._id">
+              {{typeReservation.name}}
+            </option>
+          </datalist>
+          <label class="active">Tipo de Reserva</label>
+        </div>
+        <div class="col s12 m6" valign-wrapper style="text-align: center;">
+          <br>
+          <h6>{{extraInfo.type_reservation}}</h6>
+        </div>
+      </div>
+      <div class="input-field col s12">
+        <input type="text" class="datepicker1">
+        <label class="active">Fecha de Inicio</label>
+      </div>
+      <br>
+      <div class="input-field col s12">
+        <input type="text" class="datepicker2">
+        <label class="active">Fecha de Finalización</label>
+      </div>
+      <div class="row">
+        <div class="col s12 m4 left-align">
+          <a class="waves-effect waves-light btn-large green">
+            <i class="material-icons left">edit</i>Editar
+          </a>
+        </div>
+        <div class="col s12 m4 center-align">
+          <a class="waves-effect waves-light btn-large grey" routerLink="/dashboard/list-reservation">
+            <i class="material-icons left">arrow_back</i>Volver
+          </a>
+        </div>
+        <div class="col s12 m4 right-align">
+          <a class="waves-effect waves-light btn-large red">
+            <i class="material-icons left">delete</i>Eliminar
+          </a>
+        </div>
+        <br><br>
+        <br><br>
+      </div>
+    </form>
   </div>
 </div>

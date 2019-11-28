@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../providers/user.service';
 import { PqrsService } from '../../providers/pqrs.service';
 import { PaymentService } from '../../providers/payment.service';
+import { ReservationService } from '../../providers/reservation.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EventInput } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
 import Swal from 'sweetalert2';
 declare var $: any;
 
@@ -22,11 +25,15 @@ export class ProfileComponent implements OnInit {
   changePasswordForm: FormGroup;
   validSamePassword: Boolean = false;
   validNewPassword: Boolean = false;
+  calendarEvents: EventInput[];
+  calendarPlugins: any = [dayGridPlugin];
 
-  constructor(private userApi: UserService, private pqrsApi: PqrsService, private formBuilder: FormBuilder, private paymentApi: PaymentService) {
+
+  constructor(private userApi: UserService, private pqrsApi: PqrsService, private formBuilder: FormBuilder, private paymentApi: PaymentService, private reservationAPI: ReservationService) {
     this.userInfo = {};
     this.pqrsInfo;
     this.paymentInfo = [];
+
   }
 
   ngOnInit() {
@@ -58,15 +65,33 @@ export class ProfileComponent implements OnInit {
         Swal.fire(res.message, '', 'error');
       }
     });
-    this.paymentApi.listPaymentByUserId(this.token, this.user._id).subscribe((res: any) => {
-      //console.log(res.data);
-      this.paymentInfo = res.data;
-      $(document).ready(function () {
-        $('.tabs').tabs();
-        $('#tabs-swipe-demo').tabs({ 'swipeable': true });
-        $('.modal').modal();
-        $('.tooltipped').tooltip();
-      });
+    this.reservationAPI.listReservationsByIdUser(this.user._id, this.token).subscribe((res: any) => {
+      if (res.status) {
+        let arrayReservations = [];
+          for (let i = 0; i < res.data.length; i++) {
+            const obj = {
+              title: res.data[i].type_reservation.name,
+              start: res.data[i].date_start,
+              end: res.data[i].date_end,
+              color: res.data[i].type_reservation.color,
+            };
+            arrayReservations.push(obj);
+          }
+          this.calendarEvents = arrayReservations;
+        console.log(res.data);
+        this.paymentApi.listPaymentByUserId(this.token, this.user._id).subscribe((res: any) => {
+          //console.log(res.data);
+          this.paymentInfo = res.data;
+          $(document).ready(function () {
+            $('.tabs').tabs();
+            $('#tabs-swipe-demo').tabs({ 'swipeable': true });
+            $('.modal').modal();
+            $('.tooltipped').tooltip();
+          });
+        });
+      } else {
+        Swal.fire(res.message, '', 'error');
+      }
     });
   }
 
