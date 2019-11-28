@@ -21,6 +21,7 @@ export class GenerateReservationComponent implements OnInit {
   reservation: any;
   error: boolean = false;
   message: string = '';
+  loading: boolean = true;
 
   constructor(private reservationAPI: ReservationService, private userAPI: UserService) {
     if (this.currentUser.typeUser == 2 || this.currentUser.typeUser == 3) {
@@ -63,6 +64,7 @@ export class GenerateReservationComponent implements OnInit {
       }
     });
     this.reservationAPI.listReservations(this.token).subscribe((res: any) => {
+      this.loading = false;
       let arrayReservations = [];
       if (res.status) {
         for (let i = 0; i < res.data.length; i++) {

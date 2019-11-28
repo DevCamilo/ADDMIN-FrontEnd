@@ -18,6 +18,7 @@ export class ListReservationsComponent implements OnInit {
   }];
   typeReservationForm: FormGroup;
   color1: string = '#03a9f4';
+  loading: boolean = true;
 
   constructor(private reservationAPI: ReservationService, private formBuilder: FormBuilder) { }
 
@@ -28,6 +29,7 @@ export class ListReservationsComponent implements OnInit {
     });
     this.reservationAPI.listReservations(this.token).subscribe((res: any) => {
       let arrayReservations = [];
+      this.loading = false;
       if (res.status) {
         for (let i = 0; i < res.data.length; i++) {
           const obj = {

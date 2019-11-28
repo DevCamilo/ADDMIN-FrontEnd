@@ -16,6 +16,8 @@ export class ConsultReservationComponent implements OnInit {
   extraInfo: any;
   listUsers: any;
   listTypeReservation: any;
+  loading: boolean = true;
+
   constructor(private activatedRoute: ActivatedRoute, private reservationAPI: ReservationService, private userAPI: UserService) {
     this.reservation = {
       type_reservation: '',
@@ -39,6 +41,7 @@ export class ConsultReservationComponent implements OnInit {
       }
     });
     this.reservationAPI.listTypeReservation(this.token).subscribe((res: any) => {
+      this.loading = false;
       if (res.status) {
         $(document).ready(function () {
           $('select').formSelect();
