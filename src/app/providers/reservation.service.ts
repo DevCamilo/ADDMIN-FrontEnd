@@ -48,6 +48,16 @@ export class ReservationService {
     return this.http.get(this.url + '/list-reservation-by-id-user/?id=' + id, httpOptions);
   }
 
+  deleteReservation(id: String, token:String){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    return this.http.get(this.url + '/delete-reservation/?id=' + id, httpOptions);
+  }
+
   createTypeReservation(reserv: Object, token: String) {
     const httpOptions = {
       headers: new HttpHeaders({

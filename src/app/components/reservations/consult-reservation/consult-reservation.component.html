@@ -5,7 +5,7 @@
     <br>
     <h1>Consultar Reservas</h1>
     <br>
-    <form class="col s12" #reservationForm="ngForm" (ngSubmit)="onSubmit()">
+    <form class="col s12" #reservationForm="ngForm">
       <div class="row">
         <div class="input-field col s12 m6">
           <input list="users" type="text" [(ngModel)]="reservation.user" [ngModelOptions]="{standalone: true}"
@@ -47,9 +47,12 @@
         <input type="text" class="datepicker2">
         <label class="active">Fecha de Finalización</label>
       </div>
+      <div *ngIf="error" class="col s12">
+        <div class="card-panel red lighten-1">{{message}}</div>
+      </div>
       <div class="row">
         <div class="col s12 m4 left-align">
-          <a class="waves-effect waves-light btn-large green">
+          <a class="waves-effect waves-light btn-large green" (click)="edit()">
             <i class="material-icons left">edit</i>Editar
           </a>
         </div>
@@ -59,8 +62,8 @@
           </a>
         </div>
         <div class="col s12 m4 right-align">
-          <a class="waves-effect waves-light btn-large red">
-            <i class="material-icons left">delete</i>Eliminar
+          <a class="waves-effect waves-light btn-large red" (click)="delete()">
+            <i class="material-icons left">delete</i>Borrar
           </a>
         </div>
         <br><br>
