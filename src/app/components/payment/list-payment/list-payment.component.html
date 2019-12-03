@@ -24,18 +24,18 @@
         </thead>
         <tbody>
           <tr
-            *ngFor=" let paymet of listPayments | filterPayment: filterPayment | paginate: { itemsPerPage: 5, currentPage: p }">
-            <td>{{paymet.id_type_payment.name}}</td>
-            <td>{{paymet.id_user.name}} {{paymet.id_user.lastName}}</td>
-            <td>{{paymet.original_value}}</td>
-            <td>{{paymet.discount_value}}</td>
-            <td>{{paymet.final_value}}</td>
+            *ngFor=" let paymets of listPayments | filterPayment: filterPayment | paginate: { itemsPerPage: 5, currentPage: p }">
+            <td>{{paymets.id_type_payment.name}}</td>
+            <td>{{paymets.id_user.name}} {{paymets.id_user.lastName}}</td>
+            <td>{{paymets.original_value}}</td>
+            <td>{{paymets.discount_value}}</td>
+            <td>{{paymets.final_value}}</td>
             <td>
               <a class="waves-effect waves-light btn green  modal-trigger" href="#modal1"
-                (click)="setPayment(paymet)"><i class="material-icons">edit</i></a>
+                (click)="setPayment(paymets)"><i class="material-icons">edit</i></a>
             </td>
             <td>
-              <a class="waves-effect waves-light btn red" (click)="deletePayment(paymet._id)"><i
+              <a class="waves-effect waves-light btn red" (click)="deletePayment(paymets._id)"><i
                   class="material-icons">delete</i></a>
             </td>
           </tr>

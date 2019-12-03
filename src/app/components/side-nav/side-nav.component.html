@@ -2,8 +2,7 @@
   <li>
     <div class="user-view">
       <div class="background">
-        <img
-          src="../../../assets/fondo-madera.jpg">
+        <img src="../../../assets/fondo-madera.jpg">
       </div>
       <a><img class="circle" src="../../../assets/avatar.svg"></a>
       <a><span class="white-text name">{{user.name}} {{user.lastName}}</span></a>
@@ -13,7 +12,9 @@
   <li *ngIf="typeUser == 1"><a class="subheader">{{content.admin}}</a></li>
   <li *ngIf="typeUser == 2"><a class="subheader">{{content.council}}</a></li>
   <li *ngIf="typeUser == 3"><a class="subheader">{{content.resident}}</a></li>
-  <li><div class="divider"></div></li>
+  <li>
+    <div class="divider"></div>
+  </li>
   <li *ngIf="typeUser == 1"><a routerLink="/dashboard"><i class="small material-icons">dashboard</i>ADDMIN</a></li>
   <li *ngIf="typeUser == 3 || typeUser == 2"><a routerLink="/dashboard/list-release"><i
         class="small material-icons">question_answer
@@ -126,5 +127,6 @@
       </div>
     </nav>
   </div> -->
-<a href="#" data-target="slide-out" class="sidenav-trigger"><i style="color: rgba(0, 0, 0, 0.54)"
+<a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only"><i style="color: rgba(0, 0, 0, 0.54)"
     class="medium material-icons">apps</i></a>
+<br><br><br>

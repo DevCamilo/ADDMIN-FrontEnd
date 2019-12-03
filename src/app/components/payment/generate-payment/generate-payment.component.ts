@@ -72,12 +72,11 @@ export class GeneratePaymentComponent implements OnInit {
     this.paymentAPI.createPayment(this.token, this.paymentForm.value).subscribe((res: any) => {
       if (res.status) {
         Swal.fire(res.message, '', 'success');
-        this.paymentForm.reset();
+        this.ngOnInit();
       } else {
         Swal.fire(res.message, '', 'error');
       }
     });
-    //console.log(this.paymentForm.value);
   }
 
 }
