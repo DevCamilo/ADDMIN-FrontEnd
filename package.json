@@ -22,7 +22,7 @@
     "@fullcalendar/angular": "^4.3.1",
     "@fullcalendar/core": "^4.3.1",
     "@fullcalendar/daygrid": "^4.3.0",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "chartjs-plugin-datalabels": "^0.6.0",
     "core-js": "^2.5.4",
     "ng2-charts": "^2.2.2",
